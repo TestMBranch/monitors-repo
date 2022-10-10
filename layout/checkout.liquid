@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                                })(window,document,'script','dataLayer','GTM-NDZNK3T');</script>
+    <!-- End Google Tag Manager -->
+
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    
+    
+    {{ checkout_scripts }}
+    <style>
+      .terms-page-link{
+        background: transparent;
+        border: medium none;
+        cursor: pointer;
+      }
+      .terms-modal {position: fixed;left: 0;top: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.6);opacity: 0;visibility: hidden;z-index: 999;transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;text-align: center;}
+      .terms-modal:before {display: inline-block;vertical-align: middle;content: " ";height: 100%;}
+      .terms-box {display: inline-block;text-align: left;vertical-align: middle;width: 785px;margin: 30px auto;position: relative;}
+      .terms-content {position: relative;background-color: #fff;-webkit-background-clip: padding-box;background-clip: padding-box;border: 1px solid #999;border: 1px solid rgba(0,0,0,.2);border-radius: 6px;outline: 0;-webkit-box-shadow: 0 3px 9px rgb(0 0 0 / 50%);box-shadow: 0 3px 9px rgb(0 0 0 / 50%);padding: 15px;}
+      .terms-inner {position: relative;overflow: hidden;overflow-y: auto;height: 574px;}
+      .terms-inner h2 {margin-bottom: 24px;font-weight: 600;font-size: 19px;}
+      .terms-close {display: flex;align-items: center;justify-content: center;text-align: center;cursor: pointer;position: absolute;right: -16px;top: -16px;background-color: #06a0e3;color: #fff;border-radius: 50%;border: 1px solid #fff;padding: 0;width: 32px;height: 32px;}
+      .terms-close svg {fill: #fff;width: 32px;height: 32px;padding: 10px;stroke: #fff;-webkit-text-stroke-color: #fff;stroke-width: 12px;vertical-align: middle;}      
+      .terms-close svg path {stroke: #fff;-webkit-text-stroke-color: #fff;stroke-width: 14px;}
+      .show-modal {opacity: 1;visibility: visible;transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;overflow-x: hidden;overflow-y: auto;}
+      .terms-inner::-webkit-scrollbar-track {-webkit-box-shadow: none;border-radius: 0;background-color: #f5f5f5;}
+      .terms-inner::-webkit-scrollbar {width: 9px;padding: 1px;background-color: #F5F5F5;}
+      .terms-inner::-webkit-scrollbar-thumb {border-radius: 25px;-webkit-box-shadow: none;background-color: #cdcccb;}
+      .terms-modal::-webkit-scrollbar {width: 0;}
+      .terms-popup h4 {text-transform: uppercase;margin-bottom: 10px;color: #4d4d4f;font-size: 17px;line-height: 24px;font-weight: 400;}
+      .terms-popup h5 {margin-bottom: 10px;line-height: 24px;color: #4d4d4f;text-transform: uppercase;font-weight: 600;font-size: 17px;}
+      .terms-popup p {margin-bottom: 15px;color: #4d4d4f;font-size: 16px;line-height: 24px;font-weight: 400;}
+      .terms-popup {padding-right: 10px;}    
+      .checkout-cont-wrapper:not(.terms__true) {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 1.4em 1.7em;
+        background-color: #06a0e3;
+        background-clip: border-box;
+        border-radius: 5px;
+      }
+      .checkout-cont-wrapper:not(.terms__true):hover, .checkout-cont-wrapper:not(.terms__true):focus {
+        background-color:#057db1
+      }
+      .checkout-cont-wrapper:not(.terms__true) button.btn{
+        padding: 0;
+        background-color: transparent;
+      }
+      
+      @media only screen and (max-width: 800px){
+        .terms-box{
+          width:calc(100% - 50px);
+          max-width: 100%;
+        }
+/*         .terms-modal:before {height: auto;} */
+      }
+
+    </style>
+  {% render 'weglot_hreftags' %}
+{% render 'weglot_switcher' %}
+</head>
+  <body>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDZNK3T"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            <h2 id="custom-text">If you're tax-exempt, please call us at 1(800)801-8432 or email us at <a href="mailto:sales@monitors.com">sales@monitors.com</a> so we can assist you with placing your order. </h2>
+            
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+            
+            <div class="cus-checkbox-wrapper" style="display:none;">
+              <div class="terms-condition-wrapper">
+                <input type="checkbox" id="terms-condition" class="input-checkbox">
+                <label for="terms-condition" class="rale-message">I have read and agree with the <a class="terms-page-link">terms and conditions.</a></label>
+              </div>
+            </div>
+              
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </aside>
+      </div>
+    </div>
+    
+    <!-- Terms popup -->
+    <div class="terms-modal">
+      <div class="terms-box">
+        <div class="terms-content">
+          <span class="terms-close">
+          	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 311 311.07733"><path xmlns="http://www.w3.org/2000/svg" d="m16.035156 311.078125c-4.097656 0-8.195312-1.558594-11.308594-4.695313-6.25-6.25-6.25-16.382812 0-22.632812l279.0625-279.0625c6.25-6.25 16.382813-6.25 22.632813 0s6.25 16.382812 0 22.636719l-279.058594 279.058593c-3.136719 3.117188-7.234375 4.695313-11.328125 4.695313zm0 0"></path><path xmlns="http://www.w3.org/2000/svg" d="m295.117188 311.078125c-4.097657 0-8.191407-1.558594-11.308594-4.695313l-279.082032-279.058593c-6.25-6.253907-6.25-16.386719 0-22.636719s16.382813-6.25 22.636719 0l279.058594 279.0625c6.25 6.25 6.25 16.382812 0 22.632812-3.136719 3.117188-7.230469 4.695313-11.304687 4.695313zm0 0"></path></svg>
+          </span>
+          <div class="terms-inner">
+            <div class="terms-body">
+              <h2 class="text-center">Terms and Conditions</h2>
+              <div class="terms-popup"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <style>
+      .terms-condition-wrapper .terms-error{
+        padding-left: 30px;
+        padding-top: 3px;
+        line-height: 28px;
+        font-size: 12px;
+        color: red;
+      }
+      .terms-condition-wrapper #terms-condition {
+      	margin-right: 0.5em;
+      }
+      .terms-condition-wrapper {
+        padding: 0.84em 0.4285714286em;
+      }
+    </style>
+
+    {{ tracking_code }}
+    {{ '//code.jquery.com/jquery-1.12.4.min.js' | script_tag }}
+    <script>
+      jQuery(document).ready(function() {
+        var step = getUrlParameter('step');
+//         if(step == 'shipping_method'){
+//           jQuery('#custom-text').hide();
+//           $('.terms-condition-wrapper').remove();
+//         }
+//         if(step == 'payment_method'){
+//           jQuery('#custom-text').hide();
+//           $('.terms-condition-wrapper').remove();
+//         }
+        
+        var shopifyStep = Shopify.Checkout.step;
+        console.log(shopifyStep);
+        if(shopifyStep == 'contact_information'){
+          jQuery('#custom-text').hide();
+          $('.terms-condition-wrapper').remove();
+        }
+        if(shopifyStep == 'shipping_method'){
+          jQuery('#custom-text').hide();
+          $('.terms-condition-wrapper').remove();
+        }
+        
+        var avai = $(".cus-checkbox-wrapper").html();
+        
+        var paymentStepFound = setInterval(function(){
+          if($(document).find("[data-billing-address]").length > 0){
+            $(document).find("[data-billing-address]").append(avai).show();
+            clearInterval(paymentStepFound);
+          }
+        },500);
+        
+        if(shopifyStep == 'payment_method'){
+          var paymentMethod = setInterval(function(){
+            if($(document).find('#continue_button').length > 0){
+              $(document).find('#continue_button').attr('disabled','disabled');
+              $(document).find('#continue_button').wrap('<div class="checkout-cont-wrapper"></div>');
+              $(document).find('.checkout-cont-wrapper').removeClass('terms__true');
+              clearInterval(paymentMethod);
+            }
+          },500);
+
+          $(document).on('click','.checkout-cont-wrapper',function(event){
+            console.log('clicked');
+            $('.terms-error').remove();
+            if($("#terms-condition").is(':checked')){
+              console.log('checked_true');
+//               $(this).find('.btn').trigger('click');
+              return true;
+            } else{
+              console.log('checked_false');
+              $(document).find('#continue_button').attr('disabled','disabled');
+              $(".rale-message").after('<div class="terms-error">Please agree to the terms and conditions before making a purchase!</div>');
+            }
+          });
+        }
+        
+       /* $(document).on('click','#continue_button',function(event){
+          event.preventDefault();
+          
+          if(shopifyStep == 'shipping_method' || shopifyStep == 'contact_information'){
+            $(this).closest("form").submit();
+          }
+          else{
+            
+            if($("#terms-condition").is(':checked')){
+              console.log('checked_true');
+              $(this).closest("form").submit();
+              return true;
+            }else{
+              console.log('checked_false');
+              $(".rale-message").after('<div class="terms-error">Please agree to the terms and conditions before making a purchase!</div>');
+            }
+          }
+        });*/
+        
+        $(document).on('click','#terms-condition', function(){
+          $(".terms-error").remove();
+          $(document).find('#continue_button').removeAttr('disabled');
+          $(document).find('.checkout-cont-wrapper').toggleClass('terms__true');
+        });
+        
+        // Add content
+        var jqxhr = $.getJSON( "https://monitors.com/pages/terms-conditions", function(data) {
+//           console.log( "success",data.page.body_html );
+          $(document).find('.terms-popup').html(data.page.body_html);
+        })
+        .fail(function() {
+          console.log( "error" );
+        })
+        
+        var modal = $(document).find(".terms-modal");
+        var trigger = $(document).find(".terms-page-link");
+        var closeButton = $(document).find(".terms-close");
+
+        function toggleModal() {
+          modal.toggleClass("show-modal");
+//           modal.classList.toggle("show-modal");
+        }
+        function windowOnClick(event) {
+          if (event.target === modal) {
+            toggleModal();
+          }
+        }
+        $(document).on("click",".terms-page-link",toggleModal);
+//         trigger.addEventListener("click", toggleModal);
+        closeButton.on('click',toggleModal);
+//         closeButton.addEventListener("click", toggleModal);
+        window.addEventListener("click", windowOnClick);
+        
+      });
+      
+      
+      
+      var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+          if (sParameterName[0] === sParam) {
+            return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+          }
+        }
+        return false;
+      };
+    </script>
+  </body>
+</html>

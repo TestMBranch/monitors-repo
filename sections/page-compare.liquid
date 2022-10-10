@@ -1,0 +1,51 @@
+<div class="container">
+  <header class="page__header page__header--left">
+    <h1 class="page__title heading h1">{{ page.title }}</h1>
+  </header>
+
+  <div class="page__content   kkmaa">
+    <div id="SP_CmpHtml"></div>
+  </div>
+</div>
+<style>
+  .sp_compare_tbl .sp_close {
+    z-index: 9;
+  }
+  .sa_cmp_title {
+    display: none;
+}
+  ul.sp_product_heading li:before {
+    display: none!important;
+}  
+  ul.sp_product_heading li {
+  width: auto!important;
+  }
+  ul.sp_product_heading li {
+    max-width: 100%;
+    display: block!important;
+    width: 100%!important;
+}
+  .sp_compare_tbl .sp_product_heading {
+    width: 20%;
+    float: left;
+}
+  .sp_compare_tbl .sp_product {
+    display: table;
+    width: 80%;
+    table-layout: fixed;
+}
+  .sp_compare_tbl .sp_add_to_cart .sa_cmp_addcart {
+    background: #006bab;
+    text-transform: capitalize;
+    font-size: 14px!important;
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: 700;
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Compare page",
+    "settings": []
+  }
+{% endschema %}

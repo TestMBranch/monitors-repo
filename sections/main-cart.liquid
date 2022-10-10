@@ -1,0 +1,1338 @@
+{%- capture section_settings -%}
+{
+  "showShippingEstimator": {% if cart.item_count == 0 %}false{% else %}{{ section.settings.show_shipping_estimator | json }}{% endif %}
+}
+{%- endcapture -%}
+
+<section class="site-i-cart" data-section-id="{{ section.id }}" data-section-type="cart" data-section-settings='{{ section_settings }}' data-item-count="{{ cart.item_count }}">
+  <div class="cart-main-wrapper">
+  {%- if cart.item_count == 0 -%}
+    <div class="container">
+      <div class="empty-state">
+        <div class="empty-state__icon">
+          {%- render 'icon', icon: 'big-cart' -%}
+        </div>
+
+        <p class="empty-state__heading heading h1">{{ 'cart.general.empty' | t }}</p>
+
+        {%- if settings.cart_show_free_shipping_threshold -%}
+          {%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
+          {%- capture remaining_amount -%}<span>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span>{%- endcapture -%}
+          <p class="empty-state__description">{{ 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount }}</p>
+        {%- endif -%}
+
+        <div class="empty-state__button-container">
+          <a href="{{ settings.cart_empty_button_link | default: routes.root_url }}" class="empty-state__button button button--primary">{{ 'cart.general.empty_button' | t }}</a>
+        </div>
+      </div>
+    </div>
+  {%- else -%}
+    <form method="post" action="{{ routes.cart_url }}" novalidate="novalidate" data-item-count="{{ cart.item_count }}">
+      <input type="hidden" name="attributes[collection_products_per_page]" value="">
+      <input type="hidden" name="attributes[collection_layout]" value="">
+
+      <div class="container">
+        <header class="page__header page__header--stack">
+          <h1 class="page__title heading h1">{{ 'cart.general.title' | t }}</h1>
+
+          {%- if settings.cart_show_free_shipping_threshold -%}
+            {%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
+
+            {%- if cart.total_price >= threshold_in_cents -%}
+              <p class="page__description">{{ 'cart.general.free_shipping' | t }}</p>
+            {%- else -%}
+              {%- capture remaining_amount -%}<span>{{ cart.total_price | minus: threshold_in_cents | abs | money_without_trailing_zeros }}</span>{%- endcapture -%}
+              <p class="page__description">{{ 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount }}</p>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if customer -%}
+            <button  name="checkout" class="page__button-action button button--primary button--full button--large hidden-tablet-and-up">{{ 'cart.general.checkout' | t }}</button>
+          {%- else -%}
+            <a href="/pages/guest-checkout" name="checkout" class="page__button-action button button--primary button--full button--large hidden-tablet-and-up">{{ 'cart.general.checkout' | t }}</a>
+          {%- endif -%}
+        </header>
+      </div>
+    </form>
+
+    <div class="cart-wrapper">
+      <div class="cart-wrapper__inner">
+        <div class="cart-wrapper__inner-inner">
+          <div class="container container--flush">
+            <div class="card_row">
+            {%- comment -%}
+            --------------------------------------------------------------------------------------
+            LINE ITEMS
+            --------------------------------------------------------------------------------------
+            {%- endcomment -%}
+
+            <div class="card product_card_details">
+              <div class="table-wrapper">
+                <table class="line-item-table table table--loose">
+                  <thead class="hidden-phone">
+                    <tr>
+                      <th>{{ 'customer.order.product' | t }}</th>
+                      <th class="table__cell--center">{{ 'customer.order.quantity' | t }}</th>
+                      <th class="table__cell--right">{{ 'customer.order.total' | t }}</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {%- assign gift_wrap_product = section.settings.gift_wrap_product -%}
+
+                    {%- for line_item in cart.items -%}
+                      <tr class="line-item line-item--stack" data-pro-id="{{ line_item.product_id }}" data-var-id="{{ line_item.variant_id }}">
+                        <td class="line-item__product-info">
+                          <div class="line-item__product-info-wrapper">
+                            <div class="line-item__image-wrapper">
+                              {%- comment -%}For vertical images we force to contain them on a square ratio to avoid growing too large{%- endcomment -%}
+
+                              {%- if line_item.image.aspect_ratio < 1 -%}
+                                <div class="aspect-ratio aspect-ratio--square">
+                                  <img src="{{ line_item.image | img_url: '180x' }}" alt="{{ line_item.image.alt | escape }}">
+                                </div>
+                              {%- else -%}
+                                <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by: line_item.image.aspect_ratio }}%">
+                                  <img src="{{ line_item.image | img_url: '180x' }}" alt="{{ line_item.image.alt | escape }}">
+                                </div>
+                              {%- endif -%}
+                            </div>
+
+                            <div class="line-item__meta">
+                              {%- if settings.show_vendor and gift_wrap_product.handle != line_item.product.handle -%}
+                                {%- assign vendor_handle = line_item.product.vendor | handle -%}
+                                {%- assign collection_for_vendor = collections[vendor_handle] -%}
+
+                                {%- unless collection_for_vendor.empty? -%}
+                                  <a class="line-item__vendor link" href="{{ collection_for_vendor.url }}">{{ line_item.product.vendor }}</a>
+                                  {%- else -%}
+                                  <a class="line-item__vendor link" href="{{ line_item.product.vendor | url_for_vendor }}">{{ line_item.product.vendor }}</a>
+                                {%- endunless -%}
+                              {%- endif -%}
+
+                              {%- if gift_wrap_product.handle == line_item.product.handle -%}
+                                <span class="line-item__title text--strong" data-var-title="{{ line_item.variant.title }}">{{ line_item.title }}</span>
+                              {%- else -%}
+                                <a href="{{ line_item.url }}" class="line-item__title link text--strong" data-var-title="{{ line_item.variant.title }}">{{ line_item.title }}</a>
+                              {%- endif -%}
+
+                              {%- if line_item.selling_plan_allocation -%}
+                                <p class="line-item__plan-allocation">{{ line_item.selling_plan_allocation.selling_plan.name }}</p>
+                              {%- endif -%}
+
+                              {%- unless line_item.properties == blank -%}
+                                <ul class="line-item__property-list" role="list">
+                                  {%- for property in line_item.properties -%}
+                                    {%- assign first_character_in_key = property.first | truncate: 1, '' -%}
+
+                                    {%- if property.last == blank or first_character_in_key == '_' -%}
+                                      {%- continue -%}
+                                    {%- endif -%}
+
+                                    <li class="line-item__property">{{ property.first }}: 
+{% if property.last contains '/uploads/' %}
+	{% assign file_type = property.last | split: '.' | last | downcase %}
+	{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
+	{% if file_types contains file_type %}
+		<div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
+	{% else %}
+		<span class="bcpo-cart-file">Uploaded file</span>
+	{% endif %}
+{% else %}
+	{{ property.last }}
+{% endif %}
+</li>
+                                  {%- endfor -%}
+                                </ul>
+                              {%- endunless -%}
+
+                              <div class="line-item__price-list">
+                                {%- if line_item.original_price > line_item.final_price -%}
+                                  {%- if line_item.final_price == 0 -%}
+                                    <span class="line-item__price line-item__price--highlight">{{ 'cart.general.free' | t }}</span>
+                                  {%- else -%}
+                                    <span class="line-item__price line-item__price--highlight" data-price="<span class="bcpo-cart-item-price" data-key="{{line_item.key}}">{{ line_item.final_price | money }}</span>"><span class="bcpo-cart-item-price" data-key="{{line_item.key}}">{{ line_item.final_price | money }}</span></span>
+                                  {%- endif -%}
+
+                                  <span class="line-item__price line-item__price--compare"><span class="bcpo-cart-item-original-price" data-key="{{line_item.key}}">{{ line_item.original_price | money }}</span></span>
+                                {%- elsif line_item.variant.compare_at_price > line_item.variant.price -%}
+                                  {%- if line_item.final_price == 0 -%}
+                                    <span class="line-item__price line-item__price--highlight">{{ 'cart.general.free' | t }}</span>
+                                  {%- else -%}
+                                    <span class="line-item__price line-item__price--highlight" data-price="<span class="bcpo-cart-item-price" data-key="{{line_item.key}}">{{ line_item.final_price | money }}</span>"><span class="bcpo-cart-item-price" data-key="{{line_item.key}}">{{ line_item.final_price | money }}</span></span>
+                                  {%- endif -%}
+
+                                  <span class="line-item__price line-item__price--compare">{{ line_item.variant.compare_at_price | money }}</span>
+                                {%- else -%}
+                                  {%- if line_item.final_price == 0 -%}
+                                    <span class="line-item__price">{{ 'cart.general.free' | t }}</span>
+                                  {%- else -%}
+                                    <span class="line-item__price" data-price="<span class="bcpo-cart-item-price" data-key="{{line_item.key}}">{{ line_item.final_price | money }}</span>"><span class="bcpo-cart-item-price" data-key="{{line_item.key}}">{{ line_item.final_price | money }}</span></span>
+                                  {%- endif -%}
+                                {%- endif -%}
+                              </div>
+
+                              {%- if line_item.unit_price_measurement -%}
+                                <div class="line-item__price-info">
+                                  <div class="unit-price-measurement">
+                                    <span class="unit-price-measurement__price">{{ line_item.unit_price | money_without_trailing_zeros }}</span>
+                                    <span class="unit-price-measurement__separator">/ </span>
+
+                                    {%- if line_item.unit_price_measurement.reference_value != 1 -%}
+                                      <span class="unit-price-measurement__reference-value">{{ line_item.unit_price_measurement.reference_value }}</span>
+                                    {%- endif -%}
+
+                                    <span class="unit-price-measurement__reference-unit">{{ line_item.unit_price_measurement.reference_unit }}</span>
+                                  </div>
+                                </div>
+                              {%- endif -%}
+
+                              {%- if line_item.line_level_discount_allocations != blank -%}
+                                <ul class="line-item__discount-list" role="list">
+                                  {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+                                    <li class="line-item__discount">
+                                      {%- render 'icon', icon: 'sale' -%}{{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              {%- endif -%}
+
+                              <div class="line-item__quantity hidden-tablet-and-up">
+                                {%- comment -%}If the product has the tag "__gift", we remove the price{%- endcomment -%}
+
+                                {%- unless line_item.product.tags contains '__gift' -%}
+                                  <div class="quantity-selector">
+                                    {%- assign allow_to_add_more = true -%}
+
+                                    {%- if line_item.variant.inventory_management and line_item.variant.inventory_policy == 'deny' and line_item.quantity == line_item.variant.inventory_quantity -%}
+                                      {%- assign allow_to_add_more = false -%}
+                                    {%- endif -%}
+
+                                    <button type="button" class="quantity-selector__button" data-action="decrease-quantity" data-href="{{ routes.cart_change_url }}?quantity={{ line_item.quantity | minus: 1 }}&line={{ forloop.index }}" data-quantity="{{ line_item.quantity | minus: 1 }}" data-line="{{ forloop.index }}" aria-label="{{ 'cart.items.decrease_quantity' | t }}" title="{{ 'cart.items.decrease_quantity' | t }}">{% render 'icon', icon: 'minus' %}</button>
+                                    <input aria-label="{{ 'product.form.quantity' | t }}" class="quantity-selector__value" inputmode="numeric" data-current-value="{{ line_item.quantity }}" data-line="{{ forloop.index }}" value="{{ line_item.quantity }}" size="{{ line_item.quantity | append: '' | size | at_least: 2 }}">
+                                    <button type="button" class="quantity-selector__button" data-action="increase-quantity" data-href="{{ routes.cart_change_url }}?quantity={{ line_item.quantity | plus: 1 }}&line={{ forloop.index }}" data-quantity="{{ line_item.quantity | plus: 1 }}" data-line="{{ forloop.index }}" {% if allow_to_add_more %}aria-label="{{ 'cart.items.increase_quantity' | t }}" title="{{ 'cart.items.increase_quantity' | t }}"{% else %}disabled="disabled" aria-label="{{ 'cart.items.no_more_stock' | t }}" data-tooltip="{{ 'cart.items.no_more_stock' | t }}" data-tooltip-position="bottom-left"{% endif %}>{% render 'icon', icon: 'plus' %}</button>
+                                  </div>
+                                {%- else -%}
+                                  <span>{{ line_item.quantity }}</span>
+                                {% endunless -%}
+
+                                <a href="{{ routes.cart_change_url }}?quantity=0&line={{ forloop.index }}" data-action="decrease-quantity" data-quantity="0" data-line="{{ forloop.index }}" class="line-item__quantity-remove link">{{ 'cart.items.remove' | t }}</a>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td class="line-item__quantity table__cell--center hidden-phone">
+                          {%- comment -%}If the product has the tag "__gift", we remove the price{%- endcomment -%}
+
+                          {%- unless line_item.product.tags contains '__gift' -%}
+                            <div class="quantity-selector">
+                              {%- assign allow_to_add_more = true -%}
+
+                              {%- if line_item.variant.inventory_management and line_item.variant.inventory_policy == 'deny' and line_item.quantity == line_item.variant.inventory_quantity -%}
+                                {%- assign allow_to_add_more = false -%}
+                              {%- endif -%}
+
+                              <button type="button" class="quantity-selector__button" data-action="decrease-quantity" data-href="{{ routes.cart_change_url }}?quantity={{ line_item.quantity | minus: 1 }}&line={{ forloop.index }}" data-quantity="{{ line_item.quantity | minus: 1 }}" data-line="{{ forloop.index }}" aria-label="{{ 'cart.items.decrease_quantity' | t }}" title="{{ 'cart.items.decrease_quantity' | t }}">{% render 'icon', icon: 'minus' %}</button>
+                              <input aria-label="{{ 'product.form.quantity' | t }}" class="quantity-selector__value" inputmode="numeric" data-current-value="{{ line_item.quantity }}" data-line="{{ forloop.index }}" value="{{ line_item.quantity }}" size="{{ line_item.quantity | append: '' | size | at_least: 2 }}">
+                              <button type="button" class="quantity-selector__button" data-action="increase-quantity" data-href="{{ routes.cart_change_url }}?quantity={{ line_item.quantity | plus: 1 }}&line={{ forloop.index }}" data-quantity="{{ line_item.quantity | plus: 1 }}" data-line="{{ forloop.index }}" {% if allow_to_add_more %}aria-label="{{ 'cart.items.increase_quantity' | t }}" title="{{ 'cart.items.increase_quantity' | t }}"{% else %}disabled="disabled" aria-label="{{ 'cart.items.no_more_stock' | t }}" data-tooltip="{{ 'cart.items.no_more_stock' | t }}" data-tooltip-position="bottom-left"{% endif %}>{% render 'icon', icon: 'plus' %}</button>
+                            </div>
+                          {%- else -%}
+                            <span>{{ line_item.quantity }}</span>
+                          {%- endunless -%}
+
+                          <a href="{{ routes.cart_change_url }}?quantity=0&line={{ forloop.index }}" data-action="decrease-quantity" data-quantity="0" data-line="{{ forloop.index }}" class="line-item__quantity-remove link">{{ 'cart.items.remove' | t }}</a>
+                        </td>
+
+                        <td class="line-item__line-price table__cell--right hidden-phone">
+                          {%- if line_item.final_line_price == 0 -%}
+                            {{- 'cart.general.free' | t -}}
+                          {%- else -%}
+                            <span class="line-item--line-price" data-line-price="<span class="bcpo-cart-item-line-price" data-key="{{line_item.key}}">{{ line_item.final_line_price | money }}</span>"><span class="bcpo-cart-item-line-price" data-key="{{line_item.key}}">{{ line_item.final_line_price | money }}</span></span>
+                          {%- endif -%}
+                        </td>
+                      </tr>
+                    {%- endfor -%}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {%- comment -%}
+            --------------------------------------------------------------------------------------
+            GIFT WRAP
+            --------------------------------------------------------------------------------------
+            {%- endcomment -%}
+
+            {%- assign gift_wrap_product = section.settings.gift_wrap_product -%}
+
+            {%- unless gift_wrap_product == blank or gift_wrap_product.available == false -%}
+              {%- comment -%}We also have to do another check to make sure the gift wrap product is not already in the cart{%- endcomment -%}
+
+              {%- assign gift_wrap_in_cart = false -%}
+
+              {%- for line_item in cart.items -%}
+                {%- if line_item.product_id == gift_wrap_product.id -%}
+                  {%- assign gift_wrap_in_cart = true -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- unless gift_wrap_in_cart -%}
+                <div class="card">
+                  <div class="gift-wrap">
+                    <div class="gift-wrap__left">
+                      <span class="gift-wrap__icon">{% render 'icon', icon: 'bi-gift-wrap' %}</span>
+
+                      <p class="gift-wrap__text">
+                        <span class="text--strong">{{ section.settings.gift_wrap_text | escape }}</span>
+
+                        {%- if gift_wrap_product.price == 0 -%}
+                          <span>{{ 'cart.general.free' | t }}</span>
+                        {%- else -%}
+                          {%- capture gift_wrap_product_price -%}<span>{{ gift_wrap_product.price | money }}</span>{%- endcapture -%}
+                          <span>{{ 'cart.gift_wrap.price_html' | t: price: gift_wrap_product_price }}</span>
+                        {%- endif -%}
+                      </p>
+                    </div>
+
+                    {%- form 'product', gift_wrap_product, class: 'gift-wrap__form' -%}
+                      <input type="hidden" name="quantity" value="1">
+                      <input type="hidden" name="id" data-sku="{{ gift_wrap_product.first_available_variant.sku }}" value="{{ gift_wrap_product.first_available_variant.id }}">
+
+                      <button type="submit" class="button button--secondary" data-action="add-to-cart">{{ section.settings.gift_wrap_button | escape }}</button>
+                    {%- endform -%}
+                  </div>
+                </div>
+              {%- endunless -%}
+            {%- endunless -%}
+
+            {%- comment -%}
+            --------------------------------------------------------------------------------------
+            SHIPPING ESTIMATOR
+            --------------------------------------------------------------------------------------
+            {%- endcomment -%}
+
+            {%- if section.settings.show_shipping_estimator -%}
+              <div class="card">
+                <div class="estimate-shipping">
+                  <button type="button" class="estimate-shipping__toggle" data-action="toggle-collapsible" data-collapsible-force-overflow aria-expanded="false" aria-controls="shipping-estimator">
+                    <span class="estimate-shipping__icon">{% render 'icon', icon: 'bi-fast-delivery' %}</span>
+                    <span class="estimate-shipping__text">{{ 'cart.shipping_estimator.title' | t }}</span>
+                    <span class="estimate-shipping__arrow">{% render 'icon', icon: 'arrow-bottom' %}</span>
+                  </button>
+
+                  <div id="shipping-estimator" class="estimate-shipping__collapsible collapsible">
+                    <div class="shipping-estimator form" role="form">
+                      <div class="form__input-row">
+                        <div class="form__input-wrapper">
+                          <label for="shipping-estimator-country" class="form__label form__label--light">{{ 'cart.shipping_estimator.country' | t }}</label>
+
+                          <div class="select-wrapper select-wrapper--primary">
+                            {%- render 'icon', icon: 'arrow-bottom' -%}
+
+                            <select name="country" id="shipping-estimator-country" data-default="{{ customer.default_address.country | default: section.settings.shipping_estimator_default_country }}" required>
+                              {{- country_option_tags -}}
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form__input-wrapper" style="display: none">
+                          <label for="shipping-estimator-province" class="form__label form__label--light">{{ 'cart.shipping_estimator.province' | t }}</label>
+
+                          <div class="select-wrapper select-wrapper--primary">
+                            {%- render 'icon', icon: 'arrow-bottom' -%}
+
+                            <select name="province" id="shipping-estimator-province" data-default="{{ customer.default_address.province }}"></select>
+                          </div>
+                        </div>
+
+                        <div class="form__input-wrapper" style="max-width: 155px">
+                          <label for="shipping-estimator-zip" class="form__label form__label--light">{{ 'cart.shipping_estimator.zip_code' | t }}</label>
+                          <input type="text" name="zip" id="shipping-estimator-zip" class="form__field form__field--text" value="{{ customer.default.address.zip }}" required>
+                        </div>
+
+                        <div class="form__input-wrapper hidden-phone">
+                          <button type="button" class="form__submit button button--secondary" data-action="estimate-shipping">{{ 'cart.shipping_estimator.estimate' | t }}</button>
+                        </div>
+                      </div>
+
+                      <button type="button" class="form__submit button button--secondary hidden-tablet-and-up" data-action="estimate-shipping">{{ 'cart.shipping_estimator.estimate' | t }}</button>
+
+                      <div class="shipping-estimator__results" style="display: none;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- comment -%}
+            --------------------------------------------------------------------------------------
+            RECAP
+            --------------------------------------------------------------------------------------
+            {%- endcomment -%}
+
+            <div class="cart-recap">
+              <div id="cube" class="cart-recap__scroller">
+                <div class="cart_create cart-inner cube-face-front is-active">
+                  <form class="cart-recap-form" method="post" action="{{ routes.cart_url }}" novalidate="novalidate" data-item-count="{{ cart.item_count }}">
+                    <div class="card">
+                      <div class="card__section">
+                        {%- if cart.cart_level_discount_applications != blank -%}
+                        {%- for discount_application in cart.cart_level_discount_applications -%}
+                        <div class="cart-recap__price-line cart-recap__price-line--highlight text--pull">
+                          <span class="cart-recap__price-line-label">{{ discount_application.title }}</span>
+                          <span class="cart-recap__price-line-price">-{{ discount_application.total_allocated_amount | money }}</span>
+                        </div>
+                        {%- endfor -%}
+                        {%- endif -%}
+
+                        <div class="cart-recap__price-line text--pull">
+                          <span class="cart-recap__price-line-label">{{ 'cart.general.total' | t }}</span>
+                          <span class="cart-recap__price-line-price cart-sub-total-price" data-subtotal="{{ cart.items_subtotal_price | money }}"><span class="bcpo-cart-original-total">{{ cart.total_price | money_with_currency }}</span></span>
+                        </div>
+
+                        {%- comment -%}
+                        To calculate the total discount, we take into account the Shopify Script (for Plus merchants), but we also add the compare at price as
+                        well as potential automatic discounts at cart level
+                        {%- endcomment -%}
+
+                        {%- assign total_discount = 0 -%}
+
+                        {%- for line_item in cart.items -%}
+                        {%- if line_item.final_line_price < line_item.original_line_price -%}
+                        {%- assign total_discount = total_discount | plus: line_item.total_discount -%}
+                        {%- elsif line_item.variant.compare_at_price > line_item.variant.price -%}
+                        {%- assign line_discount = line_item.variant.compare_at_price | minus: line_item.variant.price | times: line_item.quantity -%}
+                        {%- assign total_discount = total_discount | plus: line_discount -%}
+                        {%- endif -%}
+                        {%- endfor -%}
+
+                        {%- for discount_application in cart.cart_level_discount_applications -%}
+                        {%- assign total_discount = total_discount | plus: discount_application.total_allocated_amount -%}
+                        {%- endfor -%}
+
+                        {%- if total_discount > 0 -%}
+                        {%- capture amount_saved -%}<span class="cart-amount-saved">{{ total_discount | money }}</span>{%- endcapture -%}
+                        <span class="cart-recap__amount-saved">{{ 'cart.general.amount_saved_html' | t: amount_saved: amount_saved }}</span>
+                        {%- endif -%}
+
+                        {%- if section.settings.enable_order_notes -%}
+                        <div class="cart-recap__note">
+                          <button type="button" class="cart-recap__note-button" data-action="toggle-collapsible" data-collapsible-force-overflow aria-controls="order-note" aria-expanded="false">
+                            {{- 'cart.general.note_title' | t -}}
+                            <span>
+                              <span class="cart-recap__note-edit {% if cart.note != blank %}is-visible{% endif %}">{{ 'cart.general.edit_note' | t }}</span>
+                              {%- render 'icon', icon: 'arrow-bottom' -%}
+                            </span>
+                          </button>
+
+                          <div id="order-note" class="collapsible" aria-hidden="true">
+                            <div class="cart-recap__note-inner">
+                              <textarea name="note" class="form__field form__field--textarea" rows="3">{{ cart.note }}</textarea>
+                              <button type="button" class="form__submit form__submit--tight button button--ternary" data-action="save-note">{{ 'cart.general.save_note' | t }}</button>
+                            </div>
+                          </div>
+                        </div>
+                        {%- endif -%}
+
+                        <div class="cart-recap__notices rte">
+                          <p>
+                            {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                            {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                            {%- elsif cart.taxes_included -%}
+                            {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
+                            {%- elsif shop.shipping_policy.body != blank -%}
+                            {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                            {%- else -%}
+                            {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
+                            {%- endif -%}
+                          </p>
+                        </div>
+
+                        <input type="hidden" name="attributes[collection_products_per_page]" value="">
+                        <input type="hidden" name="attributes[collection_layout]" value="">
+                        <div class="mmnal">
+                          {% if customer %} 
+                          <button type="submit" name="checkout" class="cart-recap__checkout button button--primary button--full button--large">{{ 'cart.general.checkout' | t }}</button>
+                          {% else %}
+                          <a href="/pages/guest-checkout" name="checkout" class="cart-recap__checkout button button--primary button--full button--large">{{ 'cart.general.checkout' | t }}</a>
+                          {% endif %}
+                        </div>
+                        {% comment %}
+                          <a href="/apps/request-quote?page=request" class="button button--small button--ternary usca">Request A Quote</a>
+                        {% endcomment %}
+
+                        {% comment %} RAQ button {% endcomment %}
+                        <a href="javascript:void(0)" class="button button--small button--ternary usca request_flip_btn" data-user="{% if customer %}true{% else %}false{% endif %}" data-customer-id="{{ customer.id }}">Request A Quote</a>
+
+                      </div>
+                    </div>
+
+                    {%- if section.settings.show_payment_icons -%}
+                    <div class="cart-recap__secure-payment">
+                      <p class="cart-recap__secure-payment-title">{% render 'icon', icon: 'lock-2' %} {{ 'cart.general.secure_payments' | t }}</p>
+
+                      <div class="cart-recap__secure-payment-list payment-list payment-list--centered">
+                        {% for type in shop.enabled_payment_types %}
+                        {{ type | payment_type_svg_tag: class: 'payment-list__item' }}
+                        {% endfor %}
+                      </div>
+                    </div>
+                    {%- endif -%}
+                  </form>
+                </div>
+
+                {% comment %} RAQ structure {% endcomment %}
+                <div class="cart_create create_cart cube-face-first">
+                  <div class="cart_create_in">
+                    <div class="form__header">
+                      <h2 class="form__title heading h1">Request a Quote</h2>
+                      <p class="form__legend">In order to submit your quote request. you will need to have an account. Please <span class="sign-in-click">Sign in</span> or enter your information to create an account.</p>
+                    </div>
+                    <div class="form-group" id="contact-data">
+                      <div class="form__input-row">
+                        <div class="form__input-wrapper">
+                          <input type="text" id="first_name" class="form__field form__field--text" name="first_name" value="" placeholder="First Name" autofocus="">
+                        </div>
+                        <div class="form__input-wrapper">
+                          <input type="text" id="last_name" class="form__field form__field--text" name="last_name" value="" placeholder="Last Name">
+                        </div>
+                      </div>
+                      <div class="form__input-wrapper">
+                        <input type="text" id="phone_number" class="form__field form__field--text" name="phone_number" value="" placeholder="Phone Number">
+                      </div>
+                      <div class="form__input-wrapper">
+                        <input type="text" id="first_company" class="form__field form__field--text" name="first_company" value="" placeholder="Company Name">
+                      </div>    
+                      <div class="form__input-wrapper">
+                        <input type="email" id="first_email" class="form__field form__field--text is-filled" name="first_email" value="" placeholder="E-mail">
+                      </div>
+                      <div class="form__input-wrapper">
+                        <input type="password" id="first_password" class="form__field form__field--text is-filled" name="first_password" value="" placeholder="Password">
+                      </div>                  
+                    </div>
+                    <button type="submit" class="button button--primary button--full button--dark request_quote_continue" data-user="false" data-customer-id="">Continue</button>
+                  </div>
+                </div>
+              
+                {% unless customer %}
+                  <div class="cart_create create_cart cube-face-left">
+                  
+                  <div class="cart_create_in first-contact-data">
+                    <div class="form__header">
+                      <h2 class="form__title heading h1">{% comment %}Hi Test{% endcomment %}</h2>
+                      <p class="form__legend">We will generate a quote based on the information below. Please make any necessaries changes prior to submitting your quote request.</p>
+                    </div>
+
+                    <div class="address-list">
+                      <div class="address-list__item first-form-data">
+                        <div class="address-list__item-top">
+                          <p class="heading h5">Contact Information</p>
+                          <button type="button" class="link link--accented btn-edit edit-icon" data-id="contact-data">{%- render 'icon', icon: 'edit-icon' -%}</button>
+                        </div>
+                        <div class="address-list__item-info"></div>
+                        <div class="form-group edit_form contact_edit">
+                          <div class="form__input-row">
+                            <div class="form__input-wrapper">
+                              <input type="text" id="firstName" class="form__field form__field--text" name="firstName" value="" placeholder="First Name" autofocus="">
+                            </div>
+                            <div class="form__input-wrapper">
+                              <input type="text" id="lastName" class="form__field form__field--text" name="lastName" value="" placeholder="Last Name">
+                            </div>
+                          </div>
+                          <div class="form__input-wrapper">
+                            <input type="text" id="phoneNumber" class="form__field form__field--text" name="phoneNumber" value="" placeholder="Phone Number">
+                          </div>
+                          <div class="form__input-wrapper">
+                            <input type="text" id="company" class="form__field form__field--text" name="company" value="" placeholder="Company Name">
+                          </div>    
+                          <div class="form__input-wrapper">
+                            <input type="email" id="email" class="form__field form__field--text" name="email" value="" placeholder="E-mail" readonly>
+                          </div>
+                          <div class="form__input-wrapper">
+                            <input type="password" id="password" class="form__field form__field--text" name="password" value="" placeholder="Password" readonly>
+                          </div>    
+                          <button type="button" class="form__submit button button--primary button--full button--dark save-data">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="form__subtitle">Shipping address</p>
+                    <div class="form-group" id="shipping-add-data">
+                      <div class="form__input-row">
+                        <div class="form__input-wrapper">
+                          <input type="text" id="ship_add_first_name"  class="form__field form__field--text" name="ship_add_first_name" value="" placeholder="First Name" autofocus>
+                        </div>
+                        <div class="form__input-wrapper">
+                          <input type="text" id="ship_add_last_name" class="form__field form__field--text" name="ship_add_last_name" value="" placeholder="Last Name">
+                        </div>
+                      </div>
+                      <div class="form__input-wrapper">
+                        <input type="text" id="ship_add_phone_number" class="form__field form__field--text" name="ship_add_phone_number" value="" placeholder="Phone Number">
+                      </div>
+                      <div class="form__input-wrapper">
+                        <input type="text" id="ship_add_company" class="form__field form__field--text" name="ship_add_company" value="" placeholder="Company Name">
+                      </div>   
+
+                      <div class="form__input-wrapper">
+                        <input type="text" id="ship_add_address1"  class="form__field form__field--text" name="ship_add_address1" value="" placeholder="Address Line 1">
+                      </div>
+
+                      <div class="form__input-wrapper">
+                        <input type="text" id="ship_add_address2" class="form__field form__field--text" name="ship_add_address2" value="" placeholder="Address Line 2">
+                      </div>
+
+                      <div class="form__input-row">
+                        <div class="form__input-wrapper">
+                          <input id="ship_add_city" type="text" class="form__field form__field--text" name="ship_add_city" value="" placeholder="City">
+                        </div>
+                        <div class="form__input-wrapper">
+                          <div class="select-wrapper select-wrapper--primary is-filled">
+                            {%- render 'icon', icon: 'arrow-bottom' -%}
+                            <select class="form__field state_list" id="ship_add_state" name="ship_add_state" data-default="State" >
+                              <option class="select__item" value="0">State</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form__input-row">
+                        <div class="form__input-wrapper">
+                          <input id="ship_add_zipcode" type="text" class="form__field form__field--text" name="ship_add_zipcode" value="" placeholder="Zip Code">
+                        </div>
+                        <div class="form__input-wrapper">
+                          <div class="select-wrapper select-wrapper--primary is-filled">
+                            {%- render 'icon', icon: 'arrow-bottom' -%}
+                            <select class="form__field" id="ship_add_country" name="ship_add_country" data-default="Country" >
+                              <option class="select__item" value="0">Country</option>
+                              <option class="select__item" value="United States" data-value="US">United States</option>
+                              <option class="select__item" value="Canada" data-value="CA">Canada</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="form__subtitle">Billing address</p>
+                    <div class="form-group">
+                      <div class="form__input-wrapper form_input_margin">
+                        <div class="checkbox-wrapper">
+                          <input type="radio" class="checkbox form__field" id="shipping_address" name="address" checked>
+                        </div>
+                        <label for="shipping_address">Same as shipping address</label>
+                      </div>
+                      <div class="form__input-wrapper form_input_margin newBilling_address">
+                        <div class="checkbox-wrapper">
+                          <input type="radio" class="checkbox form__field" id="billing_address" name="address">
+                        </div>
+                        <label for="billing_address">Enter new billing address</label>
+                      </div>
+                    </div>
+                    <div class="form-group" id="billing-add-data">
+                      <div class="billing_add">
+                        <div class="form__input-row">
+                          <div class="form__input-wrapper">
+                            <input type="text" id="bill_add_first_name"  class="form__field form__field--text" name="bill_add_first_name" value="" placeholder="First Name" autofocus>
+                          </div>
+                          <div class="form__input-wrapper">
+                            <input type="text" id="bill_add_last_name" class="form__field form__field--text" name="bill_add_last_name" value="" placeholder="Last Name">
+                          </div>
+                        </div>
+                        <div class="form__input-wrapper">
+                          <input type="text" id="bill_add_phone_number" class="form__field form__field--text" name="bill_add_phone_number" value="" placeholder="Phone Number">
+                        </div>
+                        <div class="form__input-wrapper">
+                          <input type="text" id="bill_add_company" class="form__field form__field--text" name="bill_add_company" value="" placeholder="Company Name">
+                        </div>   
+
+                        <div class="form__input-wrapper">
+                          <input type="text" id="bill_add_address1"  class="form__field form__field--text" name="bill_add_address1" value="" placeholder="Address Line 1">
+                        </div>
+
+                        <div class="form__input-wrapper">
+                          <input type="text" id="bill_add_address2" class="form__field form__field--text" name="bill_add_address2" value="" placeholder="Address Line 2">
+                        </div>
+
+                        <div class="form__input-row">
+                          <div class="form__input-wrapper">
+                            <input id="bill_add_city" type="text" class="form__field form__field--text" name="bill_add_city" value="" placeholder="City">
+                          </div>
+                          <div class="form__input-wrapper">
+                            <div class="select-wrapper select-wrapper--primary is-filled">
+                              {%- render 'icon', icon: 'arrow-bottom' -%}
+                              <select class="form__field state_list" id="bill_add_state" name="bill_add_state" data-default="State" >
+                                <option class="select__item" value="0">State</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form__input-row">
+                          <div class="form__input-wrapper">
+                            <input id="bill_add_zipcode" type="text" class="form__field form__field--text" name="bill_add_zipcode" value="" placeholder="Zip Code">
+                          </div>
+                          <div class="form__input-wrapper">
+                            <div class="select-wrapper select-wrapper--primary is-filled">
+                              {%- render 'icon', icon: 'arrow-bottom' -%}
+                              <select class="form__field" id="bill_add_country" name="bill_add_country" data-default="Country" >
+                                <option class="select__item" value="0">Country</option>
+                                <option class="select__item" value="United States" data-value="US">United States</option>
+                                <option class="select__item" value="Canada" data-value="CA">Canada</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <button type="submit" class="button button--primary button--full button--dark submit_quote" data-user="{% if customer %}true{% else %}false{% endif %}" data-customer-id="{{ customer.id }}">Submit Quote Request</button>
+                  </div>
+                  
+                  <div class="cart_create_out" style="display: none;">
+                    {%- form 'customer_login', name: 'login', class: 'form form--main', id: 'customer_login' -%}
+                      <div class="error_div">
+                        <h2 class="error__title heading h1">Error</h2>
+                        <p class="error__legend">We have found an account associated with this email address. Please log into <a href="javascript:void[0]">your account</a> to proceed.</p>
+                        <span class="error_close">{%- render 'icon', icon: 'close' -%}</span>
+                      </div>
+                      <div class="cart_login_form">
+                        <div id="header_customer_login" class="form">
+                          <header class="popover__header">
+                            <h2 class="popover__title heading">Login to my account</h2>
+                            <p class="popover__legend">Enter your e-mail and password:</p>
+                          </header>
+
+                          <div class="form__input-wrapper form__input-wrapper--labelled">
+                            <input type="email" id="cart-login-customer-email" class="form__field form__field--text" name="customer[email]" required="required">
+                            <label for="cart-login-customer-email" class="form__floating-label">Email</label>
+                          </div>
+
+                          <div class="form__input-wrapper form__input-wrapper--labelled">
+                            <input type="password" id="cart-login-customer-password" class="form__field form__field--text" name="customer[password]" required="required" autocomplete="current-password">
+                            <label for="cart-login-customer-password" class="form__floating-label">Password</label>
+                          </div>
+
+                          <button type="button" class="form__submit button button--primary button--full login-btn btn-login-submit">Login</button>
+                          
+                          <div class="flits-social-login-containers">
+                            <div class="flits-social-login-btn-grp">
+                              <a href="/apps/flits/api/1/22663/google/auth/login?token=b7e80d6c9f3098c02ab85007b3ec1508" class="flits-social-login-btn flits-social-login-btn-googleplus" style="order: 2;">
+                                <span class="flits-social-login-btn-img"><svg class="flits-icon-google" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> <path style="fill:#FBBB00;" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256 c0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456 C103.821,274.792,107.225,292.797,113.47,309.408z"></path> <path style="fill:#518EF8;" d="M507.527,208.176C510.467,223.662,512,239.655,512,256c0,18.328-1.927,36.206-5.598,53.451 c-12.462,58.683-45.025,109.925-90.134,146.187l-0.014-0.014l-73.044-3.727l-10.338-64.535 c29.932-17.554,53.324-45.025,65.646-77.911h-136.89V208.176h138.887L507.527,208.176L507.527,208.176z"></path> <path style="fill:#28B446;" d="M416.253,455.624l0.014,0.014C372.396,490.901,316.666,512,256,512 c-97.491,0-182.252-54.491-225.491-134.681l82.961-67.91c21.619,57.698,77.278,98.771,142.53,98.771 c28.047,0,54.323-7.582,76.87-20.818L416.253,455.624z"></path> <path style="fill:#F14336;" d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012 c-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0 C318.115,0,375.068,22.126,419.404,58.936z"></path></svg></span>
+                                <span class="flits-social-login-btn-text">Sign in with Google</span>
+                              </a>
+                            </div>
+                            <div class="flits-social-login-error"></div>
+                          </div>
+                          
+                          <div class="popover__secondary-action">
+                            {% comment %}          
+                            <p>New customer?  <button data-action="show-popover-panel" aria-controls="header-login-panel" class="link link--accented">
+                              Create your account</button>
+                            </p>
+                            {% endcomment %}
+                            <p>Lost password? <button data-action="show-popover-panel" aria-controls="header-recover-panel" class="link link--accented">
+                              Recover password</button>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    {% endform %}
+                  </div>
+                  
+                </div>
+                {% endunless %}
+                
+                <div class="cart_create edit_cart cube-face-back">
+                  <div class="cart_create_in">
+                    <div class="form__header">
+                      <h2 class="form__title heading h1"></h2>
+                      <p class="form__legend">We will generate a quote based on the information below. Please make any necessaries changes prior to submitting your quote request.</p>
+                    </div>
+
+                    <div class="address-list">
+                      <div class="address-list__item">
+                        <div class="address-list__item-top">
+                          <p class="heading h5">Contact Information</p>
+                          <button type="button" class="link link--accented btn-edit edit-icon" data-id="contact-data">{%- render 'icon', icon: 'edit-icon' -%}</button>
+                        </div>
+                        <div class="address-list__item-info"></div>
+                        <div class="form-group edit_form contact_edit">
+                          <div class="form__input-row">
+                            <div class="form__input-wrapper">
+                              <input type="text" id="contact_firstName" class="form__field form__field--text" name="firstName" value="" placeholder="First Name" autofocus="">
+                            </div>
+                            <div class="form__input-wrapper">
+                              <input type="text" id="contact_lastName" class="form__field form__field--text" name="lastName" value="" placeholder="Last Name">
+                            </div>
+                          </div>
+                          <div class="form__input-wrapper">
+                            <input type="text" id="contact_phoneNumber" class="form__field form__field--text" name="phoneNumber" value="" placeholder="Phone Number">
+                          </div>
+                          <div class="form__input-wrapper">
+                            <input type="text" id="contact_company" class="form__field form__field--text" name="company" value="" placeholder="Company Name">
+                          </div>    
+                          <div class="form__input-wrapper">
+                            <input type="email" id="contact_email" class="form__field form__field--text" name="email" value="" placeholder="E-mail" readonly>
+                          </div>
+                          <div class="form__input-wrapper">
+                            <input type="password" id="contact_password" class="form__field form__field--text" name="password" value="" placeholder="Password" readonly>
+                          </div>    
+                          <button type="button" class="form__submit button button--primary button--full button--dark save-data">Save</button>
+                        </div>
+                      </div>
+                      <div class="address-list__item">
+                        <div class="address-list__item-top">
+                          <p class="heading h5">Shipping Address</p>
+                          <button type="button" class="link link--accented btn-edit" data-id="shipping-add-data">{%- render 'icon', icon: 'edit-icon' -%}</button>
+                        </div>
+                        <div class="address-list__item-info"></div>
+                        <div class="form-group edit_form billing_address_edit">
+                            <div class="form__input-row">
+                              <div class="form__input-wrapper">
+                                <input type="text" id="ship_firstName"  class="form__field form__field--text" name="firstName" value="" placeholder="First Name" autofocus>
+                              </div>
+                              <div class="form__input-wrapper">
+                                <input type="text" id="ship_lastName" class="form__field form__field--text" name="lastName" value="" placeholder="Last Name">
+                              </div>
+                            </div>
+                            <div class="form__input-wrapper">
+                              <input type="text" id="ship_phoneNumber" class="form__field form__field--text" name="phoneNumber" value="" placeholder="Phone Number">
+                            </div>
+                            <div class="form__input-wrapper">
+                              <input type="text" id="ship_company" class="form__field form__field--text" name="company" value="" placeholder="Company Name">
+                            </div>   
+
+                            <div class="form__input-wrapper">
+                              <input type="text" id="ship_address1"  class="form__field form__field--text" name="address1" value="" placeholder="Address Line 1">
+                            </div>
+
+                            <div class="form__input-wrapper">
+                              <input type="text" id="ship_address2" class="form__field form__field--text" name="address2" value="" placeholder="Address Line 2">
+                            </div>
+
+                            <div class="form__input-row">
+                              <div class="form__input-wrapper">
+                                <input id="ship_city" type="text" class="form__field form__field--text" name="city" value="" placeholder="City">
+                              </div>
+                              <div class="form__input-wrapper">
+                                <div class="select-wrapper select-wrapper--primary is-filled">
+                                  {%- render 'icon', icon: 'arrow-bottom' -%}
+                                  <select id="ship_state" class="form__field state_list" name="state" data-default="State" >
+                                    <option class="select__item" value="0">State</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form__input-row">
+                              <div class="form__input-wrapper">
+                                <input id="ship_zipcode" type="text" class="form__field form__field--text" name="zipcode" value="" placeholder="Zip Code">
+                              </div>
+                              <div class="form__input-wrapper">
+                                <div class="select-wrapper select-wrapper--primary is-filled">
+                                  {%- render 'icon', icon: 'arrow-bottom' -%}
+                                  <select id="ship_save_country" class="form__field" name="country" data-default="Country" >
+                                    <option class="select__item" value="0">Country</option>
+                                    <option class="select__item" value="United States" data-value="US">United States</option>
+                                    <option class="select__item" value="Canada" data-value="CA">Canada</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <button type="button" class="form__submit button button--primary button--full button--dark save-data">Save</button>
+                        </div>
+                      </div>
+                      <div class="address-list__item billing-add-content">
+                        <div class="address-list__item-top">
+                          <p class="heading h5">Billing Address</p>
+                          <button type="button" class="link link--accented btn-edit" data-id="billing-add-data">{%- render 'icon', icon: 'edit-icon' -%}</button>
+                        </div>
+                        <div class="address-list__item-info"></div>
+                        <div class="form-group edit_form">
+                          <div class="form__input-row">
+                            <div class="form__input-wrapper">
+                              <input type="text" id="bill_firstName"  class="form__field form__field--text" name="firstName" value="" placeholder="First Name" autofocus>
+                            </div>
+                            <div class="form__input-wrapper">
+                              <input type="text" id="bill_lastName" class="form__field form__field--text" name="lastName" value="" placeholder="Last Name">
+                            </div>
+                          </div>
+                          <div class="form__input-wrapper">
+                            <input type="text" id="bill_phoneNumber" class="form__field form__field--text" name="phoneNumber" value="" placeholder="Phone Number">
+                          </div>
+                          <div class="form__input-wrapper">
+                            <input type="text" id="bill_company" class="form__field form__field--text" name="company" value="" placeholder="Company Name">
+                          </div>   
+
+                          <div class="form__input-wrapper">
+                            <input type="text" id="bill_address1"  class="form__field form__field--text" name="address1" value="" placeholder="Address Line 1">
+                          </div>
+
+                          <div class="form__input-wrapper">
+                            <input type="text" id="bill_address2" class="form__field form__field--text" name="address2" value="" placeholder="Address Line 2">
+                          </div>
+
+                          <div class="form__input-row">
+                            <div class="form__input-wrapper">
+                              <input id="bill_city" type="text" class="form__field form__field--text" name="city" value="" placeholder="City">
+                            </div>
+                            <div class="form__input-wrapper">
+                              <div class="select-wrapper select-wrapper--primary is-filled">
+                                {%- render 'icon', icon: 'arrow-bottom' -%}
+                                <select id="bill_state" class="form__field state_list" name="state" data-default="State" >
+                                  <option class="select__item" value="0">State</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form__input-row">
+                            <div class="form__input-wrapper">
+                              <input id="bill_zipcode" type="text" class="form__field form__field--text" name="zipcode" value="" placeholder="Zip Code">
+                            </div>
+                            <div class="form__input-wrapper">
+                              <div class="select-wrapper select-wrapper--primary is-filled">
+                                {%- render 'icon', icon: 'arrow-bottom' -%}
+                                <select id="bill_save_country" class="form__field" name="country" data-default="Country" >
+                                  <option class="select__item" value="0">Country</option>
+                                  <option class="select__item" value="United States" data-value="US">United States</option>
+                                  <option class="select__item" value="Canada" data-value="CA">Canada</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <button type="button" class="form__submit button button--primary button--full button--dark save-data">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" class="form__submit button button--primary button--full button--dark thank_you">Submit Quote Request</button>
+                  </div>
+                </div>
+                
+                <div class="cart_create thankyou_cart cube-face-right">
+                  <div class="cart_create_in">
+                    <div class="form__header">
+                      <h2 class="form__title heading h1">Thank you!</h2>
+                      <p class="form__legend">We have recieved your quote request. Once reviewed and approved, You will recieve an email notification. A copy of the quote will be uploaded to "My Quotes section" in your account.</p>
+                      <span class="thnks_close">{%- render 'icon', icon: 'close' -%}</span>
+                    </div>
+                  </div>
+                </div>
+
+              {% comment %} End RAQ structure {% endcomment %}
+                
+              </div>
+            </div>
+            </div>
+          </div>
+
+          {%- comment -%}
+          --------------------------------------------------------------------------------------
+          UPSELL
+          --------------------------------------------------------------------------------------
+          {%- endcomment -%}
+
+          {%- assign upsell_collection = section.settings.upsell_collection -%}
+
+          {%- if section.blocks.size > 0 or upsell_collection != blank -%}
+            <div class="container">
+              {%- if section.blocks.size > 0 -%}
+                <div class="section">
+                  <header class="section__header">
+                    <h2 class="section__title heading h3">{{ section.settings.trust_heading | escape }}</h2>
+                  </header>
+
+                  <div class="text-with-icons text-with-icons--boxed">
+                    {%- for block in section.blocks -%}
+                      <div class="text-with-icons__item" {{ block.shopify_attributes }}>
+                        <div class="text-with-icons__icon-wrapper">
+                          {%- if block.settings.custom_icon != blank -%}
+                            <img src="{{ block.settings.custom_icon | img_url: '60x' }}" alt="{{ block.settings.custom_icon.alt | escape }}">
+                          {%- else -%}
+                            {%- render 'icon', icon: block.settings.icon, stroke_width: 1.5 -%}
+                          {%- endif -%}
+                        </div>
+
+                        {%- if block.settings.title != blank or block.settings.content != blank -%}
+                          <div class="text-with-icons__content-wrapper">
+                            {%- if block.settings.title != blank -%}
+                              <p class="text-with-icons__title text--strong">{{ block.settings.title | escape }}</p>
+                            {%- endif -%}
+
+                            {%- if block.settings.content != blank -%}
+                              <div class="text-with-icons__content rte">
+                                {{ block.settings.content  }}
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endif -%}
+
+              {%- if upsell_collection != empty -%}
+                {%- comment -%}We iterate through all the products, by making sure to remove those that are already in the cart{%- endcomment -%}
+
+                {%- capture upsell_products -%}
+                  {%- assign upsell_products_count = 0 -%}
+
+                  {%- for product in upsell_collection.products -%}
+                    {%- unless product.available -%}
+                      {%- continue -%}
+                    {%- endunless -%}
+
+                    {%- assign include_product = true -%}
+
+                    {%- for line_item in cart.items -%}
+                      {%- if line_item.product_id == product.id -%}
+                        {%- assign include_product = false -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+
+                    {%- if include_product -%}
+                      {%- render 'product-item', product: product, show_add_to_cart: true, grid_classes: '1/3--lap 1/3--desk 1/4--wide' -%}
+
+                      {%- comment -%}Check how much products we have shown and limit{%- endcomment -%}
+                      {%- assign upsell_products_count = upsell_products_count | plus: 1 -%}
+
+                      {%- if upsell_products_count >= section.settings.upsell_products_count -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endcapture -%}
+
+                {%- if upsell_products != blank -%}
+                  {%- capture section_settings -%}
+                  {
+                    "stackable": false,
+                    "layout": "vertical"
+                  }
+                  {%- endcapture -%}
+
+                  <div class="section" data-section-id="{{ section.id }}-upsell" data-section-type="featured-collection" data-section-settings='{{ section_settings }}'>
+                    <header class="section__header">
+                      <h2 class="section__title heading h3">{{ section.settings.upsell_heading | escape }}</h2>
+                    </header>
+
+                    <div class="scroller">
+                      <div class="scroller__inner">
+                        <div class="product-list product-list--vertical product-list--scrollable">
+                          {{ upsell_products }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {%- comment -%}
+                  --------------------------------------------------------------------------------------
+                  QUICK VIEW CONTAINER
+                  --------------------------------------------------------------------------------------
+                  {%- endcomment -%}
+
+                  <div id="modal-quick-view-{{ section.id }}" class="modal" aria-hidden="true">
+                    <div class="modal__dialog modal__dialog--stretch" role="dialog">
+                      <div class="modal__loader">
+                        {%- render 'icon', icon: 'search-loader' -%}
+                      </div>
+
+                      <div class="modal__inner"></div>
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+  </div>
+  
+  <div class="container thanku_page_wrap" style="display: none;">
+    <div class="submit_cart">
+      <h1 class="page__title heading h1">Thank you for your Request!</h1>
+      <p>We have recieved your quote request. Once reviewed and approved, You will recieve a notification. A copy of
+        the quote will be uploaded "My Quotes" section in your account.</p>
+      <span>Having Question? <a href="/pages/contact-us">Contact us</a></span>
+      <div class="button-group button-group--loose">
+        <a href="/account#my-quotes" class="button button--primary">View Quotes</a>
+        <a href="/" class="button button--ternary">Continue Shopping</a>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  a.button.button--small.button--ternary {
+    width: 100%;
+    margin-top: 15px;
+    padding: 5px 3px;
+}
+  </style>
+
+{% schema %}
+{
+  "name": "Cart",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Those settings are only applicable when the cart contains at least one product."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_order_notes",
+      "label": "Enable order notes",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Gift wrap"
+    },
+    {
+      "type": "paragraph",
+      "content": "Gift wrap needs to be set up as a product. [Read more](https://support.maestrooo.com/article/190-cart-set-up-a-gift-wrap-product)"
+    },
+    {
+      "type": "product",
+      "id": "gift_wrap_product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "gift_wrap_text",
+      "label": "Text",
+      "default": "Do you want a gift wrap?"
+    },
+    {
+      "type": "text",
+      "id": "gift_wrap_button",
+      "label": "Button",
+      "default": "Add a gift wrap"
+    },
+    {
+      "type": "header",
+      "content": "Shipping estimator"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping_estimator",
+      "label": "Show shipping rates calculator",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "shipping_estimator_default_country",
+      "label": "Default country",
+      "info": "If the customer is logged in, the country of their shipping address will be used.",
+      "default": "United States"
+    },
+    {
+      "type": "text",
+      "id": "trust_heading",
+      "label": "Heading",
+      "default": "Our guarantees"
+    },
+    {
+      "type": "header",
+      "content": "Upsell"
+    },
+    {
+      "type": "paragraph",
+      "content": "Show additional products to encourage customers to buy more."
+    },
+    {
+      "type": "text",
+      "id": "upsell_heading",
+      "label": "Heading",
+      "default": "Complete your cart"
+    },
+    {
+      "type": "collection",
+      "id": "upsell_collection",
+      "label": "Collection",
+      "info": "Products already in cart or sold out will be hidden."
+    },
+    {
+      "type": "range",
+      "id": "upsell_products_count",
+      "label": "Products to show",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Trust text",
+      "type": "trust",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "bi-add-to-cart",
+              "label": "Add to cart",
+              "group": "Shop"
+            },
+            {
+              "value": "bi-gift-wrap",
+              "label": "Gift wrap",
+              "group": "Shop"
+            },
+            {
+              "value": "bi-gift-box",
+              "label": "Gift box",
+              "group": "Shop"
+            },
+            {
+              "value": "bi-heart",
+              "label": "Heart",
+              "group": "Shop"
+            },
+            {
+              "value": "bi-ecology",
+              "label": "Ecology",
+              "group": "Shop"
+            },
+            {
+              "value": "bi-plant",
+              "label": "Plant",
+              "group": "Shop"
+            },
+            {
+              "value": "bi-shop",
+              "label": "Shop",
+              "group": "Shop"
+            },
+            {
+              "value": "bi-shop-pin",
+              "label": "Shop with pin",
+              "group": "Shop"
+            },
+            {
+              "value": "bi-alert",
+              "label": "Alert",
+              "group": "Communication"
+            },
+            {
+              "value": "bi-chat",
+              "label": "Chat",
+              "group": "Communication"
+            },
+            {
+              "value": "bi-comment",
+              "label": "Comment",
+              "group": "Communication"
+            },
+            {
+              "value": "bi-customer-support",
+              "label": "Customer support",
+              "group": "Communication"
+            },
+            {
+              "value": "bi-email",
+              "label": "Email",
+              "group": "Communication"
+            },
+            {
+              "value": "bi-network",
+              "label": "Network",
+              "group": "Communication"
+            },
+            {
+              "value": "bi-newsletter",
+              "label": "Newsletter",
+              "group": "Communication"
+            },
+            {
+              "value": "bi-love",
+              "label": "Love",
+              "group": "Communication"
+            },
+            {
+              "value": "bi-phone",
+              "label": "Phone",
+              "group": "Communication"
+            },
+            {
+              "value": "bi-share",
+              "label": "Share",
+              "group": "Communication"
+            },
+            {
+              "value": "bi-delivery",
+              "label": "Delivery",
+              "group": "Delivery"
+            },
+            {
+              "value": "bi-fast-delivery",
+              "label": "Fast delivery",
+              "group": "Delivery"
+            },
+            {
+              "value": "bi-returns",
+              "label": "Returns",
+              "group": "Delivery"
+            },
+            {
+              "value": "bi-time",
+              "label": "Time",
+              "group": "Delivery"
+            },
+            {
+              "value": "bi-secure-payment",
+              "label": "Secure payment",
+              "group": "Security"
+            },
+            {
+              "value": "bi-mobile-payment",
+              "label": "Mobile payment",
+              "group": "Security"
+            },
+            {
+              "value": "bi-credit-card",
+              "label": "Credit card",
+              "group": "Security"
+            },
+            {
+              "value": "bi-shield",
+              "label": "Shield",
+              "group": "Security"
+            }
+          ],
+          "default": "bi-customer-support"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom icon",
+          "info": "60 x 60px .png with transparency recommended"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Your title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Short content about your store</p>"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<!-- bcpo done -->

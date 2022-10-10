@@ -1,0 +1,20 @@
+{% assign spcmpCollArr = "" %}
+{% for collection in product.collections %}
+{% assign spcmpCollArr = spcmpCollArr | append: ',' | append: collection.id %}
+{% endfor %}
+
+{% if add-to-compare == 'product'%}
+<div class="add_to_compare_on_products_page">
+	<label class="SPCMP_chk_lbl" style="display:none;">
+	  	<input type="checkbox" class="SPCMP_Add " name='SPCMP_chk' spcmp_collids="{{spcmpCollArr | remove_first: ','}}" spcmp_pid="{{product.id}}" spcmp_vid="{{ product.variants.first.id }}">
+  		<span class="SPCMP_Add_span"></span>
+	</label>
+</div>
+{% elsif add-to-compare == 'loop' %}
+<div class="add_to_compare_on_collections_page">
+	<label class="SPCMP_chk_lbl" style="display:none;">
+	  	<input type="checkbox" class="SPCMP_Add " name='SPCMP_chk' spcmp_collids="{{spcmpCollArr | remove_first: ','}}" spcmp_pid="{{product.id}}" spcmp_vid="{{ product.variants.first.id }}">
+  		<span class="SPCMP_Add_span"></span>
+	</label>
+</div>
+{% endif %}

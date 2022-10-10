@@ -1,0 +1,1243 @@
+{%- assign mega_menus = section.blocks | map: 'settings' | map: 'menu_item' -%}
+
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+  {% comment %}
+  {%- render 'icon', icon: 'nav-triangle-borderless' -%}
+  {% endcomment %}
+
+  <div class="mobile-menu__inner">
+    <div class="mobile-menu__panel">
+      <div class="mobile-menu__section">
+        <ul class="mobile-menu__nav" data-type="menu">
+          <li class="mobile-menu__nav-item lopa"><a href="/collections/monitors" class="mobile-menu__nav-link" data-type="menuitem">Products</a></li>
+          {% for block in section.blocks %}
+          {% if block.type == 'monitors_menu' %}
+          <li class="mobile-menu__nav-item lopa">
+            <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-panel-11" data-action="open-panel">
+              <div class="menu-icon"><img src="{{block.settings.m_mob_menu_icon | img_url: '' }}" alt=""></div> <span>{{block.settings.title}}</span> {%- render 'icon', icon: 'arrow-right' -%}
+            </button>
+          </li>
+          {% endif %}
+          {% endfor %}
+          {% for block in section.blocks %}
+          {% if block.type == 'workstations_menu' %}
+          <li class="mobile-menu__nav-item lopa">
+            <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-panel-12" data-action="open-panel">
+              <div class="menu-icon"><img src="{{block.settings.w_mob_menu_icon | img_url: '' }}" alt=""></div> <span>{{block.settings.title}}</span> {%- render 'icon', icon: 'arrow-right' -%}
+            </button>
+          </li>
+          {% endif %}
+          {% endfor %}
+          {% for block in section.blocks %}
+          {% if block.type == 'crs_menu' %}
+          <li class="mobile-menu__nav-item lopa">
+            <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-panel-13" data-action="open-panel">
+              <div class="menu-icon"><img src="{{block.settings.crs_mob_menu_icon | img_url: '' }}" alt=""></div> <span>{{block.settings.title}}</span> {%- render 'icon', icon: 'arrow-right' -%}
+            </button>
+          </li>
+          {% endif %}
+          {% endfor %}
+          {% for block in section.blocks %}
+          {% if block.type == 'film_menu' %}
+          <li class="mobile-menu__nav-item lopa">
+            <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-panel-14" data-action="open-panel">
+              <div class="menu-icon"><img src="{{block.settings.fd_mob_menu_icon | img_url: '' }}" alt=""></div> <span>{{block.settings.title}}</span> {%- render 'icon', icon: 'arrow-right' -%}
+            </button>
+          </li>
+          {% endif %}
+          {% endfor %}
+          {% for block in section.blocks %}
+          {% if block.type == 'graphic_menu' %}
+          <li class="mobile-menu__nav-item lopa">
+            <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-panel-15" data-action="open-panel">
+              <div class="menu-icon"><img src="{{block.settings.gc_mob_menu_icon | img_url: '' }}" alt=""></div> <span>{{block.settings.title}}</span> {%- render 'icon', icon: 'arrow-right' -%}
+            </button>
+          </li>
+          {% endif %}
+          {% endfor %}
+          {% for block in section.blocks %}
+          {% if block.type == 'dictation_menu' %}
+          <li class="mobile-menu__nav-item lopa">
+            <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-panel-16" data-action="open-panel">
+              <div class="menu-icon"><img src="{{block.settings.dm_mob_menu_icon | img_url: '' }}" alt=""></div> <span>{{block.settings.title}}</span> {%- render 'icon', icon: 'arrow-right' -%}
+            </button>
+          </li>
+          {% endif %}
+          {% endfor %}
+          {% for block in section.blocks %}
+          {% if block.type == 'accessories_menu' %}
+          <li class="mobile-menu__nav-item lopa">
+            <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-panel-17" data-action="open-panel">
+              <div class="menu-icon"><img src="{{block.settings.ac_mob_menu_icon | img_url: '' }}" alt=""></div> <span>{{block.settings.title}}</span> {%- render 'icon', icon: 'arrow-right' -%}
+            </button>
+          </li>
+          {% endif %}
+          {% endfor %}
+          
+          {%- for link in menu.links -%}
+            <li class="mobile-menu__nav-item navigation-menu-dynamic">
+              {%- if link.links != blank -%}
+                {%- capture panel_id -%}mobile-panel-{{ forloop.index0 }}{%- endcapture -%}
+                <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="{{ panel_id }}" data-action="open-panel">
+                  {{- link.title -}} {%- render 'icon', icon: 'arrow-right' -%}
+                </button>
+              {%- else -%}
+                <a href="{{ link.url }}" class="mobile-menu__nav-link" data-type="menuitem">{{ link.title }}</a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="mobcurr">
+        <ul class="mobile-menu__nav" data-type="menu">
+          <li class="mobile-menu__nav-item">
+            <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-panel-1" data-action="open-panel"> 
+              {%- form 'localization', id: 'localization_form_header_currency' -%}{{ form.current_currency.iso_code }} ${%- endform -%} {%- render 'icon', icon: 'arrow-right' -%}
+            </button>
+          </li>
+          <li class="mobile-menu__nav-item">
+            <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-panel-2" data-action="open-panel">
+              English {%- render 'icon', icon: 'arrow-right' -%}
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {%- comment -%}We now need to loop again (for the second level) to create the nested panel{%- endcomment -%}
+    {%- for link in menu.links -%}
+      {%- if link.links != blank -%}
+        {%- capture panel_id -%}mobile-panel-{{ forloop.index0 }}{%- endcapture -%}
+        <div id="{{ panel_id }}" class="mobile-menu__panel is-nested">
+          <div class="mobile-menu__section is-sticky">
+            <button class="mobile-menu__back-button" data-action="close-panel">{% render 'icon', icon: 'arrow-left' %} {{ 'header.navigation.back' | t }}</button>
+          </div>
+          <div class="mobile-menu__section">
+            {%- assign is_mega_menu = false -%}
+            {%- assign downcase_title = link.title | downcase | strip -%}
+            <ul class="mobile-menu__nav" data-type="menu">
+              <li class="mobile-menu__nav-item afa">
+                <a href="{{ link.url }}" class="mobile-menu__nav-link text--strong">{{ link.title }}</a>
+              </li>
+              {%- for sub_link in link.links -%}
+              <li class="mobile-menu__nav-item vaww">
+                {%- if sub_link.links != blank -%}
+                {%- capture panel_id -%}mobile-panel-{{ forloop.parentloop.index0 }}-{{ forloop.index0 }}{%- endcapture -%}
+                <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="{{ panel_id }}" data-action="open-panel">
+                  {{- sub_link.title -}} {%- render 'icon', icon: 'arrow-right' -%}
+                </button>
+                {%- else -%}
+                <a href="{{ sub_link.url }}" class="mobile-menu__nav-link" data-type="menuitem">{{ sub_link.title }}</a>
+                {%- endif -%}
+              </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- comment -%}Finally we need to do the same to create the third level menus{%- endcomment -%}
+    {%- for link in menu.links -%}
+      {%- if link.links != blank -%}
+        {%- assign downcase_title = link.title | downcase -%}
+        {%- unless mega_menus contains downcase_title -%}
+          {%- for sub_link in link.links -%}
+            {%- if sub_link.links != blank -%}
+              {%- capture panel_id -%}mobile-panel-{{ forloop.parentloop.index0 }}-{{ forloop.index0 }}{%- endcapture -%}
+              <div id="{{ panel_id }}" class="mobile-menu__panel is-nested 123">
+                <div class="mobile-menu__section is-sticky">
+                  <button class="mobile-menu__back-button" data-action="close-panel">{% render 'icon', icon: 'arrow-left' %} {{ 'header.navigation.back' | t }}</button>
+                </div>
+                <div class="mobile-menu__section">
+                  <ul class="mobile-menu__nav" data-type="menu">
+                    <li class="mobile-menu__nav-item mama">
+                      <a href="{{ sub_link.url }}" class="mobile-menu__nav-link text--strong">{{ sub_link.title }}</a>
+                    </li>
+                    {%- for sub_sub_link in sub_link.links -%}
+                      <li class="mobile-menu__nav-item lkoa">
+                        <a href="{{ sub_sub_link.url }}" class="mobile-menu__nav-link" data-type="menuitem">{{ sub_sub_link.title }}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+    
+    <div id="mobile-panel-1" class="mobile-menu__panel is-nested">
+      <div class="mobile-menu__section is-sticky">
+        <button class="mobile-menu__back-button" data-action="close-panel"><svg class="icon icon--arrow-left" viewBox="0 0 8 12" role="presentation">
+          <path stroke="currentColor" stroke-width="2" d="M6 10L2 6l4-4" fill="none" stroke-linecap="square"></path>
+          </svg> Back</button>
+      </div>
+      <div class="mobile-menu__section">
+        <ul class="mobile-menu__nav" data-type="menu">
+          {%- form 'localization', id: 'localization_form_header_currency' -%}
+          <li class="mobile-menu__nav-item">
+            <a href="https://monitors.com?currency=USD" class="mobile-menu__nav-link text--strong">USD $</a>
+          </li>
+          <li class="mobile-menu__nav-item">
+            <a href="https://monitors.com?currency=CAD" class="mobile-menu__nav-link text--strong">CAD $</a>
+          </li>
+          <li class="mobile-menu__nav-item">
+            <a href="https://monitors.com?currency=MXN" class="mobile-menu__nav-link text--strong">MXN $</a>
+          </li>
+          <li class="mobile-menu__nav-item">
+            <a href="https://monitors.com?currency=EUR" class="mobile-menu__nav-link text--strong">EUR €</a>
+          </li>
+          <li class="mobile-menu__nav-item">
+            <a href="https://monitors.com?currency=GBP" class="mobile-menu__nav-link text--strong">GBP £</a>
+          </li>
+          {%- for currency in form.available_currencies reversed -%}
+          {% unless currency.iso_code contains 'USD' or currency.iso_code contains 'CAD' or currency.iso_code contains 'MXN' or currency.iso_code contains 'EUR' or currency.iso_code contains 'GBP' %}
+          <li class="mobile-menu__nav-item">
+            <a href="{{shop.url}}?currency={{ currency.iso_code }}" class="mobile-menu__nav-link text--strong">{{ currency.iso_code }} {% if currency.symbol %}{{ currency.symbol }}{% endif %}</a>
+          </li>
+          {% endunless %}
+          {%- endfor -%}
+          {%- endform -%}
+        </ul>
+      </div>
+    </div>
+    <div id="mobile-panel-2" class="mobile-menu__panel is-nested">
+      <div class="mobile-menu__section is-sticky">
+        <button class="mobile-menu__back-button" data-action="close-panel"><svg class="icon icon--arrow-left" viewBox="0 0 8 12" role="presentation">
+          <path stroke="currentColor" stroke-width="2" d="M6 10L2 6l4-4" fill="none" stroke-linecap="square"></path>
+          </svg> Back</button>
+      </div>
+
+      <div class="mobile-menu__section">
+        <ul class="mobile-menu__nav" data-type="menu">
+          <div class="mbp"></div>
+        </ul>
+      </div>
+    </div>
+    
+    <div id="mobile-panel-11" class="mobile-menu__panel is-nested monitor-menu">
+      {% for block in section.blocks %}
+      {% if block.type == 'monitors_menu' %}
+      <div class="mobile-menu__section is-sticky">
+        <button class="mobile-menu__back-button" data-action="close-panel">
+          {%- render 'icon', icon: 'arrow-left' -%} <img src="{{block.settings.m_mob_menu_wht_icon | img_url: '' }}" alt=""> {{block.settings.title}}
+        </button>
+        <span><a href="{{block.settings.m_menu_link}}">View All</a></span>
+      </div>
+      <div class="mobile-menu__section monitor">
+        <div class="shop_catitems">
+          <div class="top_txt">
+            <h3>{{block.settings.m_section_title}}</h3>
+          </div>
+          <ul class="cat-items">
+            {% if block.settings.m_cat_label1 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.m_cat_url1}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.m_cat_mob_icon1 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.m_cat_label1}}</label>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.m_cat_label2 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.m_cat_url2}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.m_cat_mob_icon2 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.m_cat_label2}}</label>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.m_cat_label3 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.m_cat_url3}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.m_cat_mob_icon3 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.m_cat_label3}}</label>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.m_cat_label4 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.m_cat_url4}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.m_cat_mob_icon4 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.m_cat_label4}}</label>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.m_cat_label5 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.m_cat_url5}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.m_cat_mob_icon5 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.m_cat_label5}}</label>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+          {% if block.settings.m_view_all_label != blank %}
+          <h2><a href="{{block.settings.m_view_all_link}}">{{block.settings.m_view_all_label}} &nbsp;{%- render 'icon', icon: 'arrow-right' -%}</a></h2>
+          {% endif %}
+        </div>
+        <div class="resolutions">
+          <div class="top_txt">
+            <h3>{{block.settings.m_size_sec_cat_label1}}</h3>
+          </div>
+          <div class="resolutions">
+            <ul class="size-resolutions">
+              {% if block.settings.m_size_item_label1 !=blank and block.settings.m_size_item_url1 != blank %}
+              <li class="{% if block.settings.m_size_show_ribbons1 %}riban{% endif %}"><a href="{{block.settings.m_size_item_url1}}">{{block.settings.m_size_item_label1}}</a></li>
+              {% endif %}
+              {% if block.settings.m_size_item_label2 !=blank and block.settings.m_size_item_url2 != blank %}
+              <li class="{% if block.settings.m_size_show_ribbons2 %}riban{% endif %}"><a href="{{block.settings.m_size_item_url2}}">{{block.settings.m_size_item_label2}}</a></li>
+              {% endif %}
+              {% if block.settings.m_size_item_label3 !=blank and block.settings.m_size_item_url3 != blank %}
+              <li class="{% if block.settings.m_size_show_ribbons3 %}riban{% endif %}"><a href="{{block.settings.m_size_item_url3}}">{{block.settings.m_size_item_label3}}</a></li>
+              {% endif %}
+              {% if block.settings.m_size_item_label4 !=blank and block.settings.m_size_item_url4 != blank %}
+              <li class="{% if block.settings.m_size_show_ribbons4 %}riban{% endif %}"><a href="{{block.settings.m_size_item_url4}}">{{block.settings.m_size_item_label4}}</a></li>
+              {% endif %}
+              {% if block.settings.m_size_item_label5 !=blank and block.settings.m_size_item_url5 != blank %}
+              <li class="{% if block.settings.m_size_show_ribbons5 %}riban{% endif %}"><a href="{{block.settings.m_size_item_url5}}">{{block.settings.m_size_item_label5}}</a></li>
+              {% endif %}
+              {% if block.settings.m_size_item_label6 !=blank and block.settings.m_size_item_url6 != blank %}
+              <li class="{% if block.settings.m_size_show_ribbons6 %}riban{% endif %}"><a href="{{block.settings.m_size_item_url6}}">{{block.settings.m_size_item_label6}}</a></li>
+              {% endif %}
+              {% if block.settings.m_size_item_label7 !=blank and block.settings.m_size_item_url7 != blank %}
+              <li class="{% if block.settings.m_size_show_ribbons7 %}riban{% endif %}"><a href="{{block.settings.m_size_item_url7}}">{{block.settings.m_size_item_label7}}</a></li>
+              {% endif %}
+              {% if block.settings.m_size_item_label8 !=blank and block.settings.m_size_item_url8 != blank %}
+              <li class="{% if block.settings.m_size_show_ribbons8 %}riban{% endif %}"><a href="{{block.settings.m_size_item_url8}}">{{block.settings.m_size_item_label8}}</a></li>
+              {% endif %}
+              {% if block.settings.m_size_item_label9 !=blank and block.settings.m_size_item_url9 != blank %}
+              <li class="{% if block.settings.m_size_show_ribbons9 %}riban{% endif %}"><a href="{{block.settings.m_size_item_url9}}">{{block.settings.m_size_item_label9}}</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        <div class="shop_manufacture">
+          {% if block.settings.m_manufa_sec_title != blank %}
+          <div class="top_txt">
+            <h3>{{ block.settings.m_manufa_sec_title }}</h3>
+          </div>
+          {% endif %}
+          <ul class="cat-items">
+            {% if block.settings.m_manufa_name1 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.m_manufa_url1 }}">{{ block.settings.m_manufa_name1 }}</a>
+            </li>
+            {% endif %}
+            {% if block.settings.m_manufa_name2 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.m_manufa_url2 }}">{{ block.settings.m_manufa_name2 }}</a>
+            </li>
+            {% endif %}
+            {% if block.settings.m_manufa_name3 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.m_manufa_url3 }}">{{ block.settings.m_manufa_name3 }}</a>
+            </li>
+            {% endif %}
+            {% if block.settings.m_manufa_name4 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.m_manufa_url4 }}">{{ block.settings.m_manufa_name4 }}</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="feature_products">
+          <div class="top_txt">
+            <h3>Popular Monitors</h3>
+          </div>
+          <ul class="feature-items df fww">
+            {%- assign product = all_products[block.settings.m_featured_products1] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+			{%- assign product = all_products[block.settings.m_featured_products2] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        {% if block.settings.m_left_img != blank %}
+        <div class="limitseal">
+          <a href="{{block.settings.m_left_img_url}}">
+            <img class="catnavitemfig" src="{{block.settings.m_left_img | img_url: 'large' }}" alt="">
+          </a>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div id="mobile-panel-12" class="mobile-menu__panel is-nested workstations-menu">
+      {% for block in section.blocks %}
+      {% if block.type == 'workstations_menu' %}
+      <div class="mobile-menu__section is-sticky">
+        <button class="mobile-menu__back-button" data-action="close-panel">
+          {%- render 'icon', icon: 'arrow-left' -%} <img src="{{block.settings.w_mob_menu_wht_icon | img_url: '' }}" alt=""> {{block.settings.title}}
+        </button>
+        <span><a href="{{block.settings.w_menu_link}}">View All</a></span>
+      </div>
+      <div class="mobile-menu__section workstations">
+        <div class="shop_manufacture">
+          {% if block.settings.w_manufa_sec_title != blank %}
+          <div class="top_txt">
+            <h3>{{ block.settings.w_manufa_sec_title }}</h3>
+          </div>
+          {% endif %}
+          <ul class="cat-items">
+            {% if block.settings.w_manufa_name1 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.w_manufa_url1 }}">{{ block.settings.w_manufa_name1 }}</a>
+            </li>
+            {% endif %}
+            {% if block.settings.w_manufa_name2 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.w_manufa_url2 }}">{{ block.settings.w_manufa_name2 }}</a>
+            </li>
+            {% endif %}
+            {% if block.settings.w_manufa_name3 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.w_manufa_url3 }}">{{ block.settings.w_manufa_name3 }}</a>
+            </li>
+            {% endif %}
+            {% if block.settings.w_manufa_name4 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.w_manufa_url4 }}">{{ block.settings.w_manufa_name4 }}</a>
+            </li>
+            {% endif %}
+          </ul>
+          {% if block.settings.w_manufa_viewall_label != blank %}
+          <h2><a href="{{ block.settings.w_manufa_viewall_link }}">{{ block.settings.w_manufa_viewall_label }} &nbsp;{%- render 'icon', icon: 'arrow-right' -%}</a></h2>
+          {% endif %}
+        </div>
+        <div class="feature_products">
+          <div class="top_txt">
+            <h3>Popular Workstations</h3>
+          </div>
+          <ul class="feature-items df fww">
+            {%- assign product = all_products[block.settings.w_featured_products1] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {%- assign product = all_products[block.settings.w_featured_products2] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {%- assign product = all_products[block.settings.w_featured_products3] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {%- assign product = all_products[block.settings.w_featured_products4] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        {% if block.settings.w_left_img != blank %}
+        <div class="limitseal">
+          <a href="{{block.settings.w_left_img_url}}">
+            <img class="catnavitemfig" src="{{block.settings.w_left_img | img_url: 'large' }}" alt="">
+          </a>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div id="mobile-panel-13" class="mobile-menu__panel is-nested crs-menu">
+      {% for block in section.blocks %}
+      {% if block.type == 'crs_menu' %}
+      <div class="mobile-menu__section is-sticky">
+        <button class="mobile-menu__back-button" data-action="close-panel">
+          {%- render 'icon', icon: 'arrow-left' -%} <img src="{{block.settings.crs_mob_menu_wht_icon | img_url: '' }}" alt=""> {{block.settings.title}}
+        </button>
+        <span><a href="{{block.settings.crs_menu_link}}">View All</a></span>
+      </div>
+      <div class="mobile-menu__section complete-reading-stations">
+        <div class="shop_catitems">
+          <div class="top_txt">
+            <h3>{{block.settings.crs_cat_sec_title}}</h3>
+          </div>
+          <ul class="cat-items">
+            <li class="cat-item">
+              <a href="{{block.settings.crs_cat_url1}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.crs_cat_img1 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.crs_cat_name1}}</label>
+              </a>
+            </li>
+            <li class="cat-item">
+              <a href="{{block.settings.crs_cat_url2}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.crs_cat_img2 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.crs_cat_name2}}</label>
+              </a>
+            </li>
+          </ul>
+          {% if block.settings.crs_cat_viewall_label != blank %}
+          <h2><a href="{{block.settings.crs_cat_viewall_link}}">{{block.settings.crs_cat_viewall_label}} &nbsp;{%- render 'icon', icon: 'arrow-right' -%}</a></h2>
+          {% endif %}
+        </div>
+        <div class="feature_products_full">
+          <div class="top_txt">
+            <h3>Popular Complete Reading Stations</h3>
+          </div>
+          <div class="f-product-item">
+            <div class="shop-catverticalitems">
+              <div class="vtcat-itembox df fww">
+                <div class="vtcat-itemimg">
+                  {% if block.settings.crs_top_selling_product_image != blank %}
+                  <a href="{{ block.settings.crs_top_selling_product_url }}">
+                    <img class="catnavitemfig" src="{{block.settings.crs_top_selling_product_image | img_url: '' }}" alt="">
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="vtcat-info">
+                  {{block.settings.crs_top_selling_product_content}}
+                </div>
+                <div class="vtcat-price">                  
+                  <div class="vt-pricing">
+                    {% if block.settings.crs_top_selling_product_url %}
+                    <a href="{{ block.settings.crs_top_selling_product_url }}"><span class="btn">Buy It Now</span></a>
+                    {% endif %}
+                    {% if block.settings.crs_top_selling_product_price !=blank %}
+                    {%- assign crs_top_selling_product_price = block.settings.crs_top_selling_product_price | remove: "." -%}
+                    <p class="nav-price">{{ crs_top_selling_product_price | money_without_trailing_zeros }}</p>
+                    {% endif %}
+                    {% if block.settings.crs_top_selling_product_s_price !=blank %}
+                    {%- assign crs_top_selling_product_s_price = block.settings.crs_top_selling_product_s_price | remove: "." -%}
+                    <span class="saving nav-save-price"> save {{ crs_top_selling_product_s_price | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="shop-catverticalitems">
+              <div class="vtcat-itembox df fww">
+                <div class="vtcat-itemimg">
+                  {% if block.settings.crs_radiology_product_image != blank %}
+                  <a href="{{ block.settings.crs_radiology_product_url }}">
+                    <img class="catnavitemfig" src="{{block.settings.crs_radiology_product_image | img_url: '' }}" alt="">
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="vtcat-info">
+                  {{block.settings.crs_radiology_product_content}}
+                </div>
+                <div class="vtcat-price">
+                  <div class="vt-pricing">
+                    {% if block.settings.crs_radiology_product_url %}
+                    <a href="{{ block.settings.crs_radiology_product_url }}"><span class="btn">Buy It Now</span></a>
+                    {% endif %}
+                    {% if block.settings.crs_radiology_product_price !=blank %}
+                    {%- assign crs_radiology_product_price = block.settings.crs_radiology_product_price | remove: "." -%}
+                    <p class="nav-price">{{ crs_radiology_product_price | money_without_trailing_zeros }}</p>
+                    {% endif %}
+                    {% if block.settings.crs_radiology_product_s_price !=blank %}
+                    {%- assign crs_radiology_product_s_price = block.settings.crs_radiology_product_s_price | remove: "." -%}
+                    <span class="saving nav-save-price"> save {{ crs_radiology_product_s_price | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="shop-catverticalitems">
+              <div class="vtcat-itembox df fww">
+                <div class="vtcat-itemimg">
+                  {% if block.settings.crs_mammography_product_image != blank %}
+                  <a href="{{ block.settings.crs_mammography_product_url }}">
+                    <img class="catnavitemfig" src="{{block.settings.crs_mammography_product_image | img_url: '' }}" alt="">
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="vtcat-info">
+                  {{block.settings.crs_mammography_product_content}}
+                </div>
+                <div class="vtcat-price">
+                  <div class="vt-pricing">
+                    {% if block.settings.crs_mammography_product_url %}
+                    <a href="{{ block.settings.crs_mammography_product_url }}"><span class="btn">Buy It Now</span></a>
+                    {% endif %}
+                    {% if block.settings.crs_mammography_product_price !=blank %}
+                    {%- assign crs_mammography_product_price = block.settings.crs_mammography_product_price | remove: "." -%}
+                    <p class="nav-price">{{ crs_mammography_product_price | money_without_trailing_zeros }}</p>
+                    {% endif %}
+                    {% if block.settings.crs_mammography_product_s_price !=blank %}
+                    {%- assign crs_mammography_product_s_price = block.settings.crs_mammography_product_s_price | remove: "." -%}
+                    <span class="saving nav-save-price"> save {{ crs_mammography_product_s_price | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if block.settings.crs_left_img != blank %}
+        <div class="limitseal">
+          <a href="{{block.settings.crs_left_img_url}}">
+            <img class="catnavitemfig" src="{{block.settings.crs_left_img | img_url: 'large' }}" alt="">
+          </a>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div id="mobile-panel-14" class="mobile-menu__panel is-nested film-menu">
+      {% for block in section.blocks %}
+      {% if block.type == 'film_menu' %}
+      <div class="mobile-menu__section is-sticky">
+        <button class="mobile-menu__back-button" data-action="close-panel">
+          {%- render 'icon', icon: 'arrow-left' -%} <img src="{{block.settings.fd_mob_menu_wht_icon | img_url: '' }}" alt=""> {{block.settings.title}}
+        </button>
+        <span><a href="{{block.settings.fd_menu_link}}">View All</a></span>
+      </div>
+      <div class="mobile-menu__section film">
+        <div class="feature_products">
+          <div class="top_txt">
+            <h3>{{block.settings.fd_digitizer_section_title}}</h3>
+          </div>
+          <ul class="feature-items df fww">
+            {% if block.settings.fd_digitizer1_title != blank %}
+            <li class="fet-item">
+              <a href="{{block.settings.fd_digitizer1_url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{block.settings.fd_digitizer1_image | img_url: '' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{block.settings.fd_digitizer1_title}}</p>
+                  <div class="pricing discounted">
+                    {%- assign fd_digitizer1_price = block.settings.fd_digitizer1_price | remove: "." -%}
+                    {%- assign fd_digitizer1_s_price = block.settings.fd_digitizer1_s_price | remove: "." -%}
+                    <p class="nav-price">From {{ fd_digitizer1_price | money_without_trailing_zeros }}</p>
+                    {% if fd_digitizer1_s_price != blank %}
+                    <del class="nav-compare-price">{{ fd_digitizer1_price | plus: fd_digitizer1_s_price | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ fd_digitizer1_s_price | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.fd_digitizer2_title != blank %}
+            <li class="fet-item">
+              <a href="{{block.settings.fd_digitizer2_url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{block.settings.fd_digitizer2_image | img_url: '' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{block.settings.fd_digitizer2_title}}</p>
+                  <div class="pricing discounted">
+                    {%- assign fd_digitizer2_price = block.settings.fd_digitizer2_price | remove: "." -%}
+                    {%- assign fd_digitizer2_s_price = block.settings.fd_digitizer2_s_price | remove: "." -%}
+                    <p class="nav-price">From {{ fd_digitizer2_price | money_without_trailing_zeros }}</p>
+                    {% if fd_digitizer2_s_price != blank %}
+                    <del class="nav-compare-price">{{ fd_digitizer2_price | plus: fd_digitizer2_s_price | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ fd_digitizer2_s_price | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.fd_digitizer3_title != blank %}
+            <li class="fet-item">
+              <a href="{{block.settings.fd_digitizer3_url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{block.settings.fd_digitizer3_image | img_url: '' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{block.settings.fd_digitizer3_title}}</p>
+                  <div class="pricing discounted">
+                    {%- assign fd_digitizer3_price = block.settings.fd_digitizer3_price | remove: "." -%}
+                    {%- assign fd_digitizer3_s_price = block.settings.fd_digitizer3_s_price | remove: "." -%}
+                    <p class="nav-price">From {{ fd_digitizer3_price | money_without_trailing_zeros }}</p>
+                    {% if fd_digitizer3_s_price != blank %}
+                    <del class="nav-compare-price">{{ fd_digitizer3_price | plus: fd_digitizer3_s_price | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ fd_digitizer3_s_price | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+          <h2><a href="{{block.settings.fd_digitizer_section_url}}">View All {{block.settings.fd_digitizer_section_title}} &nbsp;{%- render 'icon', icon: 'arrow-right' -%}</a></h2>
+          <div class="top_txt">
+            <h3>{{block.settings.fd_standalone_section_title}}</h3>
+          </div>
+          <ul class="feature-items df fww">
+            {% if block.settings.fd_standalone1_title != blank %}
+            <li class="fet-item">
+              <a href="{{block.settings.fd_standalone1_url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{block.settings.fd_standalone1_image | img_url: '' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{block.settings.fd_standalone1_title}}</p>
+                  <div class="pricing discounted">
+                    {%- assign fd_standalone1_price = block.settings.fd_standalone1_price | remove: "." -%}
+                    {%- assign fd_standalone1_s_price = block.settings.fd_standalone1_s_price | remove: "." -%}
+                    <p class="nav-price">From {{ fd_standalone1_price | money_without_trailing_zeros }}</p>
+                    {% if fd_standalone1_s_price != blank %}
+                    <del class="nav-compare-price">{{ fd_standalone1_price | plus: fd_standalone1_s_price | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ fd_standalone1_s_price | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.fd_standalone2_title != blank %}
+            <li class="fet-item">
+              <a href="{{block.settings.fd_standalone2_url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{block.settings.fd_standalone2_image | img_url: '' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{block.settings.fd_standalone2_title}}</p>
+                  <div class="pricing discounted">
+                    {%- assign fd_standalone2_price = block.settings.fd_standalone2_price | remove: "." -%}
+                    {%- assign fd_standalone2_s_price = block.settings.fd_standalone2_s_price | remove: "." -%}
+                    <p class="nav-price">From {{ fd_standalone2_price | money_without_trailing_zeros }}</p>
+                    {% if fd_standalone2_s_price != blank %}
+                    <del class="nav-compare-price">{{ fd_standalone2_price | plus: fd_standalone2_s_price | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ fd_standalone2_s_price | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.fd_standalone3_title != blank %}
+            <li class="fet-item">
+              <a href="{{block.settings.fd_standalone3_url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{block.settings.fd_standalone3_image | img_url: '' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{block.settings.fd_standalone3_title}}</p>
+                  <div class="pricing discounted">
+                    {%- assign fd_standalone3_price = block.settings.fd_standalone3_price | remove: "." -%}
+                    {%- assign fd_standalone3_s_price = block.settings.fd_standalone3_s_price | remove: "." -%}
+                    <p class="nav-price">From {{ fd_standalone3_price | money_without_trailing_zeros }}</p>
+                    {% if block.settings.fd_standalone3_s_price != blank %}
+                    <del class="nav-compare-price">{{ fd_standalone3_price | plus: fd_standalone3_s_price | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ fd_standalone3_s_price | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+          <h2><a href="{{block.settings.fd_standalone_section_url}}">View All {{block.settings.fd_standalone_section_title}} &nbsp;{%- render 'icon', icon: 'arrow-right' -%}</a></h2>
+        </div>
+        <div class="service-section">
+          <div class="top_txt">
+            <h3>{{block.settings.fd_service_section_title}}</h3>
+          </div>
+          <div class="service-itembox df fww">
+            {% if block.settings.service_label1 != blank %}
+            <div class="service-item df fww">
+              <div class="serve-itemimg">
+                <img src="{{block.settings.service_icon1 | img_url: '' }}" alt="">
+              </div>
+              <a href="{{block.settings.service_url1}}"><p>{{block.settings.service_label1}}</p></a>
+            </div>
+            {% endif %}
+            {% if block.settings.service_label1 != blank %}
+            <div class="service-item df fww">
+              <div class="serve-itemimg">
+                <img src="{{block.settings.service_icon2 | img_url: '' }}" alt="">
+              </div>
+              <a href="{{block.settings.service_url2}}"><p>{{block.settings.service_label2}}</p></a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% if block.settings.fd_left_img != blank %}
+        <div class="limitseal">
+          <a href="{{block.settings.fd_left_img_url}}">
+            <img class="catnavitemfig" src="{{block.settings.fd_left_img | img_url: 'large' }}" alt="">
+          </a>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div id="mobile-panel-15" class="mobile-menu__panel is-nested graphic-menu">
+      {% for block in section.blocks %}
+      {% if block.type == 'graphic_menu' %}
+      <div class="mobile-menu__section is-sticky">
+        <button class="mobile-menu__back-button" data-action="close-panel">
+          {%- render 'icon', icon: 'arrow-left' -%} <img src="{{block.settings.gc_mob_menu_wht_icon | img_url: '' }}" alt=""> {{block.settings.title}}
+        </button>
+        <span><a href="{{block.settings.gc_menu_link}}">View All</a></span>
+      </div>
+      <div class="mobile-menu__section graphic">
+        <div class="shop_manufacture">
+          {% if block.settings.gc_cat_sec_title != blank %}
+          <div class="top_txt">
+            <h3>{{ block.settings.gc_cat_sec_title }}</h3>
+          </div>
+          {% endif %}
+          <ul class="cat-items">
+            {% if block.settings.gc_cat_name1 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.gc_cat_url1 }}">{{ block.settings.gc_cat_name1 }}</a>
+            </li>
+            {% endif %}
+            {% if block.settings.gc_cat_name2 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.gc_cat_url2 }}">{{ block.settings.gc_cat_name2 }}</a>
+            </li>
+            {% endif %}
+            {% if block.settings.gc_cat_name3 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.gc_cat_url3 }}">{{ block.settings.gc_cat_name3 }}</a>
+            </li>
+            {% endif %}
+            {% if block.settings.gc_cat_name4 != blank %}
+            <li class="cat-item">
+              <a href="{{ block.settings.gc_cat_url4 }}">{{ block.settings.gc_cat_name4 }}</a>
+            </li>
+            {% endif %}
+          </ul>
+          {% if block.settings.gc_cat_viewall_label != blank %}
+          <h2><a href="{{block.settings.gc_cat_viewall_link}}">{{block.settings.gc_cat_viewall_label}} &nbsp;{%- render 'icon', icon: 'arrow-right' -%}</a></h2>
+          {% endif %}
+        </div>
+        <div class="feature_products">
+          <div class="top_txt">
+            <h3>Popular Graphics Cards</h3>
+          </div>
+          <ul class="feature-items df fww">
+            {%- assign product = all_products[block.settings.gc_featured_products1] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {%- assign product = all_products[block.settings.gc_featured_products2] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {%- assign product = all_products[block.settings.gc_featured_products3] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        {% if block.settings.gc_left_img != blank %}
+        <div class="limitseal">
+          <a href="{{block.settings.gc_left_img_url}}">
+            <img class="catnavitemfig" src="{{block.settings.gc_left_img | img_url: 'large' }}" alt="">
+          </a>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div id="mobile-panel-16" class="mobile-menu__panel is-nested dictation-mics-menu">
+      {% for block in section.blocks %}
+      {% if block.type == 'dictation_menu' %}
+      <div class="mobile-menu__section is-sticky">
+        <button class="mobile-menu__back-button" data-action="close-panel">
+          {%- render 'icon', icon: 'arrow-left' -%} <img src="{{block.settings.dm_mob_menu_wht_icon | img_url: '' }}" alt=""> {{block.settings.title}}
+        </button>
+        <span><a href="{{block.settings.dm_menu_link}}">View All</a></span>
+      </div>
+      <div class="mobile-menu__section dictation-mics">
+        <div class="shop_catitems">
+          <div class="top_txt">
+            <h3>{{block.settings.dm_section_title}}</h3>
+          </div>
+          <ul class="cat-items">
+            <li class="cat-item">
+              <a href="{{block.settings.dm_cat_url1}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.dm_cat_mob_icon1 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.dm_cat_label1}}</label>
+              </a>
+            </li>
+            <li class="cat-item">
+              <a href="{{block.settings.dm_cat_url2}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.dm_cat_mob_icon2 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.dm_cat_label2}}</label>
+              </a>
+            </li>
+            <li class="cat-item">
+              <a href="{{block.settings.dm_cat_url3}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.dm_cat_mob_icon3 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.dm_cat_label3}}</label>
+              </a>
+            </li>
+            <li class="cat-item">
+              <a href="{{block.settings.dm_cat_url4}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.dm_cat_mob_icon4 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.dm_cat_label4}}</label>
+              </a>
+            </li>
+          </ul>
+          <h2><a href="{{block.settings.dm_view_all_link}}">{{block.settings.dm_view_all_label}} &nbsp;{%- render 'icon', icon: 'arrow-right' -%}</a></h2>
+        </div>
+        <div class="feature_products">
+          <div class="top_txt">
+            <h3>Popular Dictation Mics</h3>
+          </div>
+          <ul class="feature-items df fww">
+            {%- assign product = all_products[block.settings.dm_featured_products1] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {%- assign product = all_products[block.settings.dm_featured_products2] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        {% if block.settings.dm_left_img != blank %}
+        <div class="limitseal">
+          <a href="{{block.settings.dm_left_img_url}}">
+            <img class="catnavitemfig" src="{{block.settings.dm_left_img | img_url: 'large' }}" alt="">
+          </a>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div id="mobile-panel-17" class="mobile-menu__panel is-nested accessories-menu">
+      {% for block in section.blocks %}
+      {% if block.type == 'accessories_menu' %}
+      <div class="mobile-menu__section is-sticky">
+        <button class="mobile-menu__back-button" data-action="close-panel">
+          {%- render 'icon', icon: 'arrow-left' -%} <img src="{{block.settings.ac_mob_menu_wht_icon | img_url: '' }}" alt=""> {{block.settings.title}}
+        </button>
+        <span><a href="{{block.settings.ac_menu_link}}">View All</a></span>
+      </div>
+      <div class="mobile-menu__section accessories">
+        <div class="shop_catitems">
+          <div class="top_txt">
+            <h3>{{block.settings.ac_section_title}}</h3>
+          </div>
+          <ul class="cat-items">
+            {% if block.settings.ac_cat_label1 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.ac_cat_url1}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.ac_cat_mob_icon1 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.ac_cat_label1}}</label>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.ac_cat_label2 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.ac_cat_url2}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.ac_cat_mob_icon2 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.ac_cat_label2}}</label>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.ac_cat_label3 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.ac_cat_url3}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.ac_cat_mob_icon3 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.ac_cat_label3}}</label>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.ac_cat_label4 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.ac_cat_url4}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.ac_cat_mob_icon4 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.ac_cat_label4}}</label>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.ac_cat_label5 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.ac_cat_url5}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.ac_cat_mob_icon5 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.ac_cat_label5}}</label>
+              </a>
+            </li>
+            {% endif %}
+            {% if block.settings.ac_cat_label6 != blank %}
+            <li class="cat-item">
+              <a href="{{block.settings.ac_cat_url6}}" class="df fww">
+                <div class="cat-item-img">
+                  <img class="" src="{{block.settings.ac_cat_mob_icon6 | img_url: '' }}" alt="">
+                </div>
+                <label for="">{{block.settings.ac_cat_label6}}</label>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+          <h2><a href="{{block.settings.ac_view_all_link}}">{{block.settings.ac_view_all_label}} &nbsp;{%- render 'icon', icon: 'arrow-right' -%}</a></h2>
+        </div>
+        <div class="feature_products">
+          <div class="top_txt">
+            <h3>{{ block.settings.ac_feat_sec_title }}</h3>
+          </div>
+          <ul class="feature-items df fww">
+            {%- assign product = all_products[block.settings.ac_featured_products1] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {%- assign product = all_products[block.settings.ac_featured_products2] -%}
+            {% if product != blank %}
+            <li class="fet-item">
+              <a href="{{product.url}}" class="df fww">
+                <div class="fetitem-img">
+                  <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="" class="">
+                </div>
+                <div class="fet-info">
+                  <p>{{ product.title }}</p>
+                  <div class="pricing {% if product.price_min != product.compare_at_price_min %}discounted{% endif %}">
+                    <p class="nav-price">From {{ product.price_min | money_without_trailing_zeros }}</p>
+                    {% if product.price_min != product.compare_at_price_min %}
+                    <del class="nav-compare-price">{{ product.compare_at_price_min | money_without_trailing_zeros }}</del>
+                    <span class="btn nav-save-price">Save {{ product.compare_at_price_min | minus: product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        {% if block.settings.ac_left_img != blank %}
+        <div class="limitseal">
+          <a href="{{block.settings.ac_left_img_url}}">
+            <img class="catnavitemfig" src="{{block.settings.ac_left_img | img_url: 'large' }}" alt="">
+          </a>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    
+</div>

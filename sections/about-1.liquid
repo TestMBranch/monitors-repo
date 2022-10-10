@@ -1,0 +1,35 @@
+<div class="about_wrap">
+  <div class="container">
+    <div class="two-column">
+      <div class="about_text">
+      <h1>{{section.settings.heading}}</h1>
+      <p>{{section.settings.subheading}}</p>
+    </div>
+    <div class="about_img">
+      <img data-src="{{ section.settings.image | img_url: 'master'}}" class="lazyload" alt="">
+    </div>
+    </div>
+   </div>
+</div>
+{% schema %}
+  {
+    "name": "Section 1",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image Desktop"
+      },
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Sub-Heading"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,74 @@
+<style>
+  .weglot-container.wg-default {
+    display: block!important;
+  }
+  .weglot-container {
+    z-index: 999!important;
+    margin-top: initial!important;
+    margin-left: initial!important;
+  }
+  .langu {
+    display: inline-block;
+  }
+  form#localization_form_header_currency{display:inline-block;}
+  .wg-drop.country-selector .wgcurrent a {
+    padding-right: 35px!important;
+  } 
+  .wg-drop.country-selector .wgcurrent a {
+    font-weight: bold;
+  }
+</style>
+
+<!--Start Weglot Script-->
+<script src="//cdn.weglot.com/weglot.min.js"></script>
+<script id="has-script-tags">
+  var findifyClassesForWeglot = '.findify-components-cards-buttons,.findify-add-to-cart,.findify-components--text,findify-change-count-main-wrapper,.options-item,.product-item__action-button,.findify-components--button,.findify-components--button span,.title,.findify-change-product-count-title,.product-label,.findify-price_from,.findify-layouts--autocomplete--dropdown__type-title,.findify-components-autocomplete--tip__tip,.findify-components--cards--product__description,.findify-collection-header';
+  if (window.matchMedia("(max-width: 767px)").matches){
+    Weglot.initialize({ 
+      api_key:"wg_8d12f340033b6271a377b25af01660625",
+      switchers: [
+        {
+          // Same as button_style at root
+          button_style: {
+            full_name: true,
+            with_name: true,
+            is_dropdown: false,
+            with_flags: true,
+            flag_type: "circle",
+            invert_flags: false
+          },
+          // Move switcher somewhere in the page
+          location: {
+            target: ".mbp",
+            sibling: null
+          }
+        }
+      ],
+      dynamic: findifyClassesForWeglot,
+    });
+  } else {
+    Weglot.initialize({ 
+      api_key:"wg_8d12f340033b6271a377b25af01660625",
+      switchers: [
+        {
+          // Same as button_style at root
+          button_style: {
+            full_name: true,
+            with_name: true,
+            is_dropdown: true,
+            with_flags: true,
+            flag_type: "circle",
+            invert_flags: false
+          },
+          // Move switcher somewhere in the page
+          location: {
+            target: ".langu",
+            sibling: null
+          }
+        }
+      ],
+      dynamic: findifyClassesForWeglot,
+    });
+  }
+</script>
+<!--End Weglot Script-->

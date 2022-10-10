@@ -1,0 +1,98 @@
+
+/****PLEASE DON'T MAKE CHANGES IN THIS FILE IT'S AFFECT THE CODE IF YOU NEED ANY HELP PLEASE CONTACT TO FLITS TEAM support@getflits.com ****/
+
+/* Tracking */
+.flits-account-container .flits-tracking-number-div{
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+.flits-order-price-breakdown{
+ margin-top:10px;
+}
+
+ .flits-account-container .flits-tracking-number-div {
+        font-size: 8px !important;
+    font-weight: 700 !important;
+  }
+@media (max-width: 460px){
+  .flits-account-container .flits-tracking-number-div {
+        font-size: 5px !important;
+    font-weight: 700 !important;
+  }
+}
+.flits-account-container .flits-order-tracking.flits-link{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ACCOUNT PAGE */
+.flits-account-container {
+  margin: 60px auto !important;
+}
+.flits-account-container .flits-address-card .flits-triangle-wrapper .flits-triangle {
+    border-color: rgba(255,255,255,0) rgba(255,255,255,0) rgba(249,0,0,0) rgb(6, 160, 227) !important;
+}
+.flits-account-container .flits-address-card.flits-new-address-card svg {
+fill: rgb(6, 160, 227) !important;
+}
+.flits-input[type=radio]:after,
+.flits-account-container .flits-address-card.flits-new-address-card p,
+.flits-account-container .flits-address-card .flits-address-card-action ul .flits-action-item.flits-address-default-btn{
+    background: rgb(6, 160, 227) !important;
+}
+
+.flits-social-login-btn-grp .flits-social-login-btn.flits-social-login-btn-googleplus {
+    font-family: 'Roboto', sans-serif !important;
+  font-weight: bold !important;
+}
+.flits-social-login-btn-grp .flits-social-login-btn {
+    width: auto!important;
+
+}
+.flits-social-login-btn-grp .flits-social-login-btn.flits-social-login-btn-googleplus .flits-social-login-btn-img {
+    background: #fff;
+    border-radius: 4px;
+    margin: -5px -11px;
+    margin-right: 12px;
+}
+.flits-social-login-btn-grp .flits-social-login-btn {
+    border-radius: 2px;
+}
+.flits-social-login-btn-grp .flits-social-login-btn.flits-social-login-btn-googleplus .flits-social-login-btn-img {
+    border-radius: 3px;
+}
+.flits-social-login-btn-grp .flits-social-login-btn .flits-social-login-btn-img {
+    padding: 7px 10px;
+}
+.flits-social-login-btn-grp .flits-social-login-btn.flits-social-login-btn-googleplus{
+ padding: 12px 40px;
+  text-align: center;
+}
+
+#customer_login .flits-social-login-container:not(:first-child),
+#create_customer .flits-social-login-container:not(:first-child){
+display:none;
+}
+
+.flits-social-login-container{
+  margin-bottom: 15px;
+}
+.flits-profile-form-container .flits-profile-form div:nth-child(3),
+.flits-profile-form-container .flits-profile-form .flits-gender-radio-row,
+.flits-profile-form-container .flits-profile-form .flits-gender-select-row{
+ display:none!important;
+}
+
+.flits-social-login-btn-grp .flits-social-login-btn {
+    width: 100%!important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    line-height: 15px;
+    border-radius: 0 !important;
+}

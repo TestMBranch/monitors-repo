@@ -1,0 +1,201 @@
+
+<div class="container">
+  <div class="leader_wrap">
+    <div class="leader_left-side">
+     <h2>{{section.settings.heading}}</h2>
+    {{section.settings.subheading}}
+      <ul>
+        {% if section.settings.list1 != blank %}
+        <li>{{section.settings.list1}}</li>
+        {% endif %}
+         {% if section.settings.list2 != blank %}
+        <li>{{section.settings.list2}}</li>
+         {% endif %}
+         {% if section.settings.list3 != blank %}
+        <li>{{section.settings.list3}}</li>
+         {% endif %}
+         {% if section.settings.list4 != blank %}
+        <li>{{section.settings.list4}}</li>
+         {% endif %}
+         {% if section.settings.list5 != blank %}
+        <li>{{section.settings.list5}}</li>
+         {% endif %}
+         {% if section.settings.list6 != blank %}
+        <li>{{section.settings.list6}}</li>
+         {% endif %}
+         {% if section.settings.list7 != blank %}
+        <li>{{section.settings.list7}}</li>
+         {% endif %}
+         {% if section.settings.list8 != blank %}
+        <li>{{section.settings.list8}}</li>
+         {% endif %}
+         {% if section.settings.list9 != blank %}
+        <li>{{section.settings.list9}}</li>
+         {% endif %}
+         {% if section.settings.list10 != blank %}
+        <li>{{section.settings.list10}}</li>
+        {% endif %}
+      </ul>
+       {{section.settings.subheading2a}}
+    </div>
+    <div class="sidebar-leader">
+      <h3>{{section.settings.heading2}}</h3>
+      <ul>
+        <li>
+          <h5>{{section.settings.subheading1}}</h5>
+          <p>{{section.settings.content1}}</p>
+        </li>
+        <li>
+          <h5>{{section.settings.subheading2}}</h5>
+          <p>{{section.settings.content2}}</p>
+        </li>
+        <li>
+          <h5>{{section.settings.subheading3}}</h5>
+          <p>{{section.settings.content3}}</p>
+        </li>
+        <li>
+          <h5>Customers</h5>
+          <p>8,000+</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+"name": "Section 2",
+ 
+ 
+ 
+
+"settings": [
+ 
+ 
+{
+"type": "textarea",
+"id": "heading",
+"label": "Heading"
+}
+
+,
+{
+"type": "richtext",
+"id": "subheading",
+"label": "Sub-Heading"
+}
+ 
+,
+{
+"type": "textarea",
+"id": "list1",
+"label": "List 1"
+}
+ 
+,
+{
+"type": "textarea",
+"id": "list2",
+"label": "List 2"
+}
+,
+{
+"type": "textarea",
+"id": "list3",
+"label": "List 3"
+}
+,
+{
+"type": "textarea",
+"id": "list4",
+"label": "List 4"
+}
+,
+{
+"type": "textarea",
+"id": "list5",
+"label": "List 5"
+}
+,
+{
+"type": "textarea",
+"id": "list6",
+"label": "List 6"
+}
+,
+{
+"type": "textarea",
+"id": "list7",
+"label": "List 7"
+}
+,
+{
+"type": "textarea",
+"id": "list8",
+"label": "List 8"
+}
+,
+{
+"type": "textarea",
+"id": "list9",
+"label": "List 9"
+}
+,
+{
+"type": "textarea",
+"id": "list10",
+"label": "List 10"
+},
+{
+"type": "richtext",
+"id": "subheading2a",
+"label": "Sub-Heading"
+}
+ 
+ ,
+{
+        "type": "header",
+        "content": "Right Column"
+ },
+{
+"type": "textarea",
+"id": "heading2",
+"label": "Main Heading"
+},
+ 
+{
+"type": "textarea",
+"id": "subheading1",
+"label": "Sub Heading 1"
+},
+ {
+"type": "textarea",
+"id": "content1",
+"label": "Content 1"
+},
+{
+"type": "textarea",
+"id": "subheading2",
+"label": "Sub Heading 2"
+},
+ {
+"type": "textarea",
+"id": "content2",
+"label": "Content 2"
+},
+{
+"type": "textarea",
+"id": "subheading3",
+"label": "Sub Heading 3"
+},
+ {
+"type": "textarea",
+"id": "content3",
+"label": "Content 3"
+}
+ 
+  
+
+ 
+] 
+}
+{% endschema %}

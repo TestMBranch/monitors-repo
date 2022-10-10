@@ -1,0 +1,19 @@
+{%- comment -%} Variables set by Weglot's preferences panel {%- endcomment -%}
+
+
+<link rel="alternate" hreflang="en" href="{{ canonical_url }}">
+{%- assign main_domain = canonical_url | split: '://' | last | split: '/' | first | split: 'www.' | last -%}
+{% assign canonical_path = canonical_url | split: main_domain | last -%}
+<link rel="alternate" hreflang="{{ "fr" }}" href="https://{{ request.host }}/a/l/fr{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "es" }}" href="https://{{ request.host }}/a/l/es{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "de" }}" href="https://{{ request.host }}/a/l/de{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "ko" }}" href="https://{{ request.host }}/a/l/ko{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "ar" }}" href="https://{{ request.host }}/a/l/ar{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "ja" }}" href="https://{{ request.host }}/a/l/ja{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "zh-CN" }}" href="https://{{ request.host }}/a/l/zh{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "pl" }}" href="https://{{ request.host }}/a/l/pl{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "nl" }}" href="https://{{ request.host }}/a/l/nl{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "af" }}" href="https://{{ request.host }}/a/l/af{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "it" }}" href="https://{{ request.host }}/a/l/it{{ canonical_path }}">
+<link rel="alternate" hreflang="{{ "hi" }}" href="https://{{ request.host }}/a/l/hi{{ canonical_path }}">
+

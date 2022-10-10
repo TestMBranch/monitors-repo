@@ -1,0 +1,30 @@
+
+<div class="full-img m-hight ">
+  <img class="desk lazyload" data-src="{{ section.settings.image | img_url: 'master'}}" alt="">
+   <img class="mob lazyload" data-src="{{ section.settings.image2 | img_url: 'master'}}" alt="">
+</div>
+{% schema %}
+{
+"name": "Section 4",
+ 
+ 
+ 
+
+"settings": [
+ {
+ "type": "image_picker",
+"id": "image",
+"label": "Image Desktop"
+} ,
+ {
+ "type": "image_picker",
+"id": "image2",
+"label": "Image Mobile"
+} 
+ 
+  
+
+ 
+] 
+}
+{% endschema %}

@@ -1,0 +1,70 @@
+<div class="why-choose-wrap dark-choose">
+  <div class="container">
+    <h2>{{section.settings.heading}}</h2>
+    <div class="why-choose-row">
+     {% for block in section.blocks %}
+      <div class="m-choose">
+        <div class="m-icon">
+          <img data-src="{{ block.settings.image | img_url: 'master'}}" class="lazyload" alt="">
+        </div>
+        <div class="m-des">
+          <p>{{block.settings.heading}}</p>
+        </div>
+      </div>
+      {% endfor %}
+      
+      
+
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+"name": "Section 5",
+ 
+ "max_blocks": 50,
+ 
+
+"settings": [
+ 
+ 
+ 
+{
+"type": "textarea",
+"id": "heading",
+"label": "Main Heading"
+}
+
+ 
+  
+
+ 
+],
+"blocks": [
+{
+"type": "image",
+"name": "Image",
+"settings": [
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+},
+ 
+ 
+{
+"type": "textarea",
+"id": "heading",
+"label": "Heading"
+}
+ 
+ 
+
+
+ 
+]
+}
+
+] 
+}
+{% endschema %}

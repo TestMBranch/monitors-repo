@@ -1,0 +1,138 @@
+<div class="container">
+  <div class="guest-chekout-wrap layout">
+
+    <h1 class="MainHeading">Login</h1>
+
+    <div class="layout__section">
+      <section data-section-id="login" data-section-type="login">
+        {%- assign is_recover_active = false -%}
+
+        {%- form 'recover_customer_password' -%}
+        {%- if form.errors or form.posted_successfully? -%}
+        {%- assign is_recover_active = true -%}
+        {%- endif -%}
+        {%- endform -%}
+
+
+        {%- comment -%}
+        --------------------------------------------------------------------------------------------------------------------
+        CUSTOMER LOGIN FORM
+        --------------------------------------------------------------------------------------------------------------------
+        {%- endcomment -%}
+
+        {%- if is_recover_active -%}
+        {%- assign login_default_visibility = 'display: none' -%}
+        {%- else -%}
+        {%- assign login_default_visibility = 'display: block' -%}
+        {%- endif -%}
+
+        <h2 class="heading hidden_heading">Have an account</h2>
+        <p>Enter your email and password:</p>
+        {%- form 'customer_login', name: 'login', class: 'form form--main', id: 'customer_login', style: login_default_visibility -%}
+
+
+        {%- if form.errors -%}
+        <p class="alert alert--error">{{ form.errors.messages['form'] }}</p>
+        {%- endif -%}
+
+
+        <div class="form__input-wrapper form__input-wrapper--labelled">
+          <!--      <label>Email</label> -->
+          <input type="email" id="customer[email]" name="customer[email]" class="form__field form__field--text " placeholder="Email"  required="">
+        </div>
+<!--         <input type="hidden" name="checkout_url" value="/cart" /> -->
+
+        <div class="form__input-wrapper form__input-wrapper--labelled">
+          <!--      <label>Password</label> -->
+          <input type="password" id="customer[password]" name="customer[password]"class="form__field form__field--text " placeholder="Password"  required="">
+        </div>
+
+        <input type="hidden" name="checkout_url" value="/checkout?locale=en">
+        <button  type="submit" class="button button--primary button--full">Login</button>
+
+        <div class="flits-social-login-container guestcheck_googlelogin">
+          <div class="flits-social-login-btn-grp">
+            <a href="/apps/flits/api/1/22663/google/auth/login?token=b7e80d6c9f3098c02ab85007b3ec1508" class="flits-social-login-btn flits-social-login-btn-googleplus" style="order: 2;">
+              <span class="flits-social-login-btn-img"><svg class="flits-icon-google" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> <path style="fill:#FBBB00;" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256 c0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456 C103.821,274.792,107.225,292.797,113.47,309.408z"></path> <path style="fill:#518EF8;" d="M507.527,208.176C510.467,223.662,512,239.655,512,256c0,18.328-1.927,36.206-5.598,53.451 c-12.462,58.683-45.025,109.925-90.134,146.187l-0.014-0.014l-73.044-3.727l-10.338-64.535 c29.932-17.554,53.324-45.025,65.646-77.911h-136.89V208.176h138.887L507.527,208.176L507.527,208.176z"></path> <path style="fill:#28B446;" d="M416.253,455.624l0.014,0.014C372.396,490.901,316.666,512,256,512 c-97.491,0-182.252-54.491-225.491-134.681l82.961-67.91c21.619,57.698,77.278,98.771,142.53,98.771 c28.047,0,54.323-7.582,76.87-20.818L416.253,455.624z"></path> <path style="fill:#F14336;" d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012 c-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0 C318.115,0,375.068,22.126,419.404,58.936z"></path></svg></span>
+              <span class="flits-social-login-btn-text">Sign in with Google</span>
+            </a>
+          </div>
+          <div class="flits-social-login-error"></div>
+        </div>
+
+        <p>Lost password? <button type="button" data-action="toggle-login-form" class="link link--accented"> Recover Password</button></p>
+
+        {%- endform -%}
+
+        {%- comment -%}
+        --------------------------------------------------------------------------------------------------------------------
+        CUSTOMER RECOVERY FORM
+        --------------------------------------------------------------------------------------------------------------------
+        {%- endcomment -%}
+
+        {%- if is_recover_active -%}
+        {%- assign recover_default_visibility = 'display: block' -%}
+        {%- else -%}
+        {%- assign recover_default_visibility = 'display: none' -%}
+        {%- endif -%}
+
+        {%- form 'recover_customer_password', name: 'recover', class: 'form form--main', id: 'recover_customer_password', style: recover_default_visibility -%}
+
+
+        {%- if form.errors -%}
+        <p class="alert alert--error">{{ form.errors.messages['form'] }}</p>
+        {%- endif -%}
+
+        {%- if form.posted_successfully? -%}
+        <p class="alert alert--center alert--success">{{ 'customer.recover_password.success' | t }}</p>
+        {%- else -%}
+        <div class="form__input-wrapper form__input-wrapper--labelled">
+          <input type="email" id="customer[recover_email]" class="form__field form__field--text" name="email" required="required">
+          <label for="customer[recover_email]" class="form__floating-label">{{ 'customer.recover_password.email' | t }}</label>
+        </div>
+
+        <button type="submit" class="form__submit button button--primary button--full">{{ 'customer.recover_password.submit' | t }}</button>
+
+
+        {%- endif -%}
+
+        <div class="form__secondary-action">
+          <p>{{ 'customer.recover_password.remembered_your_password' | t }} <button type="button" data-action="toggle-login-form" class="link link--accented">{{ 'customer.recover_password.back_to_login' | t }}</button></p>
+        </div>
+        {%- endform -%}
+
+      </section>
+
+    </div>
+
+    <div class="layout__section">
+      <div class="guest_text">
+        <h2 class="heading">New Customer</h2>
+        <p>New to our site? Create an account today and make future purchase easier.</p>
+        <a href="/account/register?return_to=https%3A%2F%2Fmonitors.com%2Fcheckout" class="button button--full button--primary button--secondary">Create Account</a>
+      </div>
+
+      <div class="guest_text aadid">
+        <h2 class="heading">Guest Checkout</h2>
+        <p>You don't need an account to checkout! You can enter as a guest and place your order.</p>
+        <a href="/checkout?locale=en" class="button button--full button--ternary checkoutGuest">Checkout as Guest</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  form#customer_login, form#recover_customer_password {
+    margin: 0;
+    text-align: left;
+  }
+</style>
+
+
+{% schema %}
+  {
+    "name": "Guest checkout page",
+    "settings": []
+  }
+{% endschema %}

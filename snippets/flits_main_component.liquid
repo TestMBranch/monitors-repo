@@ -1,0 +1,1300 @@
+
+{% comment %} PLEASE DON'T MAKE CHANGES IN THIS FILE IT'S AFFECT THE CODE IF YOU NEED ANY HELP PLEASE CONTACT TO FLITS TEAM support@getflits.com {% endcomment %}
+{% liquid
+	capture address_editButtonText
+		render 'flits_capture_code' with 'translation',template:'flits.address_page.edit_button',default_template:'Edit'
+	endcapture
+
+	capture address_deleteButtonText
+		render 'flits_capture_code' with 'translation',template:'flits.address_page.delete_button',default_template:'Delete'
+	endcapture
+
+	capture wishlist_addToWishlistButtonText
+		render 'flits_capture_code' with 'translation',template:'flits.wishlisted_product_page.add_to_wishlist_button',default_template:'Add to Wishlist'
+	endcapture
+
+	capture wishlist_removeFromWishlistButtonText
+		render 'flits_capture_code' with 'translation',template:'flits.wishlisted_product_page.remove_from_wishlist_button',default_template:'Added to Wishlist'
+	endcapture
+
+	capture wishlist_emailPlaceholderText
+		render 'flits_capture_code' with 'translation',template:'flits.wishlisted_product_page.email_placeholder',default_template:'Email address'
+	endcapture
+
+	capture wishlist_whatIsYourEmailText
+		render 'flits_capture_code' with 'translation',template:'flits.wishlisted_product_page.what_is_your_email',default_template:"What's Your Email?"
+	endcapture
+
+	capture wishlist_productAddedText
+		render 'flits_capture_code' with 'translation',template:'flits.wishlisted_product_page.product_added_to_wishlist',default_template:"Product has been added to your wishlist"
+	endcapture
+
+	capture wishlist_viewYourWishlistMessageText
+		render 'flits_capture_code' with 'translation',template:'flits.wishlisted_product_page.view_your_wishlist_message',default_template:"You can view your wishlist by creating account or logging-in an existing account."
+	endcapture
+
+	capture contactUs_formTitleText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.form_title',default_template:'Contact Us'
+	endcapture
+
+	capture contactUs_headerText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.header_text',default_template:'Your satisfaction is our top priority'
+	endcapture
+
+	capture contactUs_customerNameLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.customer_name_label',default_template:'Customer Name'
+	endcapture
+
+	capture contactUs_FirstNameLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.first_name_label',default_template:'First Name'
+	endcapture
+
+	capture contactUs_firstNamePlaceholderText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.first_name_placeholder',default_template:'James'
+	endcapture
+
+	capture contactUs_lastNameLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.last_name_label',default_template:'Last Name'
+	endcapture
+
+	capture contactUs_lastNamePlaceholderText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.last_name_placeholder',default_template:'Grey'
+	endcapture
+
+	capture contactUs_emailLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.email_label',default_template:'Email'
+	endcapture
+
+	capture contactUs_emailPlaceholderText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.email_placeholder',default_template:'abc@xyz.com'
+	endcapture
+
+	capture contactUs_phoneNumberLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.contact_number_label',default_template:'Contact Number'
+	endcapture
+
+	capture contactUs_phoneNumberPlaceholderText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.contact_number_placeholder',default_template:'1234567890'
+	endcapture
+
+	capture contactUs_reasonLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.reason_label',default_template:'Reason to Contact'
+	endcapture
+
+	capture contactUs_selectAnyReasonText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.select_any_reason',default_template:'Select a Reason'
+	endcapture
+
+	capture contactUs_orderCancelRelatedReasonText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.order_cancel_related_reason',default_template:'Cancel Order'
+	endcapture
+
+	capture contactUs_orderAndShippingRelatedReasonText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.order_and_shipping_related_reason',default_template:'Order\/Shipping'
+	endcapture
+
+	capture contactUs_returnAndExchangeRelatedReasonText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.return_and_exchange_related_reason',default_template:'Return\/Exchange'
+	endcapture
+
+	capture contactUs_productRelatedReasonText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.product_related_reason',default_template:'Product'
+	endcapture
+
+	capture contactUs_priceRelatedReasonText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.price_related_reason',default_template:'Price'
+	endcapture
+
+	capture contactUs_otherReasonText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.other_reason',default_template:'Other'
+	endcapture
+
+	capture contactUs_messageLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.message_label',default_template:'Message'
+	endcapture
+
+	capture contactUs_messagePlaceholderText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.message_placeholder',default_template:'Hello Support Team, when can I expect my order?'
+	endcapture
+
+	capture contactUs_attachmentLinkLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.attachment_link_label',default_template:'Attachment Link'
+	endcapture
+
+	capture contactUs_attachmentLinkPlaceholderText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.attachment_link_placeholder',default_template:'You can upload files on your drive and paste the link here.'
+	endcapture
+
+	capture contactUs_orderNumberLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.order_number_label',default_template:'Order Number'
+	endcapture
+
+	capture contactUs_orderNameLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.order_name_label',default_template:'Order Name'
+	endcapture
+
+	capture contactUs_orderDateLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.order_date_label',default_template:'Order Date'
+	endcapture
+
+	capture contactUs_orderTotalPriceLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.order_total_price_label',default_template:'Order Total Price'
+	endcapture
+
+	capture contactUs_orderFulfillmentStatusLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.order_fulfillment_status_label',default_template:'Order Fulfillment Status'
+	endcapture
+
+	capture contactUs_orderPaymentStatusLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.order_payment_status_label',default_template:'Order Payment Status'
+	endcapture
+
+	capture contactUs_orderLinkLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.order_link_label',default_template:'View Order in Shopify'
+	endcapture
+
+	capture contactUs_customerLinkLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.customer_link_label',default_template:'View Customer in Shopify'
+	endcapture
+
+	capture contactUs_submitButtonText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.submit_button',default_template:'Submit'
+	endcapture
+
+	capture contactUs_successButtonText
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.success_button',default_template:'OK'
+	endcapture
+
+	capture contactUs_successMessageLine1Text
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.success_message_line_1',default_template:'Your request has been submitted.'
+	endcapture
+
+	capture contactUs_successMessageLine2Text
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.success_message_line_2',default_template:'You will receive a reply in the email address which you have submitted in the query form.'
+	endcapture
+
+	capture contactUs_successMessageLine3Text
+		render 'flits_capture_code' with 'translation',template:'flits.order_contact_us.success_message_line_3',default_template:'Thank you for contacting us.'
+	endcapture
+
+	capture refer_popupGreetingsText
+		render 'flits_capture_code' with 'translation',template:'flits.refer_friend_page.popup_greetings',default_template:'Welcome Newcomer'
+	endcapture
+
+	capture socialLogin_loadingLabelText
+		render 'flits_capture_code' with 'translation',template:'flits.social_login_page.loading_message',default_template:"Logging you in"
+	endcapture
+%}
+
+{% assign modules = 'module_profile,module_address,module_order,module_topOrder,module_wishlist,module_recentlyView,module_storeCredit,module_howToEarn,module_howToSpend,module_fromAdmin,module_referFriend,module_changePassword' | split: ',' %}
+
+{% case flits_main_component %}
+
+{%- when 'comp_greeting' -%}
+<p class="flits-h1 flits-greeting-text">
+  <span class="flits-greeting-title"></span> <span class="flits-user-name">{{ customer.first_name | strip }}</span>
+</p>
+
+{%- when 'comp_menuNav' -%}
+<div class="flits-menu-nav flits-skeleton-menu-nav">
+  <div class="flits-navigation-header flits-with-shadow flits-skeleton-navigation-header">
+    <div class="flits-user-avatar flits-skeleton-user-avatar flits-skeleton-box" data-flits-name="{{ customer.first_name | slice: 0 | strip }}{{ customer.last_name | slice: 0 | strip }}">
+    </div>
+    <div class="flits-user-box flits-skeleton-user-box">
+      <div class="flits-d-flex flits-skeleton-box flits-skeleton-user-name">
+        <p class="flits-h4 flits-user-name" data-tippy-content="{{ customer.name | strip }}">{{ customer.name | strip }}</p>
+      </div>
+      <div class="flits-d-flex flits-align-items-center flits-skeleton-box flits-skeleton-time">
+        <svg class="flits-svg-clock">
+          <g>
+            <circle class="flits-clock-circle" cx="50%" cy="50%" r="45%"></circle>
+          </g>
+          <g class="flits-clock-hande">
+            <line x1="50%" y1="50%" x2="50%" y2="25%" id="flits-hourhand">
+            </line>
+            <line x1="50%" y1="50%" x2="50%" y2="15%" id="flits-minutehand">
+            </line>
+            <line x1="50%" y1="50%" x2="50%" y2="12%" id="flits-secondhand">
+            </line>
+          </g>
+          <circle class="flits-clock-hand-center" cx="50%" cy="50%" r="3%"></circle>
+        </svg>
+        <p class="flits-current-time"></p>
+      </div>
+    </div>
+  </div>
+  <div class="flits-menus-list-box flits-hide">
+    <div class="flits-menu-items"></div>
+  </div>
+  {% render 'flits_capture_code' with 'component',template:'comp_skeletonMenu' %}
+</div>
+
+{%- when 'comp_menuItem' -%}
+<div class="flits-menu-item {{class}}">
+  <a href="{{- href -}}">
+    <span class="flits-menu-img">{{ img  | strip }}</span>
+    <span {{ attr }} class="flist-menu-title">{{- text | strip -}}</span>
+  </a>
+  {{ badge }}
+</div>
+
+{%- when 'comp_accountBody'-%}
+<div class="flits-account-body flits-skeleton-account-body">
+  {% liquid 
+for module in modules
+assign module_id = module | replace: 'module_', 'flits_tab_'
+render 'flits_capture_code' with 'module',template:module, id:module_id
+endfor 
+%}
+</div>
+
+{%- when 'comp_mobile_menuNav' -%}
+<div class="flits-slider-menu-nav flits-skeleton-slider-menu-nav">
+  <div class="flits-menus-list-box flits-hide">
+    <div class="flits-menu-items"></div>
+  </div>
+  {% render 'flits_capture_code' with 'component',template:'comp_mobile_skeletonMenu' %}
+</div>
+
+{%- when 'comp_mobile_accountBody'-%}
+<div class="flits-mobile-account-body flits-skeleton-mobile-account-body">
+  {% liquid 
+for module in modules
+assign module_id = module | replace: 'module_', 'flits_mobile_tab_'
+assign module_name = module | replace: 'module_', 'module_mobile_'
+render 'flits_capture_code' with 'module',template:module_name, id:module_id
+endfor 
+%}
+</div>
+
+{%- when 'comp_accountBody_card' -%}
+<div class="flits-account-box {{ class }}">
+  <div class="flits-account-box-header">
+    <div class="flits-header-title"></div>
+  </div>
+  <div class="flits-container-box">
+    <div class="flits-box-card"></div>
+  </div>
+</div>
+
+{%- when 'comp_mobile_accountBody_card' -%}
+<div class="flits-mobile-account-box {{ class }}">
+  <div class="flits-navigation-header flits-with-boxshadow flits-pb-30">
+    {% render 'flits_capture_code' with 'component',template:'comp_mobile_logutButton' %}
+    <div class="flits-user-avatar" data-flits-name="{{ customer.first_name | slice: 0 | strip }}{{ customer.last_name | slice: 0 | strip }}">
+    </div>
+    <div class="flits-user-box flits-skeleton-user-box">
+      <p class="flits-h4 flits-greeting-title flits-skeleton-box flits-skeleton-greeting-mobile"></p>
+      <span class="flits-user-name flits-skeleton-box flits-skeleton-user-name-mobile" data-tippy-content="{{ customer.first_name | strip }}">{{ customer.first_name | strip }}</span>
+    </div>
+  </div>
+  <div class="flits-mobile-box-card flits-header-title flits-p-10"></div>
+  <div class="flits-mobile-container-box flits-mt-25">
+    <div class="flits-mobile-box-card flits-p-15"></div>
+  </div>
+</div>
+
+{%- when 'comp_anchorButton' -%}
+<a type="{{ type }}" class="flits-button flits-empty-button {{ class }}" {{ attr }}>{{ text | strip }}</a>
+
+{%- when 'comp_mobile_logutButton' -%}
+<a href="/account/logout" class="flits-logout-button">
+  <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.25 11.24"><path id="Layer_2" data-name="Layer 2" d="M9.19,2.08a5,5,0,1,1-7.07,0L2.19,2M5.59.62V5.51" transform="translate(-0.02 0)" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:1.25px"/></svg>
+</a>
+
+{%- when 'comp_emptySection' -%}
+<div class="flits-empty-container {{ class }}">
+  <div class="flits-empty-icon-box">
+    {{ img }}
+  </div>
+  <div class="flits-empty-text-div">
+    <p class="flits-empty-text flits-mb-20">{{ text_1 | strip }}</p>
+    <p class="flits-empty-text flits-strong">{{ text_2 | strip }}</p>
+  </div>
+  {% render 'flits_capture_code' with 'component',template:'comp_anchorButton', text:'View Products',
+  attr:'data-flits-lang="buttons.shop_now" data-flits-lang-default="View Products" href="/collections/all"',
+  class:'flits-primary-btn flits-mt-20' %}
+</div>
+
+{%- when 'comp_noResultSection' -%}
+<div class="flits-no-result-container {{ class }}">
+  <div class="flits-no-result-icon-box">
+    {{ img }}
+  </div>
+  <p class="flits-no-result-found-text" data-flits-lang="top_ordered_products_page.search_product_not_found" data-flits-lang-default="No product/s found">No product/s found</p>
+</div>
+
+{%- when 'comp_loadingSection' -%}
+<div class="flits-loading-div {{ class }}" {{ attr }}>
+  <div class="flits-spinner"></div>
+  <p class="flits-loading-text">{{ text }}</p>
+</div>
+
+{%- when 'comp_button' -%}
+<button type="{{ type }}" class="flits-button {{ class }}" {{ attr }}>
+  {{ text | strip }}
+</button>
+
+{%- when 'comp_iconButton' -%}
+<button type="{{ type }}" class="flits-button flits-button-icon-wrap {{ class }}" {{ attr }}>
+  <div class="flits-button-icon">
+    {{ img }}
+  </div>
+  {{ text | strip }}
+</button>
+
+{%- when 'comp_flitsSelect' -%}
+<div class="flits-select-row">
+  <select class="flits-input {{ class }}"  {{ attr }} name="{{ name | strip }}">
+    {{ options }}
+  </select>
+  <div class="flits-select-arrow">
+    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision">
+      <path d="M6 9l6 6 6-6"></path>
+    </svg> 
+  </div>
+</div>
+
+{%- when 'comp_flitsLabelSelect' -%}
+<div class="flits-input-wrap">
+  <label class="flits-input-label">{{ label | strip }}</label>
+  <div class="flits-select-row">
+    <select class="flits-input {{ class }}"  {{ attr }} name="{{ name | strip }}" >
+      {{ options }}
+    </select>
+    <div class="flits-select-arrow">
+      <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision">
+        <path d="M6 9l6 6 6-6"></path>
+      </svg> 
+    </div>
+  </div>
+</div>
+
+{%- when 'comp_flitsLabelInput' -%}
+<div class="flits-input-wrap">
+  <label class="flits-input-label">{{ label | strip }}</label>
+  <input type="{{ type | strip }}" class="flits-input {{ class }}" placeholder="{{ placeholder | strip }}" name="{{ name | strip }}" value="{{ value | strip }}" {{ attr }}>
+</div>
+
+{%- when 'comp_flitsInput' -%}
+<div class="flits-input-wrap">
+  <input type="{{ type | strip }}" class="flits-input {{ class }}" placeholder="{{ placeholder | strip }}" name="{{ name | strip }}" value="{{ value | strip }}" {{ attr }}>
+</div>
+
+{%- when 'comp_flitsLabelIconInput' -%}
+<div class="flits-input-wrap flits-input-icon-wrap">
+  <label class="flits-input-label">{{ label | strip }}</label>
+  <div class="flits-input-icon-group">
+    <div class="flits-input-icon">
+      {{ inputIcon }}
+    </div>
+    <input type="{{ type | strip }}" class="flits-input {{ class }}" placeholder="{{ placeholder | strip }}" name="{{ name | strip }}" value="{{ value | strip }}" {{ attr }}>
+  </div>
+</div>
+
+{%- when 'comp_flitsIconInput' -%}
+<div class="flits-input-wrap flits-input-icon-wrap">
+  <div class="flits-input-icon-group">
+    <div class="flits-input-icon">
+      {{ inputIcon }}
+    </div>
+    <input type="{{ type | strip }}" class="flits-input {{ class }}" placeholder="{{ placeholder | strip }}" name="{{ name | strip }}" value="{{ value | strip }}" {{ attr }}>
+  </div>
+</div>
+
+{%- when 'comp_flitsCheckbox' -%}
+<div class="flits-input-row">
+  <input type="checkbox" class="flits-input {{ class }}" name="{{ name | strip }}" value="{{ value }}" {{ attr }}>
+  <label class="flits-input-label" for="{{ for }}">{{ label | strip }}</label>
+</div>
+
+{%- when 'comp_flitsRadio' -%}
+<div class="flits-input-row">
+  <input type="radio" class="flits-input {{ class }}" name="{{ name | strip }}" value="{{ value }}" {{ attr }}>
+  <label class="flits-input-label" for="{{ for }}">{{ label | strip }}</label>
+</div>
+
+{%- when 'comp_clipboardInput' -%}
+<div class="flits-input-wrap {{ class }}">
+  <div class="flits-input-icon-group">
+    <input type="{{ type | strip }}" class="flits-input" placeholder="{{ placeholder | strip }}" name="{{ name | strip }}" value="{{ value | strip }}" {{ attr }}>
+    {% render 'flits_capture_code' with 'component',template:'comp_button',
+    type:'button',
+    text:'Copy',
+    attr:'data-flits-lang="refer_friend_page.copy" data-flits-lang-default="Copy" id="flits-refer-link-copy"',
+    class:'flits-copy-btn flits-primary-btn flits-ml-0'
+    %}
+  </div>
+</div>
+
+{%- when 'comp_productQtyInput' -%}
+<div class="flits-product-quantity {{ class }}">
+  <input type="{{ type | strip }}" class="flits-input" placeholder="{{ placeholder | strip }}" name="product_quantity_input" value="{{ value | strip }}" {{ attr }} min="{{ min }}">
+  <span class="flits-quantity-btn" data-flits-qty-btn="minus">
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.74 11.74"><path id="Layer_2" data-name="Layer 2" d="M5.87,11.74a5.87,5.87,0,1,1,5.87-5.87A5.87,5.87,0,0,1,5.87,11.74Zm0-11A5.14,5.14,0,1,0,11,5.89s0,0,0,0A5.15,5.15,0,0,0,5.87.73Zm2.57,5.5H3.3a.37.37,0,0,1,0-.74H8.44a.37.37,0,0,1,0,.74Z" transform="translate(0 0)" style="fill:#25d872"/></svg>
+  </span>
+  <span class="flits-quantity-btn" data-flits-qty-btn="plus">
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.74 11.74"><path id="Layer_2" data-name="Layer 2" d="M5.87,11.74a5.87,5.87,0,1,1,5.87-5.87A5.87,5.87,0,0,1,5.87,11.74Zm0-11A5.14,5.14,0,1,0,11,5.89s0,0,0,0A5.15,5.15,0,0,0,5.87.73Zm2.57,5.5H3.3a.37.37,0,0,1,0-.74H8.44a.37.37,0,0,1,0,.74ZM5.87,8.8a.37.37,0,0,1-.37-.36V3.3a.37.37,0,1,1,.74,0h0V8.44A.37.37,0,0,1,5.87,8.8Z" transform="translate(0 0)" style="fill:#25d872"/></svg>
+  </span>
+</div>
+
+{%- when 'comp_flitsPagination' -%}
+<div class="flits-pagination-div {{ class }}" {{ attr }}>
+  {% comment %} <button class="flits-pagination-btn flits-first-btn" data-flits-btn="flits-prev-btn" data-flits-lang="buttons.first" data-flits-lang-default="First">First</button> {% endcomment %}
+  <button class="flits-pagination-btn flits-prev-btn" data-flits-btn="flits-prev-btn" data-flits-lang="buttons.previous" data-flits-lang-default="Previous">Previous</button>
+  <ul class="flits-pagination pagination"></ul>
+  <button class="flits-pagination-btn flits-next-btn" data-flits-btn="flits-next-btn" data-flits-lang="buttons.next" data-flits-lang-default="Next">Next</button>
+  {% comment %} <button class="flits-pagination-btn flits-last-btn" data-flits-btn="flits-next-btn" data-flits-lang="buttons.last" data-flits-lang-default="Last">Last</button> {% endcomment %}
+</div>
+<div class="flits-clearfix"></div>
+
+{%- when 'comp_flitsSocialLoginLoader' -%}
+{% render 'flits_capture_code' with 'component',template:'comp_loadingSection', class:'flits-social-login-loader', attr:'style=display:none' text:socialLogin_loadingLabelText %}
+
+{%- when 'comp_contactUsForm' -%}
+<script>
+  if (!window.flitsApp || typeof window.flitsApp == "undefined") {
+    window.flitsApp = {};
+  }
+</script>
+<style>
+  .flits-overlay.flits-order-contact-us-popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1111;
+    font-size: 15px;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    color: #3a3a3a;
+    line-height: 1.5;
+  }
+</style>
+<div id="flits-contact-us-form" class="flits-overlay flits-order-contact-us-popup" style="visibility:hidden">
+  <div class="flits-popup">
+    <div class="flits-popup-icon-text">
+      <div class="flits-popup-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 420.96 420.96" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+          <g>          
+            <g xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <path d="M354.48,144c0-79.529-64.471-144-144-144s-144,64.471-144,144c-20.56,2.56-40,16-40,47.2v75.2c0,35.2,24.64,48,48,48h23.2    c4.418,0,8-3.582,8-8V151.52c0-4.418-3.582-8-8-8h-15.2c0-70.692,57.308-128,128-128s128,57.308,128,128h-15.2    c-4.418,0-8,3.582-8,8v154.64c0,4.418,3.582,8,8,8h15.2c-2.24,54.96-28.64,67.84-81.36,70.16v-5.36c0-8.837-7.163-16-16-16H190.8    c-8.837,0-16,7.163-16,16v26c0,8.837,7.163,16,16,16h50.48c8.837,0,16-7.163,16-16v-4.64c50.72-2.32,94.56-12.8,97.2-86.64    c20.56-2.56,40-16,40-47.2v-75.2C394.48,159.92,375.12,146.56,354.48,144z M89.68,158.96v139.2h-15.6c-11.84,0-32-4.16-32-32    v-75.2c0-27.6,19.92-32,32-32H89.68z M241.28,392.88v12.16H190.8v-26h50.48V392.88z M378.48,266.4c0,27.6-19.92,32-32,32h-15.2    V159.52h15.6c11.84,0,32,4.16,32,32L378.48,266.4z" fill="#ffffff" data-original="#000000" style="" class=""/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="flits-popup-text">
+        <p class="flits-h3 flits-popup-header-title">{{ contactUs_formTitleText | strip }}</p>
+        <p class="flits-popup-header-sub-text">{{ contactUs_headerText | strip }}</p>
+      </div>
+    </div>
+    <span class="flits-close-popup">&times;</span>
+    <div class="flits-form-content">
+      <!-- Form only for display purpose -->
+      {% assign formId = 'flits-contact-form' %}
+      <script>
+        window.flitsApp.formId = "{{ formId }}"
+      </script>
+      {% form 'contact', id: formId %}
+      <div class="flits-row">
+        <div class="flits-col-sm-6 flits-col-md-6 flits-mb-15">
+          <div class="flits-input-wrap flits-input-icon-wrap">
+            <label class="flits-input-label" for="{{ formId }}-first-name">{{ contactUs_FirstNameLabelText | strip }}</label>
+            <div class="flits-input-icon-group">
+              <div class="flits-input-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              </div>
+              <input type="text" class="flits-input flits-contact-form-first-name" id="{{ formId }}-first-name"
+                     placeholder="{{ contactUs_firstNamePlaceholderText | strip }}"
+                     name="contact[{{ contactUs_FirstNameLabelText | strip }}]"
+                     value="{% if form[first_name] %}{{ form[first_name] }}{% elsif customer %}{{ customer.first_name }}{% endif %}">
+            </div>
+          </div>
+        </div>
+        <div class="flits-col-sm-6 flits-col-md-6 flits-mb-15">
+          <div class="flits-input-wrap flits-input-icon-wrap">
+            <label class="flits-input-label" for="{{ formId }}-last-name">{{ contactUs_lastNameLabelText | strip }}</label>
+            <div class="flits-input-icon-group">
+              <div class="flits-input-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              </div>
+              <input type="text" class="flits-input flits-contact-form-last-name" id="{{ formId }}-last-name"
+                     placeholder="{{ contactUs_lastNamePlaceholderText | strip }}"
+                     name="contact[{{ contactUs_lastNameLabelText | strip }}]"
+                     value="{% if form[last_name] %}{{ form[last_name] }}{% elsif customer %}{{ customer.last_name }}{% endif %}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flits-row">
+        <div class="flits-col-sm-12 flits-col-md-6 flits-mb-15">
+          <div class="flits-input-wrap flits-input-icon-wrap">
+            <label class="flits-input-label" for="{{ formId }}-email">{{ contactUs_emailLabelText | strip }} <span class ="flits-requird-sign" aria-hidden="true">*</span></label>
+            <div class="flits-input-icon-group">
+              <div class="flits-input-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <input type="text"
+                     placeholder="{{ contactUs_emailPlaceholderText | strip }}"
+                     id="{{ formId }}-email"
+                     name="contact[{{ contactUs_emailLabelText | strip }}]"
+                     autocorrect="off"
+                     autocapitalize="off"
+                     value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                     aria-required="true"
+                     class="flits-input flits-contact-form-email">
+            </div>
+          </div>
+          <small id="flits-alert-email" class="flits-form-alert"></small>
+        </div>
+        <div class="flits-col-sm-12 flits-col-md-6 flits-mb-15">
+          <div class="flits-phone-with-country-div flits-contact-us-phone-number-country-div">
+            <div class="flits-input-wrap flits-input-icon-wrap">
+              <label class="flits-input-label" for="{{ formId }}-phone">{{ contactUs_phoneNumberLabelText | strip }}</label>
+              <div class="flits-input-icon-group">
+                <div class="flits-input-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <input type="tel" class="flits-input flits-contact-form-phone" id="{{ formId }}-phone"
+                       placeholder="{{ contactUs_phoneNumberPlaceholderText | strip }}"
+                       name="contact[{{ contactUs_phoneNumberLabelText | strip }}]"
+                       value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" data-name="contact[phone]">
+                <input type="text" class="flits-input flits-country-code-textbox" disabled>
+                <div class="flits-country-drpdown">
+                  <span class="flits-country-flag"></span>
+                  <div class="flits-select-row">
+                    <select class="flits-input"></select>
+                    <div class="flits-select-arrow">
+                      <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision">
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <small id="flits-alert-phone" class="flits-form-alert"></small>
+        </div>
+      </div>
+      <div class="flits-row">
+        <div class="flits-col-md-12 flits-mb-15">
+          <div class="flits-input-wrap">
+            <label class="flits-input-label" for="{{ formId }}-reason">{{ contactUs_reasonLabelText | strip }} <span class ="flits-requird-sign" aria-hidden="true">*</span></label>
+            <div class="flits-select-row">
+              <select class="flits-input flits-contact-form-reason" name="contact[{{ contactUs_reasonLabelText | strip }}]" id="{{ formId }}-reason">
+                <option value="" disabled="" selected="">{{ contactUs_selectAnyReasonText | strip }}</option>
+                <option value="{{ contactUs_orderCancelRelatedReasonText | strip }}">{{ contactUs_orderCancelRelatedReasonText | strip }}</option>
+                <option value="{{ contactUs_orderAndShippingRelatedReasonText | strip }}">{{ contactUs_orderAndShippingRelatedReasonText | strip }}</option>
+                <option value="{{ contactUs_returnAndExchangeRelatedReasonText | strip }}">{{ contactUs_returnAndExchangeRelatedReasonText | strip }}</option>
+                <option value="{{ contactUs_productRelatedReasonText | strip }}">{{ contactUs_productRelatedReasonText | strip }}</option>
+                <option value="{{ contactUs_priceRelatedReasonText | strip }}">{{ contactUs_priceRelatedReasonText | strip }}</option>
+                <option value="{{ contactUs_otherReasonText | strip }}">{{ contactUs_otherReasonText | strip }}</option>
+              </select>
+              <div class="flits-select-arrow">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision">
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg> 
+              </div>
+            </div>
+          </div>
+          <small id="flits-alert-reason" class="flits-form-alert"></small>
+        </div>
+      </div>
+      <div class="flits-row">
+        <div class="flits-col-md-12 flits-mb-15">
+          <div class="flits-input-wrap">
+            <label class="flits-input-label" for="{{ formId }}-message">{{ contactUs_messageLabelText | strip }} <span class="flits-requird-sign" aria-hidden="true">*</span></label>
+            <textarea rows="5" maxlength="250" class="flits-contact-form-message flits-textarea" id="{{ formId }}-message"
+                      placeholder="{{ contactUs_messagePlaceholderText | strip }}"
+                      name="contact[{{ contactUs_messageLabelText | strip }}]"></textarea>
+            <span id="flits-msg-count" class="flits-text-count">0 / 250</span>
+          </div>
+          <small id="flits-alert-message" class="flits-form-alert"></small>
+        </div>
+      </div>
+      <div class="flits-row">
+        <div class="flits-col-sm-12 flits-col-md-12 flits-mb-15">
+          <div class="flits-input-wrap flits-input-icon-wrap">
+            <label class="flits-input-label" for="{{ formId }}-url">{{ contactUs_attachmentLinkLabelText | strip }}</label>
+            <div class="flits-input-icon-group">
+              <div class="flits-input-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              </div>
+              <input type="text" class="flits-input flits-contact-form-url" id="{{ formId }}-url"
+                     placeholder="{{ contactUs_attachmentLinkPlaceholderText | strip }}"
+                     name="contact[{{ contactUs_attachmentLinkLabelText | strip }}]"
+                     value="{% if form[url] %}{{ form[url] }}{% endif %}">
+            </div>
+          </div>
+          <small id="flits-alert-url" class="flits-form-alert"></small>
+        </div>
+      </div>
+      {% comment %} <p class="flits-model-footer-text"></p> {% endcomment %}
+      <button class="flits-input" id="flits-contactus-submit" type="button">
+        {{ contactUs_submitButtonText | strip }}
+      </button>
+      {% endform %}
+      <!-- Actual form which is used for submit -->
+      {% assign flitsFormId = 'contact-form' %}
+      <script>
+        window.flitsApp.flitsFormId = "{{ flitsFormId }}"
+      </script>
+      {% form 'contact', id: flitsFormId %}
+      <!-- Mail content headline -->
+      <input type="hidden" name="contact[Message received from Contact Us form of Customer Account Page]"/>
+
+      <!-- Reason To Contact -->
+      <input type="hidden" id="{{ flitsFormId }}-customer-reason" name="contact[{{ contactUs_reasonLabelText | strip }}]" value=""/>
+
+      <!-- Customer Name -->
+      <input type="hidden" id="{{ flitsFormId }}-customer-name" name="contact[{{ contactUs_customerNameLabelText | strip }}]" value=""/>
+
+      <!-- Customer Link hidden field -->
+      <input type="hidden" id="{{ flitsFormId }}-customer-link" name="contact[{{ contactUs_customerLinkLabelText | strip }}]" value=""/>
+
+      <!-- Email -->
+      <input type="hidden" id="{{ flitsFormId }}-customer-email" name="contact[email]" value=""/>
+
+      <!-- Phone Number -->
+      <input type="hidden" id="{{ flitsFormId }}-customer-phone" name="contact[{{ contactUs_phoneNumberLabelText | strip }}]" value=""/>
+
+      <!-- Order Link hidden field -->
+      <input type="hidden" id="{{ flitsFormId }}-order-link" name="contact[{{ contactUs_orderLinkLabelText | strip }}]" value=""/>
+
+      <!-- Order Date hidden field -->
+      <input type="hidden" id="{{ flitsFormId }}-order-date" name="contact[{{ contactUs_orderDateLabelText | strip }}]" value=""/>
+
+      <!-- Order Number hidden field -->
+      <input type="hidden" id="{{ flitsFormId }}-order-number" name="contact[{{ contactUs_orderNumberLabelText | strip }}]" value=""/>
+
+      <!-- Order Name hidden field -->
+      <input type="hidden" id="{{ flitsFormId }}-order-name" name="contact[{{ contactUs_orderNameLabelText | strip }}]" value=""/>
+
+      <!-- Order Total Price hidden field -->
+      <input type="hidden" id="{{ flitsFormId }}-order-total" name="contact[{{ contactUs_orderTotalPriceLabelText | strip }}]" value=""/>
+
+      <!-- Order Payment Status hidden field -->
+      <input type="hidden" id="{{ flitsFormId }}-order-payment-status" name="contact[{{ contactUs_orderPaymentStatusLabelText | strip }}]" value=""/>
+
+      <!-- Order Fulfillment Status hidden field -->
+      <input type="hidden" id="{{ flitsFormId }}-order-fulfillment-status" name="contact[{{ contactUs_orderFulfillmentStatusLabelText | strip }}]" value=""/>
+
+      <!-- Message -->
+      <input type="hidden" id="{{ flitsFormId }}-customer-message" name="contact[{{ contactUs_messageLabelText | strip }}]" value=""/>
+
+      <!-- Attachment Link -->
+      <input type="hidden" id="{{ flitsFormId }}-customer-url" name="contact[{{ contactUs_attachmentLinkLabelText | strip }}]" value=""/>
+      {% endform %}
+    </div>
+  </div>
+</div>
+<div class="flits-overlay flits-order-contact-us-popup flits-order-contact-us-success-popup" id="flits-contact-us-form-success" style="visibility:hidden">
+  <div class="flits-popup flits-popup-success">
+    <div class="flits-success-popup-bg">
+      <div class="flits-paper-plane flits-paper-plane-1"> 
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 100px;height: 100px;opacity: 0.3;" xml:space="preserve"> <g> <g> <path d="M500.216,0H67.704c-2.296,0-4.554,0.909-6.028,2.668C58.454,6.513,59.888,12,63.848,14.132l100.88,54.32    c0.01,0.005,0.017,0.015,0.019,0.027l23.488,156.581c0.841,5.425,7.283,8.206,11.784,5.011l98.521-70.002    c0.011-0.008,0.026-0.009,0.039-0.002l69.817,38.399c3.33,1.83,7.622,0.824,9.79-2.294l73.41-105.526    c2.37-3.407,1.529-8.091-1.878-10.461c-3.408-2.371-8.089-1.529-10.461,1.878L369.73,182.01c-0.011,0.015-0.031,0.02-0.047,0.011    l-139.234-76.578c-0.028-0.015-0.024-0.056,0.006-0.067l250.62-83.54c0.033-0.011,0.061,0.027,0.041,0.055l-20.778,29.867    c-2.363,3.396-1.813,8.19,1.523,10.636c3.421,2.508,8.209,1.692,10.617-1.766l33.964-48.822c0.212-0.307,0.404-0.64,0.569-0.977    C509.451,5.877,505.69,0,500.216,0z M283.881,151.983c0.023,0.013,0.025,0.047,0.003,0.062l-78.418,55.717    c-0.026,0.018-0.061-0.003-0.057-0.035l12.279-92.093c0.003-0.025,0.031-0.039,0.054-0.027L283.881,151.983z M404.214,31.613    L209.321,96.577c-2.687,0.9-4.698,3.324-5.073,6.136l-8.987,67.399c-0.006,0.042-0.066,0.042-0.072,0.001L180.147,69.83    c-0.003-0.02,0.01-0.038,0.03-0.041l224.019-38.247C404.24,31.534,404.256,31.598,404.214,31.613z M411.177,15.102L172.915,55.781    c-0.008,0.001-0.016,0-0.023-0.004L97.345,15.099c-0.033-0.018-0.021-0.069,0.017-0.069h313.809    C411.216,15.03,411.221,15.095,411.177,15.102z"></path> </g> </g> <g> <g> <path d="M139.128,300.76c-2.108,0.031-4.255,0.117-6.38,0.255c-4.142,0.268-7.282,3.842-7.015,7.984    c0.256,3.977,3.563,7.031,7.492,7.031c0.163,0,0.327-0.005,0.492-0.016c1.879-0.121,3.775-0.197,5.636-0.225    c4.15-0.062,7.464-3.477,7.402-7.626S143.258,300.675,139.128,300.76z"></path> </g> </g> <g> <g> <path d="M176.059,306.058c-3.897-1.265-7.99-2.321-12.164-3.139c-4.07-0.801-8.021,1.855-8.82,5.929    c-0.799,4.072,1.856,8.022,5.929,8.821c3.585,0.703,7.09,1.607,10.416,2.686c3.898,1.263,8.203-0.933,9.468-4.828    C182.168,311.578,180.005,307.339,176.059,306.058z"></path> </g> </g> <g> <g> <path d="M97.815,375.61c-0.587-3.427-0.927-6.961-1.009-10.504c-0.096-4.15-3.548-7.43-7.687-7.339    c-4.149,0.096-7.435,3.538-7.339,7.687c0.099,4.276,0.51,8.547,1.221,12.695c0.691,4.034,4.639,6.831,8.676,6.136    C95.769,383.585,98.516,379.7,97.815,375.61z"></path> </g> </g> <g> <g> <path d="M134.477,422.021c-3.176-1.126-6.266-2.583-9.183-4.33c-3.562-2.131-8.176-0.973-10.309,2.588    c-2.131,3.561-0.973,8.176,2.588,10.309c3.771,2.256,7.766,4.14,11.88,5.599c4.068,1.442,8.626-0.95,9.762-5.106    C140.239,427.336,138.133,423.318,134.477,422.021z"></path> </g> </g> <g> <g> <path d="M144.233,271.719c-2.58-3.251-7.308-3.794-10.558-1.215c-3.189,2.53-6.316,5.219-9.292,7.994    c-3.037,2.829-3.205,7.584-0.377,10.621c2.789,2.995,7.624,3.167,10.62,0.376c2.688-2.504,5.512-4.933,8.392-7.217    C146.269,279.697,146.813,274.971,144.233,271.719z"></path> </g> </g> <g> <g> <path d="M110.083,404.09c-2.088-2.7-3.974-5.632-5.605-8.715c-1.941-3.668-6.49-5.067-10.157-3.127    c-3.668,1.942-5.068,6.489-3.127,10.157c2.032,3.841,4.388,7.501,7,10.879c2.702,3.495,7.998,3.873,11.176,0.8    C112.085,411.457,112.393,407.076,110.083,404.09z"></path> </g> </g> <g> <g> <path d="M98.811,324.261c-3.818-1.627-8.232,0.15-9.859,3.968c-1.794,4.208-3.26,8.35-4.243,11.975    c-1.086,4.006,1.281,8.133,5.286,9.22c0.657,0.178,1.319,0.263,1.97,0.263c3.31,0,6.342-2.203,7.248-5.55    c0.562-2.071,1.636-5.49,3.565-10.018C104.406,330.301,102.63,325.887,98.811,324.261z"></path> </g> </g> <g> <g> <path d="M118.379,295.259c-3.275-2.553-7.996-1.968-10.547,1.306c-2.514,3.224-4.921,6.58-7.151,9.974    c-2.281,3.468-1.318,8.128,2.15,10.408c3.424,2.252,8.158,1.27,10.408-2.15c2.01-3.057,4.179-6.082,6.446-8.989    C122.237,302.534,121.652,297.811,118.379,295.259z"></path> </g> </g> <g> <g> <path d="M208.906,325.77c-2.951-3.063-6.302-5.919-9.96-8.489c-3.395-2.387-8.082-1.568-10.469,1.829    c-2.386,3.396-1.567,8.083,1.829,10.469c2.874,2.019,5.49,4.246,7.775,6.619c2.842,2.949,7.676,3.039,10.626,0.198    C211.696,333.516,211.785,328.759,208.906,325.77z"></path> </g> </g> <g> <g> <path d="M173.802,429.313c-0.87-4.059-4.862-6.641-8.923-5.773c-3.132,0.671-6.413,1.115-9.762,1.321l-0.584,0.033    c-4.145,0.206-7.339,3.733-7.133,7.879c0.199,4.019,3.52,7.142,7.499,7.142c0.125,0,0.253-0.003,0.379-0.009l0.766-0.043    c4.088-0.249,8.12-0.797,11.986-1.625C172.088,437.366,174.672,433.372,173.802,429.313z"></path> </g> </g> <g> <g> <path d="M225.049,361.656c-0.357-4.555-1.19-8.959-2.477-13.09c-1.235-3.963-5.45-6.175-9.411-4.939    c-3.963,1.234-6.173,5.448-4.939,9.411c0.954,3.059,1.573,6.353,1.842,9.789c0.319,4.083,3.995,7.226,8.078,6.907    C222.224,369.414,225.368,365.739,225.049,361.656z"></path> </g> </g> <g> <g> <path d="M217.138,378.102c-3.982-1.174-8.16,1.098-9.337,5.078c-0.979,3.316-2.249,6.568-3.773,9.667    c-1.833,3.723-0.299,8.228,3.426,10.06c3.676,1.81,8.253,0.247,10.06-3.426c1.9-3.862,3.482-7.914,4.702-12.044    C223.392,383.457,221.118,379.277,217.138,378.102z"></path> </g> </g> <g> <g> <path d="M174.839,254.832c-1.765-3.758-6.241-5.372-9.997-3.607c-3.689,1.732-7.345,3.62-10.864,5.611    c-2.81,1.589-4.315,4.902-3.66,8.064c0.714,3.452,3.843,5.994,7.367,5.994c1.254,0,2.524-0.314,3.693-0.975    c3.191-1.805,6.507-3.518,9.854-5.09C174.989,263.064,176.604,258.588,174.839,254.832z"></path> </g> </g> <g> <g> <path d="M202.513,409.718c-2.859-3.009-7.614-3.133-10.624-0.275c-2.484,2.359-5.193,4.49-8.053,6.337    c-3.487,2.252-4.488,6.903-2.237,10.39c2.219,3.439,6.948,4.46,10.39,2.237c3.642-2.352,7.091-5.065,10.25-8.065    C205.248,417.484,205.371,412.728,202.513,409.718z"></path> </g> </g> <g> <g> <path d="M202.926,246.052c-1.071-4.008-5.191-6.388-9.2-5.32c-2.027,0.542-4.057,1.122-6.033,1.723    c-3.765,1.148-6.041,5.15-5.108,8.973c1.01,4.137,5.416,6.644,9.491,5.404c1.81-0.552,3.669-1.083,5.529-1.58    C201.613,254.181,203.996,250.062,202.926,246.052z"></path> </g> </g> <g> <g> <path d="M34.009,501.057c-0.872-1.688-1.718-3.413-2.517-5.126c-1.753-3.761-6.225-5.389-9.986-3.636    c-3.761,1.753-5.39,6.224-3.636,9.986c0.884,1.896,1.82,3.803,2.783,5.668c1.878,3.638,6.481,5.111,10.124,3.232    C34.465,509.279,35.912,504.746,34.009,501.057z"></path> </g> </g> <g> <g> <path d="M24.037,475.987c-0.968-3.41-1.801-6.885-2.473-10.33c-0.795-4.073-4.739-6.729-8.816-5.935    c-4.073,0.795-6.73,4.742-5.935,8.816c0.752,3.856,1.683,7.743,2.766,11.556c1.118,3.938,5.342,6.297,9.282,5.175    C22.855,484.135,25.172,479.979,24.037,475.987z"></path> </g> </g> <g> <g> <path d="M12.492,425.994c-4.134-0.256-7.713,2.88-7.978,7.021c-0.188,2.946-0.284,5.933-0.284,8.879    c0,2.703-0.098,5.332,1.684,7.551c1.447,1.801,3.706,2.871,6.023,2.81c2.298-0.049,4.482-1.176,5.858-3.016    c1.667-2.229,1.465-4.707,1.465-7.346c0-2.627,0.085-5.292,0.253-7.921C19.778,429.831,16.634,426.259,12.492,425.994z"></path> </g> </g> <g> <g> <path d="M20.654,393.267c-3.954-1.277-8.185,0.894-9.46,4.843c-1.213,3.759-2.285,7.604-3.183,11.428    c-0.951,4.039,1.555,8.084,5.595,9.034c3.987,0.938,8.098-1.61,9.035-5.595c0.807-3.428,1.768-6.877,2.856-10.249    C26.771,398.777,24.604,394.541,20.654,393.267z"></path> </g> </g> <g> <g> <path d="M58.979,338.388c-2.867-3.003-7.621-3.115-10.626-0.25c-0.769,0.733-1.531,1.479-2.29,2.236    c-2.03,2.031-4.036,4.178-5.963,6.383c-2.731,3.124-2.413,7.872,0.711,10.604c3.082,2.695,7.91,2.371,10.604-0.711    c1.707-1.953,3.483-3.853,5.276-5.647c0.673-0.673,1.353-1.337,2.037-1.989C61.732,346.147,61.843,341.391,58.979,338.388z"></path> </g> </g> <g> <g> <path d="M36.383,363.423c-3.535-2.173-8.163-1.069-10.338,2.465c-2.058,3.347-4.009,6.825-5.801,10.336    c-1.886,3.697-0.417,8.223,3.281,10.108c3.652,1.863,8.249,0.366,10.108-3.281c1.61-3.156,3.364-6.283,5.214-9.29    C41.022,370.225,39.918,365.597,36.383,363.423z"></path> </g> </g> <g> <g> <path d="M82.653,322.475c-2.128-3.562-6.742-4.725-10.305-2.597c-1.812,1.082-3.623,2.223-5.385,3.392    c-3.458,2.296-4.402,6.959-2.107,10.417c2.263,3.411,7.002,4.372,10.417,2.107c1.565-1.038,3.173-2.052,4.783-3.013    C83.619,330.652,84.782,326.038,82.653,322.475z"></path> </g> </g> </svg> 
+      </div>
+      <div class="flits-paper-plane flits-paper-plane-2"> 
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 100px;height: 100px;opacity: 0.3;" xml:space="preserve"> <g> <g> <path d="M500.216,0H67.704c-2.296,0-4.554,0.909-6.028,2.668C58.454,6.513,59.888,12,63.848,14.132l100.88,54.32    c0.01,0.005,0.017,0.015,0.019,0.027l23.488,156.581c0.841,5.425,7.283,8.206,11.784,5.011l98.521-70.002    c0.011-0.008,0.026-0.009,0.039-0.002l69.817,38.399c3.33,1.83,7.622,0.824,9.79-2.294l73.41-105.526    c2.37-3.407,1.529-8.091-1.878-10.461c-3.408-2.371-8.089-1.529-10.461,1.878L369.73,182.01c-0.011,0.015-0.031,0.02-0.047,0.011    l-139.234-76.578c-0.028-0.015-0.024-0.056,0.006-0.067l250.62-83.54c0.033-0.011,0.061,0.027,0.041,0.055l-20.778,29.867    c-2.363,3.396-1.813,8.19,1.523,10.636c3.421,2.508,8.209,1.692,10.617-1.766l33.964-48.822c0.212-0.307,0.404-0.64,0.569-0.977    C509.451,5.877,505.69,0,500.216,0z M283.881,151.983c0.023,0.013,0.025,0.047,0.003,0.062l-78.418,55.717    c-0.026,0.018-0.061-0.003-0.057-0.035l12.279-92.093c0.003-0.025,0.031-0.039,0.054-0.027L283.881,151.983z M404.214,31.613    L209.321,96.577c-2.687,0.9-4.698,3.324-5.073,6.136l-8.987,67.399c-0.006,0.042-0.066,0.042-0.072,0.001L180.147,69.83    c-0.003-0.02,0.01-0.038,0.03-0.041l224.019-38.247C404.24,31.534,404.256,31.598,404.214,31.613z M411.177,15.102L172.915,55.781    c-0.008,0.001-0.016,0-0.023-0.004L97.345,15.099c-0.033-0.018-0.021-0.069,0.017-0.069h313.809    C411.216,15.03,411.221,15.095,411.177,15.102z"></path> </g> </g> <g> <g> <path d="M139.128,300.76c-2.108,0.031-4.255,0.117-6.38,0.255c-4.142,0.268-7.282,3.842-7.015,7.984    c0.256,3.977,3.563,7.031,7.492,7.031c0.163,0,0.327-0.005,0.492-0.016c1.879-0.121,3.775-0.197,5.636-0.225    c4.15-0.062,7.464-3.477,7.402-7.626S143.258,300.675,139.128,300.76z"></path> </g> </g> <g> <g> <path d="M176.059,306.058c-3.897-1.265-7.99-2.321-12.164-3.139c-4.07-0.801-8.021,1.855-8.82,5.929    c-0.799,4.072,1.856,8.022,5.929,8.821c3.585,0.703,7.09,1.607,10.416,2.686c3.898,1.263,8.203-0.933,9.468-4.828    C182.168,311.578,180.005,307.339,176.059,306.058z"></path> </g> </g> <g> <g> <path d="M97.815,375.61c-0.587-3.427-0.927-6.961-1.009-10.504c-0.096-4.15-3.548-7.43-7.687-7.339    c-4.149,0.096-7.435,3.538-7.339,7.687c0.099,4.276,0.51,8.547,1.221,12.695c0.691,4.034,4.639,6.831,8.676,6.136    C95.769,383.585,98.516,379.7,97.815,375.61z"></path> </g> </g> <g> <g> <path d="M134.477,422.021c-3.176-1.126-6.266-2.583-9.183-4.33c-3.562-2.131-8.176-0.973-10.309,2.588    c-2.131,3.561-0.973,8.176,2.588,10.309c3.771,2.256,7.766,4.14,11.88,5.599c4.068,1.442,8.626-0.95,9.762-5.106    C140.239,427.336,138.133,423.318,134.477,422.021z"></path> </g> </g> <g> <g> <path d="M144.233,271.719c-2.58-3.251-7.308-3.794-10.558-1.215c-3.189,2.53-6.316,5.219-9.292,7.994    c-3.037,2.829-3.205,7.584-0.377,10.621c2.789,2.995,7.624,3.167,10.62,0.376c2.688-2.504,5.512-4.933,8.392-7.217    C146.269,279.697,146.813,274.971,144.233,271.719z"></path> </g> </g> <g> <g> <path d="M110.083,404.09c-2.088-2.7-3.974-5.632-5.605-8.715c-1.941-3.668-6.49-5.067-10.157-3.127    c-3.668,1.942-5.068,6.489-3.127,10.157c2.032,3.841,4.388,7.501,7,10.879c2.702,3.495,7.998,3.873,11.176,0.8    C112.085,411.457,112.393,407.076,110.083,404.09z"></path> </g> </g> <g> <g> <path d="M98.811,324.261c-3.818-1.627-8.232,0.15-9.859,3.968c-1.794,4.208-3.26,8.35-4.243,11.975    c-1.086,4.006,1.281,8.133,5.286,9.22c0.657,0.178,1.319,0.263,1.97,0.263c3.31,0,6.342-2.203,7.248-5.55    c0.562-2.071,1.636-5.49,3.565-10.018C104.406,330.301,102.63,325.887,98.811,324.261z"></path> </g> </g> <g> <g> <path d="M118.379,295.259c-3.275-2.553-7.996-1.968-10.547,1.306c-2.514,3.224-4.921,6.58-7.151,9.974    c-2.281,3.468-1.318,8.128,2.15,10.408c3.424,2.252,8.158,1.27,10.408-2.15c2.01-3.057,4.179-6.082,6.446-8.989    C122.237,302.534,121.652,297.811,118.379,295.259z"></path> </g> </g> <g> <g> <path d="M208.906,325.77c-2.951-3.063-6.302-5.919-9.96-8.489c-3.395-2.387-8.082-1.568-10.469,1.829    c-2.386,3.396-1.567,8.083,1.829,10.469c2.874,2.019,5.49,4.246,7.775,6.619c2.842,2.949,7.676,3.039,10.626,0.198    C211.696,333.516,211.785,328.759,208.906,325.77z"></path> </g> </g> <g> <g> <path d="M173.802,429.313c-0.87-4.059-4.862-6.641-8.923-5.773c-3.132,0.671-6.413,1.115-9.762,1.321l-0.584,0.033    c-4.145,0.206-7.339,3.733-7.133,7.879c0.199,4.019,3.52,7.142,7.499,7.142c0.125,0,0.253-0.003,0.379-0.009l0.766-0.043    c4.088-0.249,8.12-0.797,11.986-1.625C172.088,437.366,174.672,433.372,173.802,429.313z"></path> </g> </g> <g> <g> <path d="M225.049,361.656c-0.357-4.555-1.19-8.959-2.477-13.09c-1.235-3.963-5.45-6.175-9.411-4.939    c-3.963,1.234-6.173,5.448-4.939,9.411c0.954,3.059,1.573,6.353,1.842,9.789c0.319,4.083,3.995,7.226,8.078,6.907    C222.224,369.414,225.368,365.739,225.049,361.656z"></path> </g> </g> <g> <g> <path d="M217.138,378.102c-3.982-1.174-8.16,1.098-9.337,5.078c-0.979,3.316-2.249,6.568-3.773,9.667    c-1.833,3.723-0.299,8.228,3.426,10.06c3.676,1.81,8.253,0.247,10.06-3.426c1.9-3.862,3.482-7.914,4.702-12.044    C223.392,383.457,221.118,379.277,217.138,378.102z"></path> </g> </g> <g> <g> <path d="M174.839,254.832c-1.765-3.758-6.241-5.372-9.997-3.607c-3.689,1.732-7.345,3.62-10.864,5.611    c-2.81,1.589-4.315,4.902-3.66,8.064c0.714,3.452,3.843,5.994,7.367,5.994c1.254,0,2.524-0.314,3.693-0.975    c3.191-1.805,6.507-3.518,9.854-5.09C174.989,263.064,176.604,258.588,174.839,254.832z"></path> </g> </g> <g> <g> <path d="M202.513,409.718c-2.859-3.009-7.614-3.133-10.624-0.275c-2.484,2.359-5.193,4.49-8.053,6.337    c-3.487,2.252-4.488,6.903-2.237,10.39c2.219,3.439,6.948,4.46,10.39,2.237c3.642-2.352,7.091-5.065,10.25-8.065    C205.248,417.484,205.371,412.728,202.513,409.718z"></path> </g> </g> <g> <g> <path d="M202.926,246.052c-1.071-4.008-5.191-6.388-9.2-5.32c-2.027,0.542-4.057,1.122-6.033,1.723    c-3.765,1.148-6.041,5.15-5.108,8.973c1.01,4.137,5.416,6.644,9.491,5.404c1.81-0.552,3.669-1.083,5.529-1.58    C201.613,254.181,203.996,250.062,202.926,246.052z"></path> </g> </g> <g> <g> <path d="M34.009,501.057c-0.872-1.688-1.718-3.413-2.517-5.126c-1.753-3.761-6.225-5.389-9.986-3.636    c-3.761,1.753-5.39,6.224-3.636,9.986c0.884,1.896,1.82,3.803,2.783,5.668c1.878,3.638,6.481,5.111,10.124,3.232    C34.465,509.279,35.912,504.746,34.009,501.057z"></path> </g> </g> <g> <g> <path d="M24.037,475.987c-0.968-3.41-1.801-6.885-2.473-10.33c-0.795-4.073-4.739-6.729-8.816-5.935    c-4.073,0.795-6.73,4.742-5.935,8.816c0.752,3.856,1.683,7.743,2.766,11.556c1.118,3.938,5.342,6.297,9.282,5.175    C22.855,484.135,25.172,479.979,24.037,475.987z"></path> </g> </g> <g> <g> <path d="M12.492,425.994c-4.134-0.256-7.713,2.88-7.978,7.021c-0.188,2.946-0.284,5.933-0.284,8.879    c0,2.703-0.098,5.332,1.684,7.551c1.447,1.801,3.706,2.871,6.023,2.81c2.298-0.049,4.482-1.176,5.858-3.016    c1.667-2.229,1.465-4.707,1.465-7.346c0-2.627,0.085-5.292,0.253-7.921C19.778,429.831,16.634,426.259,12.492,425.994z"></path> </g> </g> <g> <g> <path d="M20.654,393.267c-3.954-1.277-8.185,0.894-9.46,4.843c-1.213,3.759-2.285,7.604-3.183,11.428    c-0.951,4.039,1.555,8.084,5.595,9.034c3.987,0.938,8.098-1.61,9.035-5.595c0.807-3.428,1.768-6.877,2.856-10.249    C26.771,398.777,24.604,394.541,20.654,393.267z"></path> </g> </g> <g> <g> <path d="M58.979,338.388c-2.867-3.003-7.621-3.115-10.626-0.25c-0.769,0.733-1.531,1.479-2.29,2.236    c-2.03,2.031-4.036,4.178-5.963,6.383c-2.731,3.124-2.413,7.872,0.711,10.604c3.082,2.695,7.91,2.371,10.604-0.711    c1.707-1.953,3.483-3.853,5.276-5.647c0.673-0.673,1.353-1.337,2.037-1.989C61.732,346.147,61.843,341.391,58.979,338.388z"></path> </g> </g> <g> <g> <path d="M36.383,363.423c-3.535-2.173-8.163-1.069-10.338,2.465c-2.058,3.347-4.009,6.825-5.801,10.336    c-1.886,3.697-0.417,8.223,3.281,10.108c3.652,1.863,8.249,0.366,10.108-3.281c1.61-3.156,3.364-6.283,5.214-9.29    C41.022,370.225,39.918,365.597,36.383,363.423z"></path> </g> </g> <g> <g> <path d="M82.653,322.475c-2.128-3.562-6.742-4.725-10.305-2.597c-1.812,1.082-3.623,2.223-5.385,3.392    c-3.458,2.296-4.402,6.959-2.107,10.417c2.263,3.411,7.002,4.372,10.417,2.107c1.565-1.038,3.173-2.052,4.783-3.013    C83.619,330.652,84.782,326.038,82.653,322.475z"></path> </g> </g> </svg> 
+      </div>
+      <div class="flits-bg-bubble flits-bubble-1"></div>
+      <div class="flits-bg-bubble flits-bubble-2"></div>
+      <div class="flits-bg-bubble flits-bubble-3"></div>
+      <div class="flits-bg-bubble flits-bubble-4"></div>
+    </div>
+    <span class="flits-close-popup">&times;</span>
+    <div class="flits-form-success">
+      <div class="flits-form-success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="512" viewBox="0 0 74 74" width="512"><g id="_2_PT" data-name="2 PT"><path d="m67 60h-60a5.006 5.006 0 0 1 -5-5v-36a5.006 5.006 0 0 1 5-5h60a5.006 5.006 0 0 1 5 5v36a5.006 5.006 0 0 1 -5 5zm-60-44a3 3 0 0 0 -3 3v36a3 3 0 0 0 3 3h60a3 3 0 0 0 3-3v-36a3 3 0 0 0 -3-3z"></path><path d="m37 47a1 1 0 0 1 -.652-.242l-33.54-28.85 1.3-1.517 32.892 28.29 32.888-28.29 1.3 1.517-33.54 28.85a1 1 0 0 1 -.648.242z"></path><path d="m58.37 31.595h2v30.399h-2z" transform="matrix(.737 -.676 .676 .737 -16.016 52.413)"></path><path d="m-.741 45.645h30.393v2h-30.393z" transform="matrix(.675 -.737 .737 .675 -29.706 25.8)"></path></g></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="blink" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width: 30px;height: 30px;position: absolute;top: 61px;right: -8px;" xml:space="preserve" class=""><g><path xmlns="http://www.w3.org/2000/svg" d="m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0" fill="#009960" data-original="#2196f3" style="" class=""></path><path xmlns="http://www.w3.org/2000/svg" d="m385.75 201.75-138.667969 138.664062c-4.160156 4.160157-9.621093 6.253907-15.082031 6.253907s-10.921875-2.09375-15.082031-6.253907l-69.332031-69.332031c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339843-8.34375 21.820312-8.34375 30.164062 0l54.25 54.25 123.585938-123.582031c8.339843-8.34375 21.820312-8.34375 30.164062 0 8.339844 8.339843 8.339844 21.820312 0 30.164062zm0 0" fill="#fafafa" data-original="#fafafa" style="" class=""></path></g></svg>
+      </div>
+      <p class="flits-popup-message flits-popup-message-1">{{ contactUs_successMessageLine1Text | strip }}</p>
+      <p class="flits-popup-message">{{ contactUs_successMessageLine2Text | strip }}</p>
+      <p class="flits-popup-message">{{ contactUs_successMessageLine3Text | strip }}</p>
+      <button class="flits-input flits-contactus-success-btn" type="button">{{ contactUs_successButtonText | strip }}</button>
+    </div>
+  </div>
+</div>
+
+{%- when 'comp_topOrderProductCard'-%}
+<div class="flits-top-order-card {{ class }} flits-product-card">
+  <div class="flits-order-item">
+    <a><p class="flits-product-name flits-link flits-text-ellipsis"></p></a>
+    <div class="flits-product-image-thumbnail">
+      <img src="">
+    </div>
+    <p class="flits-product-price"></p>
+  </div>
+  <div class="flits-order-details">
+    <div class="flits-product-quantity-header">
+      <span data-flits-lang="top_ordered_products_page.number_of_order" data-flits-lang-default="Total quantity ordered till now">Total quantity ordered till now</span>:&nbsp<span class="flits-product-quantity-count"></span>
+    </div>
+    <div class="flits-product-action-group">
+      {% render 'flits_capture_code' with 'component',template:'comp_flitsSelect',class:'flits-variant-select' %}
+      {% render 'flits_capture_code' with 'component',template:'comp_productQtyInput', type:'text' value:1,min:1 %}
+      {% render 'flits_capture_code' with 'component',template:'comp_button',
+      type:'button',
+      text:'Add to Cart'
+      attr:'data-flits-lang="buttons.add_to_cart" data-flits-lang-default="Add to Cart"',
+      class:'flits-primary-btn flits-add-to-cart'
+      %}
+    </div>
+  </div>
+</div>
+
+{%- when 'comp_mobile_topOrderProductCard'-%}
+<div class="flits-top-order-mobile-card {{ class }} flits-product-card">
+  <div class="flits-order-details">
+    <div class="flits-product-quantity-header">
+      <span data-flits-lang="top_ordered_products_page.number_of_order" data-flits-lang-default="Total quantity ordered till now">Total quantity ordered till now</span>:&nbsp<span class="flits-product-quantity-count"></span>
+    </div>
+    <div class="flits-order-main-deatils">
+      <div class="flits-order-item">
+        <div class="flits-product-image-thumbnail">
+          <img src="">
+        </div>
+        <a><p class="flits-product-name flits-link flits-text-ellipsis"></p></a>
+        <p class="flits-product-price"></p>
+      </div>
+      <div class="flits-product-action-group">
+        {% render 'flits_capture_code' with 'component',template:'comp_flitsSelect',class:'flits-variant-select' %}
+        {% render 'flits_capture_code' with 'component',template:'comp_productQtyInput', type:'text' value:1,min:1 %}
+        {% render 'flits_capture_code' with 'component',template:'comp_button',
+        type:'button',
+        text:'Add to Cart'
+        attr:'data-flits-lang="buttons.add_to_cart" data-flits-lang-default="Add to Cart"',
+        class:'flits-primary-btn flits-add-to-cart'
+        %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- when 'comp_itemCard' -%}
+<div class="flits-product-item-card flits-product-card {{ class }}">
+  <div class="flits-product-item-main">
+    <div class="flits-product-item">
+      <a><p class="flits-product-name flits-link flits-text-ellipsis"></p></a>
+      <a class="flits-product-image-thumbnail">
+        <img src="">
+      </a>
+      <p class="flits-product-price"></p>
+    </div>
+    <div class="flits-product-action-group">
+      {% render 'flits_capture_code' with 'component',template:'comp_flitsSelect',class:'flits-variant-select' %}
+      {% render 'flits_capture_code' with 'component',template:'comp_productQtyInput', type:'text' value:1,min:1 %}
+      {% render 'flits_capture_code' with 'component',template:'comp_button',
+      type:'button',
+      text:'Add to Cart',
+      attr:'data-flits-lang="buttons.add_to_cart" data-flits-lang-default="Add to Cart"',
+      class:'flits-primary-btn flits-add-to-cart'
+      %}
+      {% render 'flits_capture_code' with 'component',template:'comp_button',
+      type:'button',
+      text:'X',
+      class:'flits-primary-btn flits-remove-product flits-hide'
+      %} 
+    </div>
+  </div>
+</div>
+
+{%- when 'comp_newAddressCard' -%}
+<div class="flits-address-card flits-new-address-card">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.37 34.4"><path d="M11.69,0A11.65,11.65,0,0,0,0,11.61c0,3.28,3.22,9.15,3.22,9.15l8,13.64,8.38-13.48s3.73-5.6,3.73-9.31A11.65,11.65,0,0,0,11.69,0Zm-.06,18a6.69,6.69,0,1,1,6.69-6.69A6.69,6.69,0,0,1,11.63,18Z" style="fill:#ebf0f7"/><path d="M11.63,5.39a5.93,5.93,0,1,0,5.93,5.92A5.93,5.93,0,0,0,11.63,5.39Zm2.42,6.8H12.51v1.54a.88.88,0,0,1-1.76,0V12.19H9.22a.88.88,0,1,1,0-1.76h1.54V8.9a.88.88,0,1,1,1.75,0v1.53h1.54a.88.88,0,1,1,0,1.76Z" /></svg>
+  <p data-flits-lang="address_page.add_new_address" data-flits-lang-default="Add New Address">Add New Address</p>
+</div>
+
+{%- when 'comp_addressCard' -%}
+<div class="flits-address-card {{ class }}"
+     data-flits-phone="{{ customer.phone }}"
+     data-flits-first-name="{{ customer.first_name }}" 
+     data-flits-last-name="{{ customer.last_name }}"
+     data-flits-company="{{ customer.company }}"
+     data-flits-address1="{{ customer.address1 }}"
+     data-flits-address2="{{ customer.address2 }}"
+     data-flits-zip="{{ customer.zip }}" 
+     data-flits-city="{{ customer.city }}" 
+     data-flits-province="{{ customer.province }}"
+     data-flits-country="{{ customer.country }}"
+     data-flits-id="{{ customer.id }}"
+     {{ attr }}> 
+  <div class="flits-triangle-wrapper">
+    <div class="flits-triangle">
+      <span class="flits-triangle-text" data-flits-lang="address_page.default_address_label" data-flits-lang-default="Default">
+        Default
+      </span>
+    </div>
+  </div>
+  <div class="flits-address-card-action">
+    <ul>
+      <li class="flits-action-item flits-address-default-btn" data-flits-lang="address_page.mark_as_default_button" data-flits-lang-default="Mark as Default">
+        Mark as Default
+      </li>
+      <li class="flits-action-item flits-address-edit-btn" data-tippy-content="{{ address_editButtonText | strip }}" data-tippy-placement="top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path id="Icons" d="M9.47.53A1.82,1.82,0,0,0,6.9.53h0L.38,7.07a.35.35,0,0,0-.1.2L0,9.63a.31.31,0,0,0,.1.27.35.35,0,0,0,.24.1h0l2.38-.25A.37.37,0,0,0,3,9.66L9.47,3.11a1.83,1.83,0,0,0,0-2.58ZM2.56,9.1.72,9.29.93,7.46,6.08,2.3,7.71,3.93ZM8.18,3.46,6.55,1.82,7.37,1A1.17,1.17,0,0,1,9,1,1.15,1.15,0,0,1,9,2.63Z" /></svg>
+      </li>
+      <li class="flits-action-item flits-address-remove-btn" data-tippy-content="{{ address_deleteButtonText | strip }}" data-tippy-placement="top" data-flits-confirm-message="Are you sure you want to delete this address?">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M9.76,8.58a.85.85,0,0,1,0,1.18.86.86,0,0,1-.59.24.82.82,0,0,1-.59-.24L5,6.18,1.42,9.76A.82.82,0,0,1,.83,10a.86.86,0,0,1-.59-.24.85.85,0,0,1,0-1.18L3.82,5,.24,1.43A.85.85,0,0,1,.24.25a.83.83,0,0,1,1.18,0L5,3.83,8.58.25a.83.83,0,0,1,1.18,0,.85.85,0,0,1,0,1.18L6.18,5Z" /></svg>
+      </li>
+    </ul>
+  </div>
+  <div class="flits-address-details">
+    <p class="flits-address-item flits-address-name">{{ customer.first_name }} {{ customer.last_name }}</p>
+    <p class="flits-address-item flits-company-name">{{ customer.company }}</p>
+    <p class="flits-address-item flits-address1-line">{{ customer.address1 }}</p>
+    <p class="flits-address-item flits-address2-line">{{ customer.address2 }}</p>
+    <p class="flits-address-item flits-city-deatils">{{ customer.zip }} {{ customer.city }} {{ customer.province_code }}</p>
+    <p class="flits-address-item flits-country-name">{{ customer.country }}</p>
+    <p class="flits-address-item flits-phone-number">{{ customer.phone }}</p>
+  </div>
+</div>
+
+{%- when 'comp_ruleCard' -%}
+<div class="flits-rule-card {{ class }}">
+  <p class="flits-rule-title"></p>
+  <p class="flits-rule-description"></p>
+  <p class="flits-rule-earn-credit"></p>
+  <a class="flits-rule-redirect-link flits-redirect-link flits-hide">
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path id="Layer_2" data-name="Layer 2" d="M4,8A4,4,0,1,1,8,4,4,4,0,0,1,4,8ZM4,.5A3.5,3.5,0,1,0,7.5,4,3.5,3.5,0,0,0,4,.5ZM5.75,4.25H2.25a.25.25,0,0,1,0-.5h3.5a.25.25,0,0,1,0,.5ZM4,6a.25.25,0,0,1-.25-.25V2.25a.25.25,0,0,1,.5,0v3.5A.25.25,0,0,1,4,6Z" style="fill:#25d872"/></svg>
+  </a>
+  <div class="flits-rule-footer">
+    <a class="flits-unlock-badge"></a>
+    <div class="flits-rule-image">
+      <img src="" />
+    </div>
+  </div>
+  <div class="flits-rules-earn-overlay">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJMYXllcl8xIiBkYXRhLW5hbWU9IkxheWVyIDEiIHZpZXdCb3g9IjAgMCAyOC43IDI2LjA5Ij48cGF0aCBkPSJNNC4wOSwxMi4zOUExMC43MiwxMC43MiwwLDAsMSwyMy4yNiw2LjQ1bDEuNjItLjUxQTIuMDksMi4wOSwwLDAsMCwyMy4xOSw0LjMsMi4wOSwyLjA5LDAsMCwxLDIxLjYxLDNhMi4xLDIuMSwwLDAsMC0yLjQtMS4yNywyLjA3LDIuMDcsMCwwLDEtMi0uNTgsMi4xMSwyLjExLDAsMCwwLTIuNy0uMjUsMi4wNywyLjA3LDAsMCwxLTIsLjIxaDBhMi4xMSwyLjExLDAsMCwwLTIuNTkuODFoMGEyLjA2LDIuMDYsMCwwLDEtMS43OSwxaDBhMi4xLDIuMSwwLDAsMC0yLjA4LDEuN2gwQTIuMDcsMi4wNywwLDAsMSw0Ljc3LDYuMjNhMi4wOSwyLjA5LDAsMCwwLTEuMjYsMi40LDIuMDcsMi4wNywwLDAsMS0uNTgsMS45MWgwYTIuMDgsMi4wOCwwLDAsMC0uNDcsMi4zMVpNMTIsMy45M2E5LjU2LDkuNTYsMCwwLDEsMTAsMi45bC41Ny0uMThBMTAuMDksMTAuMDksMCwwLDAsNC43NSwxMi4xOEw1LjMyLDEyQTkuNTYsOS41NiwwLDAsMSwxMiwzLjkzWk0yNi45MSwxMi44aDBsLTEuMzguNDJhMTAuNzMsMTAuNzMsMCwwLDEtMTkuNDgsNmwtMS4zNi40NWgwYTIuMSwyLjEsMCwwLDAsMS43NCwyLjA5aDBBMi4xMSwyLjExLDAsMCwxLDgsMjNhMi4wOCwyLjA4LDAsMCwwLDIuNCwxLjI3LDIuMTIsMi4xMiwwLDAsMSwyLC41OGgwYTIuMSwyLjEsMCwwLDAsMi43LjI1aDBhMi4wNywyLjA3LDAsMCwxLDItLjIxaDBhMi4wOSwyLjA5LDAsMCwwLDIuNTgtLjc5aDBhMi4xMywyLjEzLDAsMCwxLDEuOC0xLDIuMDgsMi4wOCwwLDAsMCwyLjA4LTEuNzMsMi4xMiwyLjEyLDAsMCwxLDEuMjktMS41OSwyLjA4LDIuMDgsMCwwLDAsMS4yNi0yLjQsMi4xMSwyLjExLDAsMCwxLC41Ny0xLjg4QTIuMDksMi4wOSwwLDAsMCwyNi45MSwxMi44Wm0tOS4xMyw5Ljg3YTEwLjExLDEwLjExLDAsMCwwLDcuMDktOS4yN2wtLjU2LjE4QTkuNTMsOS41MywwLDAsMSw3LjI1LDE4Ljg2TDYuNjksMTlBMTAuMDksMTAuMDksMCwwLDAsMTcuNzgsMjIuNjdabS00LjY3LTE1LC40LjQ0LjYtLjEtLjMuNTIuMjguNTRMMTMuNSw5bC0uNDIuNDNMMTMsOC44M2wtLjUzLS4yNkwxMyw4LjMyWm0xLjc5LS4xNC4yOS4zMS40Mi0uMDctLjIxLjM3LjIuMzgtLjQyLS4wOS0uMy4zMS0uMDUtLjQyLS4zOC0uMTlMMTQuODQsOFptLTMuMzUsMSwuMjkuMzEuNDItLjA3LS4yMS4zNy4yLjM3LS40Mi0uMDgtLjMuMzEsMC0uNDMtLjM4LS4xOEwxMS40OSw5Wk0xNi4zMSwxOGwtLjQxLS40NC0uNTkuMS4yOS0uNTMtLjI4LS41My41OS4xMi40Mi0uNDMuMDcuNi41NC4yNi0uNTUuMjVabS0xLjguMTQtLjI4LS4zMS0uNDIuMDcuMi0uMzctLjE5LS4zOC40MS4wOS4zLS4zMS4wNS40Mi4zOC4xOS0uMzkuMThabTMuMzUtMS0uMjgtLjMxLS40My4wNy4yMS0uMzctLjE5LS4zNy40MS4wOC4zLS4zMS4wNS40My4zOC4xOC0uMzkuMThaTS42OSwxNC41NGwzLjIzLTEsLjI5LjkxLTIsLjYzLjM1LDEuMSwxLjY2LS41Mi4xNCwxLTEuNTIuNDcuNDEsMS4zLDIuMS0uNjYuMjguOTItMy4zMywxWk02LjA3LDEyLjhsMS4xLS4zNEwxMC42OSwxN2wtMS4yNS40LS43Ni0xLjEyTDcsMTYuOHYxLjM2bC0xLjI5LjM4Wm0yLDIuNjVjLS4xLS4xMy0uMTktLjI3LS4zLS40MWwtLjI5LS40Mi0uMjctLjM5TDcsMTMuOTJ2MS44NlptMS40MS0zLjcyLjI3LS4wOC40NS0uMTEuNDgtLjE1LjM2LS4xMmEyLjQ5LDIuNDksMCwwLDEsMS41NS0uMDgsMS4zOCwxLjM4LDAsMCwxLC44MywxLDEuMzMsMS4zMywwLDAsMSwwLC44OCwxLjQ5LDEuNDksMCwwLDEtLjQ4LjY4LDEuNSwxLjUsMCwwLDEsLjUuMjIsMy4yMywzLjIzLDAsMCwxLC40OS40MWMuMTcuMTcuMzUuMzYuNTQuNTlsLjYyLjc0LTEuMzMuNDFjLS4yNy0uMy0uNS0uNTctLjctLjgxYTcuMDgsNy4wOCwwLDAsMC0uNTItLjU5LDIuNjksMi42OSwwLDAsMC0uNDEtLjMzLjUuNSwwLDAsMC0uMzgsMGgtLjEybC43LDIuMTUtMS4yNC4zOFptMS45MiwxLjgxLjMyLS4xYS43LjcsMCwwLDAsLjM5LS4zMS42NC42NCwwLDAsMCwwLS41NywxLjE1LDEuMTUsMCwwLDAtLjEyLS4yNS42NS42NSwwLDAsMC0uMTgtLjE5LjU0LjU0LDAsMCwwLS4yNS0uMDksMSwxLDAsMCwwLS4zNCwwbC0uMjguMDhaTTE3LDkuMzksMTguMjEsOWwxLjYxLDUuMTQtMS4wNi4zMy0yLjE0LTEuNzYtLjE4LS4xNy0uMjUtLjIyLS4yNS0uMjItLjItLjE3YTEuMTUsMS4xNSwwLDAsMCwuMS4yN2MwLC4xMS4wOS4yMS4xMy4zMmwuMTIuMzJhLjc5Ljc5LDAsMCwwLC4wOS4yNmwuNjQsMi0xLjI0LjM5TDE0LDEwLjMzLDE1LDEwbDIuMTUsMS43NS4yMi4xOS4yNS4yMi4yNS4yMS4xOS4xNy0uMS0uMjdMMTcuODEsMTJjMC0uMTEtLjA5LS4yMi0uMTItLjMybC0uMS0uMjhabTIuMTctLjY4LDMuMjMtMSwuMjkuOTItMiwuNjEuMzUsMS4xLDEuNjUtLjUxLjE0Ljk0LTEuNTIuNDguMzgsMS4yOSwyLjEtLjY2LjI4LjkyLTMuMzMsMVptMy45My0xLjIzLjI0LS4wOC40NC0uMTQuNTEtLjE2TDI0LjY5LDdhMi44NiwyLjg2LDAsMCwxLDEuMTYtLjE1LDIuMTcsMi4xNywwLDAsMSwuOTMuMywyLjM0LDIuMzQsMCwwLDEsLjcxLjY5LDQuMTUsNC4xNSwwLDAsMSwuNDcsMSwzLjg2LDMuODYsMCwwLDEsLjE5LDEuMTEsMi4xNSwyLjE1LDAsMCwxLS4yLjk0LDIsMiwwLDAsMS0uNjEuNzQsMywzLDAsMCwxLTEuMDUuNTJsLS40LjEyLS4zNy4xMS0uNC4xMi0uNDguMTVabTEuNjkuNDNMMjQuNTgsOGwxLjExLDMuMzloLjE3bC4yMS0uMDdhMS4xMiwxLjEyLDAsMCwwLC41Mi0uMjkuODcuODcsMCwwLDAsLjItLjQ2LDEuNDIsMS40MiwwLDAsMCwwLS41OCwzLjU3LDMuNTcsMCwwLDAtLjEtLjcyYy0uMzctMS4xNy0uOTQtMS42NC0xLjcxLTEuNFoiIHN0eWxlPSJmaWxsOiAjMjVkODcyOyIvPjwvc3ZnPg==" />
+  </div>
+</div>
+
+{%- when 'comp_SnackBarCard' -%}
+<div class="flits-snackbar-popup-box flits-change-password-popup flits-template">
+  <div class="flits-snackbar-header">
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 65.91 60.02">
+      <g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M33.48,60c-16.16.12-29.28-1.38-29.29-3.36l58.53-.44c0,2-13.08,3.68-29.24,3.8Z" style="fill:url(#smile-radial-gradient)"/><path d="M11.56,31.47,0,28.47A28.19,28.19,0,0,1,28,.07L37.5,0Z" style="fill:url(#smile-linear-gradient)"/><path d="M37.93,56.37l-9.53.08A28.2,28.2,0,0,1,0,28.47l9.53-.07Z" style="fill:url(#smile-linear-gradient-2)"/><path d="M37.72,0A28.19,28.19,0,1,1,9.53,28.19,28.19,28.19,0,0,1,37.72,0Z" style="fill:url(#smile-linear-gradient-3)"/><path d="M37.73,35.14A39.62,39.62,0,0,0,50.42,32.9,2.51,2.51,0,0,1,53.66,36a16.6,16.6,0,0,1-6.55,9c-2.67,1.83-5.9,2.37-9.38,2.37S31,46.83,28.35,45a16.67,16.67,0,0,1-6.56-9A2.52,2.52,0,0,1,25,32.9a39.74,39.74,0,0,0,12.7,2.24Z" style="fill:url(#smile-linear-gradient-4)"/><path d="M28.72,18.79a2.94,2.94,0,0,1,2.93,2.94v5.64a.32.32,0,1,1-.64,0V24.3A2.29,2.29,0,0,0,28.76,22a2.34,2.34,0,0,0-2.33,2.35v3a.32.32,0,1,1-.64,0V21.73a2.94,2.94,0,0,1,2.93-2.94Z" style="fill:url(#smile-linear-gradient-5)"/><path d="M46.93,18.79a2.94,2.94,0,0,1,2.93,2.94v5.64a.33.33,0,0,1-.65,0V24.3A2.29,2.29,0,0,0,47,22a2.34,2.34,0,0,0-2.33,2.35v3a.32.32,0,0,1-.32.32.32.32,0,0,1-.32-.32V21.73a2.94,2.94,0,0,1,2.93-2.94Z" style="fill:url(#smile-linear-gradient-6)"/><path d="M52.84,17.43a.63.63,0,0,1-.46-.19A8,8,0,0,0,44,15.37a.64.64,0,1,1-.44-1.21,9.31,9.31,0,0,1,9.7,2.17.63.63,0,0,1,0,.91A.61.61,0,0,1,52.84,17.43Z" style="fill:#ac6e42"/><path d="M22.16,17.24a.65.65,0,0,1,0-.91,9.33,9.33,0,0,1,9.71-2.17.64.64,0,0,1-.44,1.21,8,8,0,0,0-8.36,1.87.61.61,0,0,1-.45.19A.63.63,0,0,1,22.16,17.24Z" style="fill:url(#smile-linear-gradient-7)"/><path d="M56.26,31.45H53.79a2.12,2.12,0,0,1,0-4.23h2.47a2.12,2.12,0,0,1,0,4.23Zm-34.6,0a2.12,2.12,0,1,0,0-4.23H19.2a2.12,2.12,0,1,0,0,4.23Z" style="fill:url(#smile-linear-gradient-8)"/><path d="M28.35,45c1.75-2,5.29-3.46,9.38-3.46S45.36,43,47.11,45a16.57,16.57,0,0,1-18.76,0Z" style="fill:url(#smile-linear-gradient-9)"/></g></g>
+    </svg>
+  </div>
+  <div class="flits-snackbar-body"></div>
+</div>
+<div class="flits-snackbar-popup-box flits-address-popup-confirm flits-template">
+  <div class="flits-snackbar-body" data-flits-lang="address_page.delete_confirmation_message" data-flits-lang-default="Are you sure you want to delete this address?">
+    Are you sure you want to delete this address?
+  </div>
+  <div class="flits-snackbar-footer">
+    {% render 'flits_capture_code' with 'component',template:'comp_button',
+	type:'button',
+    text:'Yes',
+    attr:'data-flits-lang="address_page.yes" data-flits-lang-default="Yes" data-flits-address-remove="yes"'
+    class:'flits-primary-btn flits-address-confirm flits-mr-5'
+    %}
+    {% render 'flits_capture_code' with 'component',template:'comp_button',
+	type:'button',
+    text:'No',
+    attr:'data-flits-lang="address_page.no" data-flits-lang-default="No" data-flits-address-remove="no"'
+    class:'flits-primary-btn flits-address-confirm flits-ml-5'
+    %}
+  </div>
+</div>
+<div class="flits-snackbar-popup-box flits-address-popup-add-save flits-template">
+  <div class="flits-snackbar-header">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.19 47.6"><path d="M17.09,0A17.11,17.11,0,0,0,0,17.09,25.54,25.54,0,0,0,2.62,27.38a63.15,63.15,0,0,0,5.7,9.77,97.45,97.45,0,0,0,8.27,10.23.7.7,0,0,0,1,0,96.67,96.67,0,0,0,8.26-10.23,62.36,62.36,0,0,0,5.7-9.77,25.57,25.57,0,0,0,2.63-10.29A17.12,17.12,0,0,0,17.09,0Zm7.64,36.33a95.54,95.54,0,0,1-7.64,9.54,97.42,97.42,0,0,1-7.63-9.54C4.18,28.78,1.4,22.13,1.4,17.09a15.7,15.7,0,0,1,31.39,0C32.79,22.13,30,28.78,24.73,36.33Zm5-19.24a12.61,12.61,0,1,1-7.88-11.7.7.7,0,1,1-.52,1.3,11.05,11.05,0,0,0-4.22-.82,11.21,11.21,0,1,0,7.05,2.48.7.7,0,0,1-.11-1,.69.69,0,0,1,1-.1A12.56,12.56,0,0,1,29.71,17.09Zm-6.16-3.47-2.24-2.24a.7.7,0,0,0-.49-.2H11.13a.7.7,0,0,0-.7.7V23.8a.7.7,0,0,0,.7.7H23.05a.7.7,0,0,0,.7-.7V14.11A.7.7,0,0,0,23.55,13.62Zm-8.74-1h4.57v1.58H14.81ZM19.38,23.1H14.81V19.28h4.57Zm3,0H20.77V18.58a.7.7,0,0,0-.7-.7h-6a.71.71,0,0,0-.7.7V23.1H11.83V12.58h1.58v2.28a.71.71,0,0,0,.7.7h6a.7.7,0,0,0,.7-.7v-2l1.59,1.58Zm-3.82-1.54a.7.7,0,0,1-.7.7H16.35a.7.7,0,1,1,0-1.39h1.49A.7.7,0,0,1,18.54,21.56Z" /></svg>
+  </div>
+  <div class="flits-snackbar-body"></div>
+</div>
+<div class="flits-snackbar-popup-box flits-profile-popup flits-template">
+  <div class="flits-snackbar-header">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 40.01 40.01"><path id="Layer_2" data-name="Layer 2" d="M39.47,4.19a1.81,1.81,0,0,1,0,2.56h0L21.29,24.94h0a1.82,1.82,0,0,1-2.57,0l-7.27-7.28A1.82,1.82,0,0,1,14,15.09l6,6L36.89,4.18h0a1.82,1.82,0,0,1,2.57,0ZM39.6,16a1.82,1.82,0,1,0-3.57.72,16.34,16.34,0,1,1-8-11,1.82,1.82,0,0,0,1.78-3.18A20,20,0,1,0,40,20,20.71,20.71,0,0,0,39.6,16Z" transform="translate(0 0.03)" /></svg>
+  </div>
+  <div class="flits-snackbar-body" data-flits-lang="profile_page.saved_successfully" data-flits-lang-default="Profile updated successfully">
+    Profile updated successfully
+  </div>
+</div>
+
+{%- when 'comp_flitsWishlistIcon'-%}
+<svg class="{{ class }}" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+
+{%- when 'comp_wishlistProdcutButton' -%}
+{% assign product_count = product.metafields.Flits.wsl-count %}
+{% assign btn_text = wishlist_addToWishlistButtonText %}
+{% assign class_text = "flits-wls-deactivate flits-wls-inactive" %}
+{% assign product_img = product | img_url %}
+{% assign product_id = 'data-flits-product-id="' | append: product.id | append : '"'  %}
+{% assign product_title = product.title | escape %}
+{% assign product_title = 'data-flits-product-title="' | append: product_title | append : '"'  %}
+{% assign product_handle = 'data-flits-product-handle="' | append: product.handle | append : '"'  %}
+{% assign product_image = 'data-flits-product-image="' | append: product_img | append : '"'  %}
+{% assign customer_id = 'data-flits-customer-id="' | append: customer.id | append : '"'  %}
+{% assign customer_email = 'data-flits-customer-email="' | append: customer.email | append : '"'  %}
+
+{% assign product_page = 'data-page=' | append: "product-page"%}
+{% assign collection_page = 'data-page=' | append: "collection-page"%}
+
+{% assign data_attribute = product_id  
+| append: " " | append: product_title  
+| append: " " | append: product_handle
+| append: " " | append: product_image
+| append: " " | append: customer_id 
+| append: " " | append: customer_email 
+%}
+
+<div id="flits-wishlist-dom" class="filts-wishlist-product-style flits-wishlist-button-style {{ class }}" style="display:none;">
+  <a class="flits-wls-button flits-wls-two flits-wls-inactive flits-wls-desktop flits-wls-button-secondary flits-wls-button-full-width" {{data_attribute}} data-tippy-content="{{ btn_text | strip }}">
+    <div class="flits-wls-icon-with-text ">
+      <div class="flits-wls-icon-with-text-icon">
+        <div class="flits-btn-effect">
+          {% render 'flits_capture_code' with 'component',template:'comp_flitsWishlistIcon' class:'flits-wls-heart-full flits-wls-icon-svg flits-wls-icon-svg-color-blue' %}
+          <div class="flits-wls-effect-group">
+            <span class="flits-wls-effect"></span>
+            <span class="flits-wls-effect"></span>
+            <span class="flits-wls-effect"></span>
+            <span class="flits-wls-effect"></span>
+            <span class="flits-wls-effect"></span>
+          </div>
+        </div>
+      </div>
+      <div class="flits-wls-icon-with-text-text">
+        {{btn_text}}
+      </div>
+    </div>
+  </a>
+  <a class="flits-wls-count-btn">
+    {%- if product_count -%}{{product_count}}{%-else-%}0{%-endif-%}
+  </a>
+</div>
+
+{%- when 'comp_wishlistCollectionButton' -%}
+{% assign product_count = product.metafields.Flits.wsl-count %}
+{% assign btn_text = wishlist_addToWishlistButtonText %}
+{% assign class_text = "flits-wls-deactivate flits-wls-inactive" %}
+{% assign product_img = product | img_url %}
+{% assign product_id = 'data-flits-product-id="' | append: product.id | append : '"'  %}
+{% assign product_title = product.title | escape %}
+{% assign product_title = 'data-flits-product-title="' | append: product_title | append : '"'  %}
+{% assign product_handle = 'data-flits-product-handle="' | append: product.handle | append : '"'  %}
+{% assign product_image = 'data-flits-product-image="' | append: product_img | append : '"'  %}
+{% assign customer_id = 'data-flits-customer-id="' | append: customer.id | append : '"'  %}
+{% assign customer_email = 'data-flits-customer-email="' | append: customer.email | append : '"'  %}
+
+{% assign product_page = 'data-page=' | append: "product-page"%}
+{% assign collection_page = 'data-page=' | append: "collection-page"%}
+
+{% assign data_attribute = product_id  
+| append: " " | append: product_title  
+| append: " " | append: product_handle
+| append: " " | append: product_image
+| append: " " | append: customer_id 
+| append: " " | append: customer_email 
+%}
+
+{% comment %} Collection wishlist button HTML {% endcomment %}
+<div class="flits-wishlist-colection flits-wishlist-colection-style flits-wishlist-button-style {{ class }}" style="display:none" {{ attr }}>
+  <a class=" flits-wls-button flits-wls-two flits-wls-inactive flits-wls-desktop flits-wls-button-secondary flits-wls-button-full-width" {{data_attribute}} data-tippy-content="{{ btn_text | strip }}">
+    <div class="flits-wls-icon-with-text ">
+      <div class="flits-wls-icon-with-text-icon">
+        <div class="flits-btn-effect">     
+          {% render 'flits_capture_code' with 'component',template:'comp_flitsWishlistIcon' class:'heart-full flits-wls-icon-svg icon-svg--size-4 flits-wls-icon-svg-color-blue' %}
+          <div class="flits-wls-effect-group">
+            <span class="flits-wls-effect"></span>
+            <span class="flits-wls-effect"></span>
+            <span class="flits-wls-effect"></span>
+            <span class="flits-wls-effect"></span>
+            <span class="flits-wls-effect"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  <a class="flits-wls-count-btn">
+    {%- if product_count -%}{{product_count}}{%-else-%}0{%-endif-%}
+  </a>
+</div>
+
+{%- when 'comp_modalBackground' -%}
+<div class="flits-modal-background" {{ class }}>
+  <div class="flits-bg-heart flits-heart-1">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24.81 21.5"><path d="M13.08,23l9.77-9.6a6.85,6.85,0,0,0,.85-8.76,6.25,6.25,0,0,0-5-2.91h-.06c-2.72,0-5.07,2.05-6.16,3.19C11.41,3.79,9.07,1.75,6.34,1.75H6.28a6.37,6.37,0,0,0-5,2.94,6.83,6.83,0,0,0,.88,8.7L11.92,23A.84.84,0,0,0,13.08,23ZM2.59,5.64A4.79,4.79,0,0,1,6.27,3.4h0c2.87,0,5.51,3.24,5.51,3.28h0a.85.85,0,0,0,1.2.09l.1-.09S15.8,3.33,18.7,3.4a4.71,4.71,0,0,1,3.66,2.21,5.18,5.18,0,0,1-.66,6.6l-9.2,9.06L3.34,12.21A5.18,5.18,0,0,1,2.59,5.64Z" transform="translate(-0.1 -1.75)" style="fill:#e9e8e8"/></svg>
+  </div>
+  <div class="flits-bg-heart flits-heart-2">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24.81 21.5"><path d="M13.08,23l9.77-9.6a6.85,6.85,0,0,0,.85-8.76,6.25,6.25,0,0,0-5-2.91h-.06c-2.72,0-5.07,2.05-6.16,3.19C11.41,3.79,9.07,1.75,6.34,1.75H6.28a6.37,6.37,0,0,0-5,2.94,6.83,6.83,0,0,0,.88,8.7L11.92,23A.84.84,0,0,0,13.08,23ZM2.59,5.64A4.79,4.79,0,0,1,6.27,3.4h0c2.87,0,5.51,3.24,5.51,3.28h0a.85.85,0,0,0,1.2.09l.1-.09S15.8,3.33,18.7,3.4a4.71,4.71,0,0,1,3.66,2.21,5.18,5.18,0,0,1-.66,6.6l-9.2,9.06L3.34,12.21A5.18,5.18,0,0,1,2.59,5.64Z" transform="translate(-0.1 -1.75)" style="fill:#e9e8e8"/></svg>
+  </div>
+  <div class="flits-bg-heart flits-heart-3">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24.81 21.5"><path d="M13.08,23l9.77-9.6a6.85,6.85,0,0,0,.85-8.76,6.25,6.25,0,0,0-5-2.91h-.06c-2.72,0-5.07,2.05-6.16,3.19C11.41,3.79,9.07,1.75,6.34,1.75H6.28a6.37,6.37,0,0,0-5,2.94,6.83,6.83,0,0,0,.88,8.7L11.92,23A.84.84,0,0,0,13.08,23ZM2.59,5.64A4.79,4.79,0,0,1,6.27,3.4h0c2.87,0,5.51,3.24,5.51,3.28h0a.85.85,0,0,0,1.2.09l.1-.09S15.8,3.33,18.7,3.4a4.71,4.71,0,0,1,3.66,2.21,5.18,5.18,0,0,1-.66,6.6l-9.2,9.06L3.34,12.21A5.18,5.18,0,0,1,2.59,5.64Z" transform="translate(-0.1 -1.75)" style="fill:#e9e8e8"/></svg>
+  </div>
+  <div class="flits-bg-star flits-star-1">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 25 25"><path d="M12.5,25,8.73,16.27,0,12.5,8.73,8.73,12.5,0l3.77,8.73L25,12.5l-8.73,3.77Z" transform="translate(0)" style="fill:#e9e8e8"/></svg>
+  </div>
+  <div class="flits-bg-star flits-star-2">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 25 25"><path d="M12.5,25,8.73,16.27,0,12.5,8.73,8.73,12.5,0l3.77,8.73L25,12.5l-8.73,3.77Z" transform="translate(0)" style="fill:#e9e8e8"/></svg>
+  </div>
+  <div class="flits-bg-star flits-star-3">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 25 25"><path d="M12.5,25,8.73,16.27,0,12.5,8.73,8.73,12.5,0l3.77,8.73L25,12.5l-8.73,3.77Z" transform="translate(0)" style="fill:#e9e8e8"/></svg>
+  </div>
+  <div class="flits-bg-star flits-star-4">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 25 25"><path d="M12.5,25,8.73,16.27,0,12.5,8.73,8.73,12.5,0l3.77,8.73L25,12.5l-8.73,3.77Z" transform="translate(0)" style="fill:#e9e8e8"/></svg>
+  </div>
+  <div class="flits-bg-star flits-star-5">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 25 25"><path d="M12.5,25,8.73,16.27,0,12.5,8.73,8.73,12.5,0l3.77,8.73L25,12.5l-8.73,3.77Z" transform="translate(0)" style="fill:#e9e8e8"/></svg>
+  </div>
+  <div class="flits-bg-star flits-star-6">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 25 25"><path d="M12.5,25,8.73,16.27,0,12.5,8.73,8.73,12.5,0l3.77,8.73L25,12.5l-8.73,3.77Z" transform="translate(0)" style="fill:#e9e8e8"/></svg>
+  </div>
+  <div class="flits-bg-star flits-star-7">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 25 25"><path d="M12.5,25,8.73,16.27,0,12.5,8.73,8.73,12.5,0l3.77,8.73L25,12.5l-8.73,3.77Z" transform="translate(0)" style="fill:#e9e8e8"/></svg>
+  </div>
+</div>
+
+{%- when 'comp_wishlistModal' -%}
+<div id="flits-wishlist-guest-modal-content" style="display:none">
+  <div class="flits-wishlist-guest-modal">
+    {% render 'flits_capture_code' with 'component',template:'comp_modalBackground' %}
+    <div class="flits-wishlist-guest-form-box">
+      <div class="flits-tingle-modal-popup-header">
+        <div class="flits-tingle-modal-popup-header-image">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.24 50"><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M45.93,21.27a20.2,20.2,0,1,1-26.84-9.8,20.2,20.2,0,0,1,26.84,9.8" style="fill:#4576bb"/><path d="M24.3,0l.9,2.07,2.07.9-2.07.89-.9,2.07-.9-2.07L21.33,3l2.07-.9ZM53.19,22.49l-1.63.7,1.63.71.71,1.64.71-1.64,1.63-.71-1.63-.7-.71-1.64Zm-52,1.16L0,24.17l1.21.52.52,1.21.52-1.21,1.21-.52-1.21-.52-.52-1.21Z" style="fill:#2c6db6"/><path d="M44.28,5.18a1.94,1.94,0,1,1-2.36,1.39,1.94,1.94,0,0,1,2.36-1.39M6.61,10.33a1.28,1.28,0,0,0-2.56,0,1.28,1.28,0,0,0,2.56,0" style="fill:#5bc1ee"/><path d="M41.4,24V38.29A1.7,1.7,0,0,1,39.7,40H15.83a1.7,1.7,0,0,1-1.7-1.7V24Z" style="fill:#ababab"/><path d="M40.79,22.76A1.49,1.49,0,0,1,41.4,24H14.13a1.49,1.49,0,0,1,.61-1.2l12.15-8.88a1.47,1.47,0,0,1,1.76,0l12.14,8.88" style="fill:#d8d7db"/><path d="M37.4,21.58a.53.53,0,0,1,.53.53V37.28a.54.54,0,0,1-.53.54H18.2a.54.54,0,0,1-.54-.54V22.11a.54.54,0,0,1,.54-.53H37.4" style="fill:#e0e5f4"/><path d="M20.79,26.29a.27.27,0,0,1,0-.54H34.86a.27.27,0,0,1,0,.54H20.79m14.07,1.78H20.79a.27.27,0,0,0,0,.54H34.86a.27.27,0,0,0,0-.54m0,2.32H20.79a.27.27,0,0,0,0,.54H34.86a.27.27,0,0,0,0-.54" style="fill:#01516a"/><path d="M41.4,24V38.32A1.67,1.67,0,0,1,39.73,40H15.83Z" style="fill:#fff"/><path d="M39.7,40H15.8a1.67,1.67,0,0,1-1.67-1.67V24Z" style="fill:#f2f0f8"/></g></g></svg>
+        </div>
+        <p class="flits-h2 flits-tingle-modal-popup-header-title">
+          {{ wishlist_whatIsYourEmailText | strip }}
+        </p>
+      </div>
+      <div class="flits-tingle-modal-popup-body">
+        <form id='flits-guest-wishlist-form'>
+          {% render 'flits_capture_code' with 'component',template:'comp_flitsInput',
+          type:'email', 
+          placeholder:wishlist_emailPlaceholderText, 
+          name: 'email',
+          class:'flits-tingle-input',
+          attr:'id="flits_email_id" required',
+          %} 
+          <div class="flits-tingle-modal-popup-action">
+            {% render 'flits_capture_code' with 'component',template:'comp_button',
+      		type:'submit',
+            text:'Add to Wishlist',
+            attr:'data-flits-lang="wishlisted_product_page.add_to_wishlist_button" data-flits-lang-default="Add to Wishlist"'
+            class:'flits-tingle-btn flits-tingle-primary-btn'
+            %}
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="flits-wishlist-guest-message-box" style='display:none'>
+      <div class="flits-tingle-modal-popup-header">
+        <div class="flits-tingle-modal-popup-header-image">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.24 50"><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M24.3,0l.9,2.07,2.07.9-2.07.89-.9,2.08-.9-2.08L21.33,3l2.07-.9ZM53.19,22.48l-1.64.71,1.64.71.71,1.63.7-1.63,1.64-.71-1.64-.71-.7-1.63Zm-52,1.17L0,24.17l1.21.52.52,1.21.52-1.21,1.21-.52-1.21-.52-.52-1.21Z" style="fill:#2c6db6"/><path d="M44.28,5.18a1.94,1.94,0,1,1-2.36,1.39,1.94,1.94,0,0,1,2.36-1.39M6.61,10.33a1.28,1.28,0,0,0-2.56,0,1.28,1.28,0,0,0,2.56,0" style="fill:#5bc1ee"/><path d="M45.93,21.27a20.2,20.2,0,1,1-26.85-9.8,20.21,20.21,0,0,1,26.85,9.8" style="fill:#4576bb"/><path d="M23.4,28.86a.34.34,0,0,0,.31,0c.18-.09,4.51-2.39,4.51-5a2.28,2.28,0,0,0-.72-1.7,2.36,2.36,0,0,0-1.61-.63A2.71,2.71,0,0,0,23.55,23a2.7,2.7,0,0,0-2.33-1.44,2.36,2.36,0,0,0-1.61.63,2.28,2.28,0,0,0-.72,1.7c0,2.57,4.33,4.87,4.51,5m-3.33-6.17a1.7,1.7,0,0,1,1.15-.45,2.15,2.15,0,0,1,2,1.74.33.33,0,0,0,.41.24.34.34,0,0,0,.24-.24,2.14,2.14,0,0,1,2-1.74,1.7,1.7,0,0,1,1.15.45,1.58,1.58,0,0,1,.51,1.21c0,1.92-3.24,3.86-4,4.29-.75-.43-4-2.37-4-4.29a1.57,1.57,0,0,1,.5-1.21Zm3.48,8.21a6.33,6.33,0,1,0-6.32-6.33,6.33,6.33,0,0,0,6.32,6.33m0-12a5.66,5.66,0,1,1-5.66,5.66,5.66,5.66,0,0,1,5.66-5.66m0,19.32a1.34,1.34,0,1,0,1.34-1.34,1.34,1.34,0,0,0-1.34,1.34m1.34-.67a.67.67,0,1,1-.67.67.67.67,0,0,1,.67-.67m4,.67a1.34,1.34,0,1,0,1.34-1.34,1.34,1.34,0,0,0-1.34,1.34m1.34-.67a.67.67,0,1,1-.67.67.67.67,0,0,1,.67-.67M38.75,24.9h-2a.67.67,0,0,0-.67.67H34.75a.32.32,0,0,0-.33.25l-.26,1.08H31.09v.67h3.33a.33.33,0,0,1,0,.66H30.09v.67h.61l-.4,2.66H26.48l-.06-.38-.66.1,0,.28H23.7l-.08-.4L23,31.3l.8,4a.33.33,0,0,0,.33.27h8.25l-.17.67H24.09a.33.33,0,0,0,0,.66h8.33a.32.32,0,0,0,.33-.25l.33-1.33,1.28-6.41h.06a1,1,0,0,0,.4-1.91l.19-.76h1.07a.67.67,0,0,0,.67.67h2a.66.66,0,0,0,.66-.67v-.66a.66.66,0,0,0-.66-.67M30.2,32.23l-.4,2.67H27l-.45-2.67Zm2.28,2.67h-2l.4-2.67H33Zm-8.66-2.67h2.09l.44,2.67h-2Zm9.32-.67H31l.4-2.66h2.31Zm3.61-6h2v.66h-2Zm-4.2-2.33a.34.34,0,0,1,0-.67h.33v-.33a.34.34,0,1,1,.67,0v.33h.33a.34.34,0,0,1,0,.67h-.33v.33a.34.34,0,0,1-.67,0v-.33h-.33m-2-3.67a.33.33,0,0,1-.33-.33.33.33,0,0,1,.33-.33h.33v-.34a.34.34,0,0,1,.67,0v.34h.33a.33.33,0,0,1,.34.33.34.34,0,0,1-.34.33h-.33v.34a.34.34,0,0,1-.67,0v-.34h-.33M20.22,33.23a.34.34,0,1,1,0,.67h-.33v.33a.34.34,0,0,1-.67,0V33.9h-.33a.34.34,0,0,1,0-.67h.33V32.9a.34.34,0,1,1,.67,0v.33h.33" style="fill:#fff"/></g></g></svg>
+        </div>
+        <p class="flits-h2 flits-tingle-modal-popup-header-title">
+          {{ wishlist_productAddedText | strip }}
+        </p>
+      </div>
+      <div class="flits-tingle-modal-popup-body">
+        <p class="flits-tingle-modal-popup-tagline-text">
+          {{ wishlist_viewYourWishlistMessageText | strip }}
+        </p>
+        <p class="flits-tingle-modal-popup-text" id='flits-guest-email'></p>
+        <div class="flits-tingle-modal-popup-action">
+          {% render 'flits_capture_code' with 'component',template:'comp_anchorButton',
+          text:'Login',
+          attr:'data-flits-lang="wishlisted_product_page.login" data-flits-lang-default="Login" href="/account/login"'
+          class:'flits-tingle-btn flits-tingle-primary-btn'
+          %}
+          {% render 'flits_capture_code' with 'component',template:'comp_anchorButton',
+		  text:'Register',
+          attr:'data-flits-lang="wishlisted_product_page.register" data-flits-lang-default="Register" href="/account/register"'
+          class:'flits-tingle-btn flits-tingle-primary-btn'
+          %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- when 'comp_referFriendModal' -%}
+<div id="flits-referral-modal-content" style="display:none">
+  <div class="flits-wishlist-guest-modal">
+    {% render 'flits_capture_code' with 'component',template:'comp_modalBackground' %}
+    <div class="flits-tingle-modal-popup-header">
+      <div class="flits-tingle-modal-popup-header-image">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 42.27 41.97"><path d="M45.39,34.28a.7.7,0,1,1-.7.7A.7.7,0,0,1,45.39,34.28ZM7,43.39a.7.7,0,1,1-.7.7A.7.7,0,0,1,7,43.39ZM38.67,4a.7.7,0,1,1-.7.7A.7.7,0,0,1,38.67,4Zm-12,4.33a.7.7,0,1,1-.7.7A.7.7,0,0,1,26.63,8.34ZM16.57,4.74a.7.7,0,1,1-.7.7A.7.7,0,0,1,16.57,4.74Zm-12,16.57a.7.7,0,1,1-.7.7A.7.7,0,0,1,4.56,21.31Z" transform="translate(-3.87 -4.02)" style="fill:#5cc1ee"/><path d="M43.72,9.94a1.92,1.92,0,1,1-1.92,1.92A1.92,1.92,0,0,1,43.72,9.94Zm0,4.33a2.4,2.4,0,1,1,2.42-2.4,2.4,2.4,0,0,1-2.42,2.4Zm0-3.84a1.44,1.44,0,1,0,1.43,1.45h0A1.44,1.44,0,0,0,43.72,10.42ZM9.37,9a2.65,2.65,0,1,1-2.65,2.65h0A2.65,2.65,0,0,1,9.37,9Zm0,5.77a3.13,3.13,0,1,1,3.12-3.13h0a3.12,3.12,0,0,1-3.11,3.13Zm0-5.29a2.17,2.17,0,1,0,2.16,2.17h0A2.17,2.17,0,0,0,9.37,9.46Z" transform="translate(-3.87 -4.02)" style="fill:#2d6db5"/><path d="M40.94,21a17.58,17.58,0,1,1-23.36-8.53A17.58,17.58,0,0,1,40.94,21h0" transform="translate(-3.87 -4.02)" style="fill:#4577bb"/><path d="M21.77,25.95a.57.57,0,1,0,.57.57A.57.57,0,0,0,21.77,25.95Zm4.75,0a.57.57,0,1,0,.57.57A.57.57,0,0,0,26.52,25.95Zm-2.13.45h0V26a.75.75,0,0,1,.31.12l.14-.2a.93.93,0,0,0-.45-.16v-.11h-.14v.11a.57.57,0,0,0-.34.13.4.4,0,0,0-.13.31.36.36,0,0,0,.11.28.83.83,0,0,0,.36.15V27a.67.67,0,0,1-.37-.19l-.16.19a.9.9,0,0,0,.53.24v.15h.14v-.15a.57.57,0,0,0,.36-.13.37.37,0,0,0,.13-.31.35.35,0,0,0-.11-.29.86.86,0,0,0-.37-.16Zm-.14,0a.34.34,0,0,1-.16-.08.16.16,0,0,1,0-.11A.18.18,0,0,1,24.1,26a.29.29,0,0,1,.15-.06Zm.3.63a.24.24,0,0,1-.16.06v-.38a.52.52,0,0,1,.18.08.18.18,0,0,1,0,.12A.16.16,0,0,1,24.55,27Zm4.52-9.89a12.44,12.44,0,0,1,4.52,3.11.2.2,0,0,0,.28,0h0a.2.2,0,0,0,0-.28,13,13,0,0,0-4.64-3.2.2.2,0,1,0-.15.37h0ZM13,24.34a.2.2,0,0,0,.25-.11,12.44,12.44,0,0,1,6.35-6.86.2.2,0,0,0,.1-.26.2.2,0,0,0-.27-.1,12.75,12.75,0,0,0-6.55,7.08.19.19,0,0,0,.1.24Zm8.41-7.65h.05a14.29,14.29,0,0,1,1.61-.33.2.2,0,0,0,.15-.24A.2.2,0,0,0,23,16h0a13.26,13.26,0,0,0-1.7.34.21.21,0,0,0-.15.24.2.2,0,0,0,.2.15ZM36.46,31.54a.2.2,0,0,0-.24.12h0c-.09.31-.19.62-.31.93a.2.2,0,0,0,.11.23.19.19,0,0,0,.25-.11h0c.12-.32.23-.63.32-.95A.2.2,0,0,0,36.46,31.54Zm-1.09,2.72a.21.21,0,0,0-.27.07h0a12.27,12.27,0,0,1-5.87,5.18.2.2,0,1,0,.11.38h0a12.61,12.61,0,0,0,6.07-5.38A.19.19,0,0,0,35.38,34.26ZM24.49,40.44c-3.06,0-3.88-1-4-.53a.2.2,0,0,0,.12.25,12.47,12.47,0,0,0,3.91.67h0a.2.2,0,0,0,.23-.16h0a.21.21,0,0,0-.16-.23ZM37.6,21.33H35.33a.2.2,0,0,0-.2.2v.15h-.77c-.75-.5-1.09-.87-1.76-.87h-.1a10.91,10.91,0,0,0-7.79-3.39h-.12a11,11,0,0,0-10.91,10.8A10.66,10.66,0,0,0,13.81,30H12.4a.2.2,0,0,0-.2.2v6.47a.2.2,0,0,0,.2.2h2.74a.19.19,0,0,0,.2-.19h0v-.49a4,4,0,0,1,1.8.72c1,.61,1.6,1.52,3.07,1.45A10.88,10.88,0,0,0,35.48,27.09H37.6a.19.19,0,0,0,.2-.19h0V21.51A.2.2,0,0,0,37.6,21.33Zm-3.45.7a.21.21,0,0,0,.11,0h.83v4H33.52a.19.19,0,0,0-.09.06,8.76,8.76,0,0,1-3.06,2v-3l.52-.19A4.9,4.9,0,0,0,34,24.84a.2.2,0,0,0,.1-.25h0a.19.19,0,0,0-.25-.09h0a4.7,4.7,0,0,1-2.92.12.23.23,0,0,0-.12,0l-2.26.83a.58.58,0,1,1-.41-1.07h0L30,23.6a.19.19,0,0,0,.12-.24h0a.19.19,0,0,0-.19-.12.67.67,0,0,0-.33-.08h-2c.8-.67,1.42-1.93,3-1.93h1.94a1.33,1.33,0,0,1,.47.09,8.28,8.28,0,0,1,1.13.74Zm-5,1.49L28,24a1,1,0,0,0-.53.54H20.35a.19.19,0,0,0-.2.19h0a.65.65,0,0,1-.65.64.2.2,0,0,0-.2.2v1.93a.2.2,0,0,0,.2.2.66.66,0,0,1,.65.65.2.2,0,0,0,.2.2h7.57a.19.19,0,0,0,.2-.19h0a.66.66,0,0,1,.65-.65.19.19,0,0,0,.2-.19h0V25.7l1-.36V29.2a.34.34,0,0,1-.34.34h-11a.34.34,0,0,1-.34-.34h0V23.87a.34.34,0,0,1,.34-.34H29.13Zm-.57,2.31v1.49a1,1,0,0,0-.83.83H20.53a1,1,0,0,0-.83-.83V25.75a1,1,0,0,0,.83-.84h6.86a1,1,0,0,0,1,.95h.16ZM15,36.57v-.15H12.62v.14m4.77,0a4.43,4.43,0,0,0-2-.81V30.9h.31a5.26,5.26,0,0,1,3.39,1.22.2.2,0,0,0,.12,0H22a1.13,1.13,0,1,1,0,2.26H19.26a.2.2,0,0,0,0,.4h2.66a1.53,1.53,0,0,0,1.54-1.26L29.19,32a.87.87,0,0,1,.57,1.63L21.2,37.7c-1.87.89-3.13-.79-3.8-1.13ZM21,38.2c.44-.14,0,0,9-4.26a1.27,1.27,0,0,0-.86-2.37l-5.59,1.57A1.54,1.54,0,0,0,22,31.76H19.19a6,6,0,0,0-3.85-1.27v-.34a.2.2,0,0,0-.2-.2h-.93a10.49,10.49,0,0,1,8.67-12,10.67,10.67,0,0,1,1.7-.14h.14a10.51,10.51,0,0,1,7.24,3H30.62c-1.87,0-2.57,1.48-3.58,2.32H18.65a.75.75,0,0,0-.72.73V29.2a.74.74,0,0,0,.74.74h11a.73.73,0,0,0,.75-.72h0V28.6a9.29,9.29,0,0,0,3.31-2.14H35a10.5,10.5,0,0,1-14,11.75Zm1.26-15.72h2.55a.19.19,0,0,0,.2-.19h0a.2.2,0,0,0-.2-.2H22.22a.19.19,0,1,0,0,.38Zm-1.7,0h.66a.19.19,0,0,0,.2-.17h0a.2.2,0,0,0-.17-.22h-.67a.2.2,0,0,0,0,.4Z" transform="translate(-3.87 -4.02)" style="fill:#f2f0f8"/></svg>
+      </div>
+      <p class="flits-h2 flits-tingle-modal-popup-header-title">
+        {{ refer_popupGreetingsText | strip }}
+      </p>
+    </div>
+    <div class="flits-tingle-modal-popup-body">
+      <p class="flits-tingle-modal-popup-text"></p>
+    </div>
+  </div>
+</div>
+
+{%- when 'comp_storeCreditCartDropdown' -%}
+<div id="flits-cart-automatic-code" style="display:none;">
+  <div class="flits-credit-code-div {{ class }}" {{ attr }}></div>
+</div>
+
+{%- when 'comp_socialLoginButton' -%}
+<a data-href="/apps/proxy_name/api/app_id/shop_id/login_type/auth/login?token=shop_token" 
+   class="flits-social-login-btn"
+   id="flits-social-login-btn-template">
+  <span class="flits-social-login-btn-img"></span>
+  <span class="flits-social-login-btn-text"></span>
+</a>
+
+{%- when 'comp_skeletonMenu' -%}
+<div class="flits-skeleton-menus-list-box">
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-1"></div>
+  </div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-2"></div>
+  </div>
+  <div class="flits-skeleton-menu-divider"></div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-3"></div>
+  </div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-4"></div>
+  </div>
+  <div class="flits-skeleton-menu-divider"></div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-5"></div>
+  </div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-6"></div>
+  </div>
+  <div class="flits-skeleton-menu-divider"></div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-7"></div>
+  </div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-8"></div>
+  </div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-9"></div>
+  </div>
+  <div class="flits-skeleton-menu-divider"></div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-10"></div>
+  </div>
+  <div class="flits-skeleton-menu-divider"></div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-11"></div>
+  </div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-12"></div>
+  </div>
+</div>
+
+{%- when 'comp_mobile_skeletonMenu' -%}
+<div class="flits-skeleton-menus-list-box">
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-1"></div>
+    <div class="flits-skeleton-box flits-skeleton-box-2"></div>
+  </div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-1"></div>
+    <div class="flits-skeleton-box flits-skeleton-box-2"></div>
+  </div>
+  <div class="flits-skeleton-menu-item">
+    <div class="flits-skeleton-box flits-skeleton-box-1"></div>
+    <div class="flits-skeleton-box flits-skeleton-box-2"></div>
+  </div>
+</div>
+
+{%- when 'comp_order_card_skeleton' -%}
+<div class="flits-order-card flits-skeleton-order-card {{ class }}">
+  <div class="flits-order-details">
+    <div class="flits-order-information">
+      <div class="flits-order-information-row">
+        <div class="flits-skeleton-order-box"></div>
+        <div class="flits-skeleton-order-box"></div>
+        <div class="flits-skeleton-order-box"></div>
+      </div>
+    </div>
+    <div class="flits-order-actions">
+      <div class="flits-order-button-grp">
+        <div class="flits-skeleton-order-box"></div>
+        <div class="flits-skeleton-order-box"></div>
+      </div>
+    </div>
+  </div>
+  <div class="flits-grand-total">
+    <div class="flits-skeleton-order-box"></div>
+    <div class="flits-skeleton-order-box"></div>
+  </div>
+</div>
+
+{%- when 'comp_order_card_skeleton_loader' -%}
+<div class="flits-order-skeleton-loader {{ class }}">
+  {% render 'flits_capture_code' with 'component',template:'comp_order_card_skeleton' %}
+  {% render 'flits_capture_code' with 'component',template:'comp_order_card_skeleton' %}
+  {% render 'flits_capture_code' with 'component',template:'comp_order_card_skeleton' %}
+</div>
+
+{%- when 'comp_productSkeletonCard' -%}
+<div class="flits-product-skeleton-card {{ class }}">
+  <div class="flits-skeleton-card-title">
+    <div class="flits-skeleton-card-box">
+    </div>
+  </div>
+  <div class="flits-skeleton-card-img">
+    <div class="flits-skeleton-card-box">
+    </div>
+  </div>
+  <div class="flits-skeleton-card-price">
+    <div class="flits-skeleton-card-box">
+    </div>
+  </div>
+  <div class="flits-skeleton-card-select">
+    <div class="flits-skeleton-card-box">
+    </div>
+  </div>
+  <div class="flits-skeleton-card-select">
+    <div class="flits-skeleton-card-box">
+    </div>
+  </div>
+  <div class="flits-skeleton-card-select">
+    <div class="flits-skeleton-card-box">
+    </div>
+  </div>
+</div>
+
+{%- when 'comp_storeCreditOrderStatusPage' -%}
+<div class="content-box flits-order-status flits-store-credit-box" style="display:none;">
+  <div class="content-box__row">
+    <div class="flits-skeleton-row">
+      <div class="flits-skeleton-item">
+        <div class="flits-skeleton-box flits-skeleton-box-1"></div>
+      </div>
+      <div class="flits-skeleton-item">
+        <div class="flits-skeleton-box flits-skeleton-box-2"></div>
+      </div>
+      <div class="flits-skeleton-item">
+        <div class="flits-skeleton-box flits-skeleton-box-3"></div>
+      </div>
+      <div class="flits-skeleton-item">
+        <div class="flits-skeleton-box flits-skeleton-box-4"></div>
+      </div>
+    </div>
+    <div class="flits-order-credit-row" style="display:none;">
+      <h2 class="total-earned-credit-on-order"></h2>
+      <ul class="earned-credit-ul" style="display:none;">
+        <li class="earned-credit-on-order_number"></li>
+        <li class="earned-credit-on-product_tag"></li>
+      </ul>
+      <h2 class="current-credit-balance"></h2>
+      <p class="shop-more-to-earn-credit"></p>
+      <p class="shop-more-to-spent-credit"></p>
+    </div>
+  </div>
+</div>
+
+{%- endcase -%}
